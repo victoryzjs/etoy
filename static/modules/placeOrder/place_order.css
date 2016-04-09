@@ -1,0 +1,245 @@
+/* ===test=== */
+/* 
+.test {
+  .linear-gradient(#f4f4f3, #efefee);
+  .linear-gradient(rgba(0,0,0,0.5), rgba(255,255,255, 0.5));
+  .box-sizing(border-box);
+  .box-shadow(1px 1px 1px red);
+  .transform(rotate(-5deg));
+  .transition(background-color linear .8s)
+}  
+ */
+/* 网站皮肤相关 */
+/* 通用颜色
+ * 命名规则：
+ * prefix-color-colorvalue[num], like @border-color-gray2: #dedede
+ * num只有存在两个相近颜色时才使用
+ *
+ * 关于前缀(prefix)：
+ * border: 边框颜色
+ * font: 文字颜色
+ * bg: 背景颜色
+ */
+/* 通用样式 */
+/* 三角箭头
+ *
+ *  使用方法
+ *  <div class="icon-triangle-up"></div>
+ */
+/* 箭头 */
+/*
+ *  使用方法
+ *  <div class="any-class-name">
+ *      <div class="arrow-bar arrow-bar-top"></div>
+ *      <div class="arrow-bar arrow-bar-bottom"></div>
+ *  </div>
+ */
+/** 箭头
+ * 
+ * 使用方法
+ * <div class="any-class-name">
+ *     <div class="arrow-bar arrow-bar-top"></div>
+ *     <div class="arrow-bar arrow-bar-bottom"></div>
+ * </div>
+ */
+.about-info1 {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.user-name,
+.user-phone,
+.user-address {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.user-name > i,
+.user-phone > i,
+.user-address > i {
+  width: 25px;
+  height: 100%;
+  left: 0px;
+  top: 0;
+}
+.user-name > i {
+  background: url(/static/img/people_icon.png) no-repeat;
+  background-size: contain;
+  background-position-y: center;
+}
+.user-phone > i {
+  background: url(/static/img/phone_icon.png) no-repeat;
+  background-size: contain;
+  background-position-y: center;
+}
+.user-address > i {
+  background: url(/static/img/place_icon.png) no-repeat;
+  background-size: contain;
+  background-position-y: center;
+}
+.user-name input,
+.user-phone input,
+.user-address input {
+  width: 100%;
+  padding-left: 25px;
+  font-size: 14px;
+  color: #747474;
+  border: none;
+  line-height: 25px;
+  text-indent: 1em;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+.user-address {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: 1px solid #ebebeb;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.wrap-select {
+  margin-left: 90px;
+}
+.wrap-select i {
+  top: 0;
+  right: 5px;
+  width: 10px;
+  height: 100%;
+  background: url(/static/img/bottom_arrow.png) no-repeat;
+  background-size: contain;
+  background-position-y: center;
+}
+.user-address input {
+  width: 90px;
+  line-height: 43px;
+}
+.wrap-select > div {
+  width: 50%;
+  height: 100%;
+}
+.user-address select {
+  width: 100%;
+  line-height: 43px;
+  border: none;
+  border-left: 1px solid #ebebeb;
+  padding-right: 15px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+  text-indent: 1em;
+  outline: none;
+  background-color: #fff;
+}
+.user-detail-address textarea {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 40px;
+  border: none;
+  outline: none;
+}
+.goods-list-info {
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-position: bottom;
+  border: none;
+  background-image: -webkit-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(180deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-bottom: 1px solid #ebebeb;
+  border-top: 1px solid #ebebeb;
+}
+.goods-list-number {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.goods-list-number span {
+  line-height: 43px;
+  height: 43px;
+  font-size: 14px;
+  color: #474747;
+}
+.goods-list-number span:nth-of-type(2) {
+  padding-right: 12px;
+}
+.goods-list-info ul li:last-child {
+  border-bottom: none;
+}
+.lease-time {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.lease-time > div {
+  min-height: 43px;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.lease-time > div input {
+  width: 100%;
+  height: 43px;
+  color: #b2b2b2;
+  font-size: 13px;
+  border: none;
+  outline: none;
+}
+.lease-time > div textarea {
+  height: 53px;
+  width: 100%;
+  outline: none;
+  padding: 8px 8px 8px 0;
+  border: none;
+  font-size: 13px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.lease-time > div:last-child {
+  border-bottom: none;
+}

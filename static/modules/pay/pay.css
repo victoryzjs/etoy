@@ -1,0 +1,300 @@
+/* ===test=== */
+/* 
+.test {
+  .linear-gradient(#f4f4f3, #efefee);
+  .linear-gradient(rgba(0,0,0,0.5), rgba(255,255,255, 0.5));
+  .box-sizing(border-box);
+  .box-shadow(1px 1px 1px red);
+  .transform(rotate(-5deg));
+  .transition(background-color linear .8s)
+}  
+ */
+/* 网站皮肤相关 */
+/* 通用颜色
+ * 命名规则：
+ * prefix-color-colorvalue[num], like @border-color-gray2: #dedede
+ * num只有存在两个相近颜色时才使用
+ *
+ * 关于前缀(prefix)：
+ * border: 边框颜色
+ * font: 文字颜色
+ * bg: 背景颜色
+ */
+/* 通用样式 */
+/* 三角箭头
+ *
+ *  使用方法
+ *  <div class="icon-triangle-up"></div>
+ */
+/* 箭头 */
+/*
+ *  使用方法
+ *  <div class="any-class-name">
+ *      <div class="arrow-bar arrow-bar-top"></div>
+ *      <div class="arrow-bar arrow-bar-bottom"></div>
+ *  </div>
+ */
+/** 箭头
+ * 
+ * 使用方法
+ * <div class="any-class-name">
+ *     <div class="arrow-bar arrow-bar-top"></div>
+ *     <div class="arrow-bar arrow-bar-bottom"></div>
+ * </div>
+ */
+.order-detail {
+  border: none;
+  background-image: -webkit-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(180deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-top: 1px solid #ebebeb;
+}
+.order-detail div:nth-of-type(1) {
+  font-size: 14px;
+  color: #595757;
+  line-height: 40px;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.order-detail div:nth-of-type(2) {
+  height: 70px;
+  font-size: 37px;
+  color: #f1633d;
+  font-weight: bolder;
+  line-height: 90px;
+}
+.order-detail.active div:nth-of-type(2) {
+  height: 40px;
+  font-size: 18px;
+  line-height: 40px;
+}
+.pay-method {
+  margin-bottom: 40px;
+}
+.pay-method h1 {
+  font-size: 14px;
+  line-height: 40px;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-position: bottom;
+  border: none;
+  background-image: -webkit-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(180deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  color: #595757;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+}
+.pay-method-choice {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.pay-method-choice a {
+  display: block;
+  width: 100%;
+  font-size: 0;
+}
+.weixin-pay,
+.card-pay {
+  line-height: 40px;
+}
+.weixin-pay {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.pay-icon {
+  width: 25px;
+  height: 25px;
+  margin-top: 7px;
+}
+.pay-weixin-icon {
+  background: url(/static/img/weixin_icon.png) no-repeat;
+  background-size: cover;
+}
+.pay-card-icon {
+  background: url(/static/img/money_icon.png) no-repeat;
+  background-size: cover;
+}
+.pay-cont {
+  margin-left: 35px;
+  padding-right: 12px;
+}
+.pay-cont span:nth-of-type(1) {
+  font-size: 14px;
+  color: #595757;
+}
+.pay-cont span:nth-of-type(2) {
+  font-size: 11px;
+  color: #f1633d;
+  padding-right: 13px;
+}
+.right-icon:after {
+  content: '';
+  position: absolute;
+  top: 9px;
+  right: 0;
+  width: 13px;
+  height: 22px;
+  background: url(/static/img/right_arrow.png) no-repeat;
+  background-size: cover;
+}
+/*余额不足*/
+.chuxuka {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-position: bottom;
+  border: none;
+  background-image: -webkit-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(180deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-bottom: 1px solid #ebebeb;
+  border-top: 1px solid #ebebeb;
+}
+.chuxuka h1 {
+  font-size: 14px;
+  line-height: 40px;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  color: #595757;
+  border-bottom: 1px solid #ebebeb;
+}
+.number-choice {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.number-choice-wrap {
+  width: 25%;
+}
+.number-choice-wrap > div:nth-of-type(1) {
+  padding-top: 10px;
+}
+.number-choice-wrap > div:nth-of-type(2) {
+  padding-bottom: 10px;
+  font-size: 10px;
+  color: #f1633d;
+  line-height: 22px;
+}
+.number-choice-wrap span:nth-of-type(1) {
+  width: 14px;
+  height: 14px;
+  background: url(/static/img/black_icon.png) no-repeat;
+  background-size: cover;
+  margin-right: 5px;
+}
+.number-choice-wrap.active span:nth-of-type(1) {
+  background-image: url(/static/img/orange_icon.png);
+}
+.number-choice-wrap span:nth-of-type(2) {
+  font-size: 14px;
+  color: #595757;
+}
+.two-column {
+  line-height: 40px;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.two-column span,
+.two-column-li span {
+  color: #595757;
+  font-size: 14px;
+  border-right: 12px solid transparent;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.two-column span:nth-of-type(1),
+.two-column-li span:nth-of-type(1) {
+  width: 60%;
+  text-align: left;
+}
+.two-column span:nth-of-type(2),
+.two-column-li span:nth-of-type(2) {
+  width: 40%;
+  text-align: right;
+}
+.two-column-li {
+  line-height: 40px;
+}
+.two-column-li:last-child {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.total-page span:nth-of-type(2) {
+  color: #f1633d;
+}
+.total-page {
+  border-bottom: none;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, transparent, transparent 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, transparent, transparent 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, transparent, transparent 50%, transparent 50%);
+  background-image: linear-gradient(0, transparent, transparent 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}

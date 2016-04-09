@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>下单</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="address=no" />
+	<script type="text/javascript" src="../static/lib/mod.js"></script>
+</head>
+<body>
+	<section>
+		<form action="#">
+			<div class="pl12 bg-white about-info1">
+				<div class="user-name pr">
+					<input type="text" placeholder="请再次输入您的姓名">
+					<i class="pa"></i>
+				</div>
+				<div class="user-phone pr">
+					<input type="text" placeholder="请在此输入您的电话">
+					<i class="pa"></i>
+				</div>
+				<div class="user-address pr clearfix">
+					<input type="text" value="北京" class="fl">
+					<div class="wrap-select clearfix">
+						<div class="fl pr">
+							<select>
+								<option value="">请选择地区</option>
+							</select>
+							<i class="pa"></i>
+						</div>
+						<div class="fl pr">
+							<select>
+								<option value="">请选择范围</option>
+							</select>
+							<i class="pa"></i>
+						</div>
+					</div>
+					<i class="pa"></i>
+				</div>
+				<div class="user-detail-address">
+					<textarea name="" id="" placeholder="请填写详细地址"></textarea>
+				</div>
+			</div>
+			<div class="goods-list-info mt7 pl12 bg-white">
+				<div class="goods-list-number clearfix">
+					<span class="fl">玩具清单</span>
+					<span class="fr">共4件</span>
+				</div>
+				<ul>
+					<li class="cart-list-one clearfix">
+						<a href="#">
+							<div class="cart-goods-pic fl">
+								<img src="../static/img/goods_1.png" alt="">
+							</div>
+							<div class="cart-goods-desc pr">
+								<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
+								<div class="cart-goods-price clearfix pa">
+									<span class="inline-block fl">￥10.00元/周</span>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="cart-list-one clearfix">
+						<a href="#">
+							<div class="cart-goods-pic fl">
+								<img src="../static/img/goods_1.png" alt="">
+							</div>
+							<div class="cart-goods-desc pr">
+								<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
+								<div class="cart-goods-price clearfix pa">
+									<span class="inline-block fl">￥10.00元/周</span>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="lease-time pl12 mt7 bg-white">
+				<div class="lease-week">
+					<input type="text" placeholder="请在此选择租赁周数">
+				</div>
+				<div class="lease-delivery">
+					<input type="text" placeholder="请在此选择配送时间">
+				</div>
+				<div class="lease-cont">
+					<textarea name="" id="" placeholder="填写"></textarea>
+				</div>
+			</div>
+		</form>
+	</section>
+</body>
+<script>
+	require('../static/modules/placeOrder/place_order.js');
+</script>
+</html>

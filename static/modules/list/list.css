@@ -1,0 +1,304 @@
+/* ===test=== */
+/* 
+.test {
+  .linear-gradient(#f4f4f3, #efefee);
+  .linear-gradient(rgba(0,0,0,0.5), rgba(255,255,255, 0.5));
+  .box-sizing(border-box);
+  .box-shadow(1px 1px 1px red);
+  .transform(rotate(-5deg));
+  .transition(background-color linear .8s)
+}  
+ */
+/* 网站皮肤相关 */
+/* 通用颜色
+ * 命名规则：
+ * prefix-color-colorvalue[num], like @border-color-gray2: #dedede
+ * num只有存在两个相近颜色时才使用
+ *
+ * 关于前缀(prefix)：
+ * border: 边框颜色
+ * font: 文字颜色
+ * bg: 背景颜色
+ */
+/* 通用样式 */
+/* 三角箭头
+ *
+ *  使用方法
+ *  <div class="icon-triangle-up"></div>
+ */
+/* 箭头 */
+/*
+ *  使用方法
+ *  <div class="any-class-name">
+ *      <div class="arrow-bar arrow-bar-top"></div>
+ *      <div class="arrow-bar arrow-bar-bottom"></div>
+ *  </div>
+ */
+/** 箭头
+ * 
+ * 使用方法
+ * <div class="any-class-name">
+ *     <div class="arrow-bar arrow-bar-top"></div>
+ *     <div class="arrow-bar arrow-bar-bottom"></div>
+ * </div>
+ */
+.switch-option {
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  line-height: 40px;
+  font-size: 14px;
+  color: #949494;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.switch-goods-list {
+  margin-top: 40px;
+}
+.ranking.active,
+.popularity.active .price.active,
+.shaixuan.active {
+  color: #f1633d;
+}
+.switch-option div.active {
+  color: #f1633d;
+}
+.ranking {
+  width: 24%;
+}
+.popularity {
+  width: 34%;
+  text-align: center;
+}
+.price {
+  width: 25%;
+  text-align: right;
+  border-right: 15px solid transparent;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.price_icon {
+  width: 10px;
+  height: 40px;
+  background: url(/static/img/price_icon.png) no-repeat;
+  background-size: contain;
+  background-position-y: 13px;
+  margin-left: 8px;
+}
+.shaixuan {
+  width: 14%;
+  height: 40px;
+}
+.shaixuan div {
+  width: 15px;
+  height: 100%;
+  margin: 0 auto;
+}
+.shaixuan div span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url(/static/img/screen.png) no-repeat;
+  background-size: contain;
+  background-position-y: 12px;
+}
+.shaixuan > div:after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 1px;
+  height: 32px;
+  background-color: #efe7e7;
+}
+.switch-goods-list-one {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.switch-goods-list-one a {
+  width: 100%;
+  height: 100%;
+}
+.switch-goods-list-one-left {
+  width: 100px;
+  height: 100px;
+}
+.switch-goods-list-one-left img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #efe7e7;
+}
+.switch-goods-list-one-right {
+  margin-left: 100px;
+  padding-left: 10px;
+  height: 100px;
+}
+.switch-goods-list-one-right p:nth-of-type(1) {
+  height: 50px;
+  line-height: 25px;
+  font-size: 14px;
+  color: #595757;
+  margin-top: -4px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.switch-goods-list-one-right p:nth-of-type(2) {
+  line-height: 35px;
+  font-size: 12px;
+  color: #9fa0a0;
+  bottom: 13px;
+  left: 10px;
+}
+.switch-goods-list-one-right p:nth-of-type(3) {
+  line-height: 20px;
+  font-size: 13px;
+  color: #f1633d;
+  bottom: -7px;
+  left: 10px;
+}
+html,
+body {
+  height: 100%;
+}
+.settings {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-top: 1px solid #ebebeb;
+  margin-bottom: 46px;
+}
+.select-age,
+.select-brand,
+.select-function {
+  font-size: 14px;
+  color: #464646;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+  line-height: 40px;
+}
+.select-age:after,
+.select-brand:after,
+.select-function:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 12px;
+  width: 8px;
+  height: 40px;
+  background: url(/static/img/right_arrow.png) no-repeat;
+  background-size: contain;
+  background-position-y: center;
+}
+.select-condition {
+  margin-right: 16px;
+  color: #949494;
+  width: 70%;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.submit-select {
+  margin-top: 20px;
+}
+.confirm,
+.cancel {
+  display: block;
+  margin: 0 auto;
+  width: 112px;
+  height: 40px;
+  border: 1px solid #675d5f;
+  border-radius: 3px;
+  background-color: #e7e7e7;
+  color: #595757;
+  text-align: center;
+  line-height: 40px;
+}
+.cancel {
+  margin-top: 20px;
+}
+.select-ay,
+.select-condition-list li {
+  line-height: 40px;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #efe7e7, #efe7e7 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #efe7e7, #efe7e7 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #efe7e7, #efe7e7 50%, transparent 50%);
+  background-image: linear-gradient(0, #efe7e7, #efe7e7 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #efe7e7;
+  font-size: 14px;
+  position: relative;
+}
+.select-ay div {
+  width: 50px;
+  text-align: center;
+}
+.select-all {
+  color: #595757;
+}
+.select-yes {
+  color: #f1633d;
+}
+.select-condition-list li.active {
+  color: #f1633d;
+}
+.select-condition-list li.active:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 12px;
+  width: 22px;
+  height: 40px;
+  background: url(/static/img/is_yes.png) no-repeat;
+  background-size: contain;
+  background-position-y: center;
+}
+.wrap-screen {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: none;
+}
+.wrap-screen-list {
+  top: 0;
+  z-index: 1000;
+}

@@ -1,0 +1,442 @@
+
+
+/* ===test=== */
+/* 
+.test {
+  .linear-gradient(#f4f4f3, #efefee);
+  .linear-gradient(rgba(0,0,0,0.5), rgba(255,255,255, 0.5));
+  .box-sizing(border-box);
+  .box-shadow(1px 1px 1px red);
+  .transform(rotate(-5deg));
+  .transition(background-color linear .8s)
+}  
+ */
+.linear-gradient(@from, @to) {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @from), color-stop(100%, @to));
+    background: -webkit-linear-gradient(top,  @from 0%, @to 100%);
+    background: linear-gradient(to bottom,  @from 0%, @to 100%);
+}
+
+.box-sizing(@content) {
+    -webkit-box-sizing: @content;
+    box-sizing: @content;
+}
+
+.box-shadow(...) {
+    -webkit-box-shadow: @arguments;
+    box-shadow: @arguments;
+}
+
+.transform(...) {
+    -webkit-transform: @arguments;
+    transform: @arguments;
+}
+
+.transition(...) {
+    -webkit-transition: @arguments;
+    transition: @arguments;
+}
+
+.border-box(){
+    .box-sizing(border-box);
+}
+
+/* 网站皮肤相关 */
+
+
+/* 通用颜色
+ * 命名规则：
+ * prefix-color-colorvalue[num], like @border-color-gray2: #dedede
+ * num只有存在两个相近颜色时才使用
+ *
+ * 关于前缀(prefix)：
+ * border: 边框颜色
+ * font: 文字颜色
+ * bg: 背景颜色
+ */
+
+/* 通用样式 */
+.single-line() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 三角箭头
+ *
+ *  使用方法
+ *  <div class="icon-triangle-up"></div>
+ */
+.icon-triangle-up(@width, @color) {
+    border: @width solid transparent;
+    border-top: none;
+    border-bottom-color: @color;
+}
+
+.icon-triangle-down(@width, @color) {
+    border: @width solid transparent;
+    border-bottom: none;
+    border-top-color: @color;
+}
+
+/* 箭头 */
+/*
+ *  使用方法
+ *  <div class="any-class-name">
+ *      <div class="arrow-bar arrow-bar-top"></div>
+ *      <div class="arrow-bar arrow-bar-bottom"></div>
+ *  </div>
+ */
+.icon-arrow-right(@width, @color) {
+    width: @width;
+
+    .arrow-bar {
+        border: 1px solid @color;
+        border-radius: 1px;
+    }
+
+    .arrow-bar-top {
+        margin-bottom: @width*sin(pi()/4)-3;
+        .transform(rotate(45deg));
+    }
+
+    .arrow-bar-bottom {
+        .transform(rotate(-45deg));
+    }
+}
+
+.icon-arrow-left(@width, @color) {
+    width: @width;
+
+    .arrow-bar {
+        border: 1px solid @color;
+        border-radius: 1px;
+    }
+
+    .arrow-bar-top {
+        margin-bottom: @width*sin(pi()/4)-3;
+        .transform(rotate(-45deg));
+    }
+
+    .arrow-bar-bottom {
+        .transform(rotate(45deg));
+    }
+}
+
+.text-overflow(){
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-overflow-clamp(@line:2){
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+}
+
+.vertical-align(...){
+    line-height: @arguments;
+    height: @arguments;
+}
+
+.text-overflow(){
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-overflow-clamp(@line:2){
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.vertical-align(...){
+    line-height: @arguments;
+    height: @arguments;
+}
+// Flexbox display
+// flex | inline-flex
+.flexbox(@display: flex) {
+    display: -webkit-box; // Old syntax
+    display: ~"-webkit-@{display}";
+    display: ~"-moz-@{display}";
+    display: @display;
+}
+
+// The 'flex' shorthand
+// This shorthand for `flex-grow`, `flex-shrink` and `flex-basis` combined.
+// The second and third parameters (flex-shrink and flex-basis) are optional.
+// Default is 0 1 auto.
+// - applies to: flex items
+// <positive-number>, initial, auto, or none
+.flex(@columns: 1) {
+    -webkit-box-flex: @columns; // Old syntax
+    -webkit-flex: @columns;
+    flex: @columns;
+    width: 1%;/*兼容安卓宽度会根据内容变化，导致不相等问题*/
+}
+
+
+
+// Box Model
+// -----------------------------------------------------------------------------
+.box-sizing(@content) {
+    -webkit-box-sizing: @content;
+    box-sizing: @content;
+}
+.border-box() {
+    .box-sizing(border-box);
+}
+
+// Transform
+// -----------------------------------------------------------------------------
+.transform(...) {
+    -webkit-transform: @arguments;
+    -moz-transform: @arguments;
+    -o-transform: @arguments;
+    transform: @arguments;
+}
+.transform-origin(@pos) {
+    -webkit-transform-origin: @pos;
+    -moz-transform-origin: @pos;
+    -o-transform-origin: @pos;
+    transform-origin: @pos;
+}
+
+// Gradient （比较简单。。。）
+// -----------------------------------------------------------------------------
+
+
+// Text
+// -----------------------------------------------------------------------------
+.text-overflow() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.text-overflow-clamp(@line: 2) {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+}
+.vertical-align(...) {
+    line-height: @arguments;
+    height: @arguments;
+}
+.font-size(@size: 12) {
+    font-size: 12px;
+    @scale: @size / 12;
+    .transform(scale(@scale));
+    .transform-origin(50% 50%);
+}
+
+// Simple Shape
+// -----------------------------------------------------------------------------
+
+// 向上的三角箭头
+.icon-triangle-up(@width, @color) {
+    border: @width solid transparent;
+    border-top: none;
+    border-bottom-color: @color;
+}
+
+// 向下的三角箭头
+.icon-triangle-down(@width, @color) {
+    border: @width solid transparent;
+    border-bottom: none;
+    border-top-color: @color;
+}
+
+/** 箭头
+ * 
+ * 使用方法
+ * <div class="any-class-name">
+ *     <div class="arrow-bar arrow-bar-top"></div>
+ *     <div class="arrow-bar arrow-bar-bottom"></div>
+ * </div>
+ */
+.icon-arrow-right(@width, @color) {
+    width: @width;
+
+    .arrow-bar {
+        border: 1px solid @color;
+        border-radius: 1px;
+    }
+
+    .arrow-bar-top {
+        margin-bottom: @width * sin(pi() / 4) - 3;
+        .transform(rotate(45deg));
+    }
+
+    .arrow-bar-bottom {
+        .transform(rotate(-45deg));
+    }
+}
+.icon-arrow-left(@width, @color) {
+    width: @width;
+
+    .arrow-bar {
+        border: 1px solid @color;
+        border-radius: 1px;
+    }
+
+    .arrow-bar-top {
+        margin-bottom: @width * sin(pi() / 4) - 3;
+        .transform(rotate(-45deg));
+    }
+
+    .arrow-bar-bottom {
+        .transform(rotate(45deg));
+    }
+}
+
+// 'X' 十字交叉icon
+.cross-icon(@width, @height, @color) {
+    .transform(rotate(45deg));
+    &:after,
+    &:before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: @width;
+        height: @height;
+        background: @color;
+        .transform(translate(-50%, -50%));
+    }
+    &:after {
+        width: @height;
+        height: @width;
+    }
+}
+
+// 1px on Retina
+// -----------------------------------------------------------------------------
+
+// 1px 底部分隔线
+.retina1px(@color: #e5e5e5, @w: 1px) {
+    border: none;
+    background-image: -webkit-linear-gradient(90deg, @color, @color 50%, transparent 50%);
+    background-image: -moz-linear-gradient(90deg, @color, @color 50%, transparent 50%);
+    background-image: -o-linear-gradient(90deg, @color, @color 50%, transparent 50%);
+    background-image: linear-gradient(0, @color, @color 50%, transparent 50%);
+    background-size: 100% @w;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+.retinaT(@color: #e5e5e5, @w: 1px) {
+    border: none;
+    background-image: -webkit-linear-gradient(270deg, @color, @color 50%, transparent 50%);
+    background-image: -moz-linear-gradient(270deg, @color, @color 50%, transparent 50%);
+    background-image: -o-linear-gradient(270deg, @color, @color 50%, transparent 50%);
+    background-image: linear-gradient(180deg, @color, @color 50%, transparent 50%);
+    background-size: 100% @w;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+// 1px 四条边框
+.retinaSquare(@color: #55555d, @w: 1px) {
+    border: none;
+    background-image:
+        -webkit-linear-gradient(270deg, @color, @color 50%, transparent 50%),
+        -webkit-linear-gradient(180deg, @color, @color 50%, transparent 50%),
+        -webkit-linear-gradient(90deg, @color, @color 50%, transparent 50%),
+        -webkit-linear-gradient(0, @color, @color 50%, transparent 50%);
+    background-image:
+        -moz-linear-gradient(270deg, @color, @color 50%, transparent 50%),
+        -moz-linear-gradient(180deg, @color, @color 50%, transparent 50%),
+        -moz-linear-gradient(90deg, @color, @color 50%, transparent 50%),
+        -moz-linear-gradient(0, @color, @color 50%, transparent 50%);
+    background-image:
+        -o-linear-gradient(270deg, @color, @color 50%, transparent 50%),
+        -o-linear-gradient(180deg, @color, @color 50%, transparent 50%),
+        -o-linear-gradient(90deg, @color, @color 50%, transparent 50%),
+        -o-linear-gradient(0, @color, @color 50%, transparent 50%);
+    background-image:
+        linear-gradient(180deg, @color, @color 50%, transparent 50%),
+        linear-gradient(270deg, @color, @color 50%, transparent 50%),
+        linear-gradient(0deg, @color, @color 50%, transparent 50%),
+        linear-gradient(90deg, @color, @color 50%, transparent 50%);
+    background-size: 100% @w, @w 100%, 100% @w, @w 100%;
+    background-repeat: no-repeat;
+    background-position: top, right top,  bottom, left top;
+}
+
+.retinaTBL(@color: #55555d, @w: 1px) {
+    border: none;
+    background-image:
+        -webkit-linear-gradient(270deg, @color, @color 50%, transparent 50%),
+        -webkit-linear-gradient(90deg, @color, @color 50%, transparent 50%),
+        -webkit-linear-gradient(0, @color, @color 50%, transparent 50%);
+    background-image:
+        -moz-linear-gradient(270deg, @color, @color 50%, transparent 50%),
+        -moz-linear-gradient(90deg, @color, @color 50%, transparent 50%),
+        -moz-linear-gradient(0, @color, @color 50%, transparent 50%);
+    background-image:
+        -o-linear-gradient(270deg, @color, @color 50%, transparent 50%),
+        -o-linear-gradient(90deg, @color, @color 50%, transparent 50%),
+        -o-linear-gradient(0, @color, @color 50%, transparent 50%);
+    background-image:
+        linear-gradient(180deg, @color, @color 50%, transparent 50%),
+        linear-gradient(0deg, @color, @color 50%, transparent 50%),
+        linear-gradient(90deg, @color, @color 50%, transparent 50%);
+    background-size: 100% @w, 100% @w, @w 100%;
+    background-repeat: no-repeat;
+    background-position: top, bottom, left top;
+}
+
+.retinaTB(@color: #55555d, @w: 1px) {
+    border: none;
+    background-image:
+        -webkit-linear-gradient(270deg, @color, @color 50%, transparent 50%),
+        -webkit-linear-gradient(90deg, @color, @color 50%, transparent 50%);
+    background-image:
+        -moz-linear-gradient(270deg, @color, @color 50%, transparent 50%),
+        -moz-linear-gradient(90deg, @color, @color 50%, transparent 50%);
+    background-image:
+        -o-linear-gradient(270deg, @color, @color 50%, transparent 50%),
+        -o-linear-gradient(90deg, @color, @color 50%, transparent 50%);
+    background-image:
+        linear-gradient(180deg, @color, @color 50%, transparent 50%),
+        linear-gradient(0deg, @color, @color 50%, transparent 50%);
+    background-size: 100% @w, 100% @w;
+    background-repeat: no-repeat;
+    background-position: top, bottom;
+}
+// retina上模拟1px, 2px...
+// -----------------------------------------------------------------------------
+.retina(@top: transparent, @right: transparent, @bottom: transparent, @left: transparent, @w: 1px) {
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {
+        border: none;
+        background-image:
+            -webkit-linear-gradient(270deg, @top, @top 50%, transparent 50%),
+            -webkit-linear-gradient(180deg, @right, @right 50%, transparent 50%),
+            -webkit-linear-gradient(90deg, @bottom, @bottom 50%, transparent 50%),
+            -webkit-linear-gradient(0, @left, @left 50%, transparent 50%);
+        background-image:
+            -moz-linear-gradient(270deg, @top, @top 50%, transparent 50%),
+            -moz-linear-gradient(180deg, @right, @right 50%, transparent 50%),
+            -moz-linear-gradient(90deg, @bottom, @bottom 50%, transparent 50%),
+            -moz-linear-gradient(0, @left, @left 50%, transparent 50%);
+        background-image:
+            -o-linear-gradient(270deg, @top, @top 50%, transparent 50%),
+            -o-linear-gradient(180deg, @right, @right 50%, transparent 50%),
+            -o-linear-gradient(90deg, @bottom, @bottom 50%, transparent 50%),
+            -o-linear-gradient(0, @left, @left 50%, transparent 50%);
+        background-image:
+            linear-gradient(180deg, @top, @top 50%, transparent 50%),
+            linear-gradient(270deg, @right, @right 50%, transparent 50%),
+            linear-gradient(0deg, @bottom, @bottom 50%, transparent 50%),
+            linear-gradient(90deg, @left, @left 50%, transparent 50%);
+        background-size: 100% @w, @w 100%, 100% @w, @w 100%;
+        background-repeat: no-repeat;
+        background-position: top, right top,  bottom, left top;
+    }
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="address=no" />
+	<script type="text/javascript" src="../static/lib/mod.js"></script>
+</head>
+<body>
+<!-- start cart list -->
+	<section class="bg-white">
+		<ul class="cart-list">
+			<li class="cart-list-one clearfix plr12 active">
+				<div class="cart-choice-btn fl"></div>
+				<div class="cart-goods-pic fl">
+					<img src="../static/img/goods_1.png" alt="">
+				</div>
+				<div class="cart-goods-desc pr">
+					<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
+					<div class="cart-goods-price clearfix pa">
+						<span class="inline-block fl">￥10.00元/周</span>
+						<span class="inline-block pa delete-btn">删除</span>
+					</div>
+				</div>
+			</li>
+			<li class="cart-list-one clearfix plr12">
+				<div class="cart-choice-btn fl"></div>
+				<div class="cart-goods-pic fl">
+					<img src="../static/img/goods_1.png" alt="">
+				</div>
+				<div class="cart-goods-desc pr">
+					<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
+					<div class="cart-goods-price clearfix pa">
+						<span class="inline-block fl">￥10.00元/周</span>
+						<span class="inline-block pa delete-btn">删除</span>
+					</div>
+				</div>
+			</li>
+			<li class="cart-list-one clearfix plr12">
+				<div class="cart-choice-btn fl"></div>
+				<div class="cart-goods-pic fl">
+					<img src="../static/img/goods_1.png" alt="">
+				</div>
+				<div class="cart-goods-desc pr">
+					<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
+					<div class="cart-goods-price clearfix pa">
+						<span class="inline-block fl">￥10.00元/周</span>
+						<span class="inline-block pa delete-btn">删除</span>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</section>
+	<!-- end -->
+	<!-- start cartBar -->
+	<section class="clearfix cart-detail-go pf">
+		<div class="all-choice-btn fl clearfix">
+			<span class="fl"></span>
+			<span class="fl">全选</span>
+		</div>
+		<div class="total-money fl
+		">合计： <span>40.00元</span></div>
+		<div class="settlement-btn fl"><a href="place_order.html">结算(<span>2</span>)</a></div>
+	</section>
+	<!-- end -->
+
+	<!-- start 当购物车为空的时候,显示，且body添加active类，让body的背景颜色铺满全屏 -->
+	<section class="cart-null">
+		<div class="cart-null-pic">
+			<img src="../static/img/cart_null.png" alt="">
+		</div>
+		<div class="go-buy">
+			<a href="#">去逛逛</a>
+		</div>
+	</section>
+	<!-- end -->
+</body>
+<script>
+	require('../static/modules/cart/cart.js');
+</script>
+
+</html>

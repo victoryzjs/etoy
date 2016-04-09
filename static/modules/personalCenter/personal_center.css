@@ -1,0 +1,359 @@
+/* ===test=== */
+/* 
+.test {
+  .linear-gradient(#f4f4f3, #efefee);
+  .linear-gradient(rgba(0,0,0,0.5), rgba(255,255,255, 0.5));
+  .box-sizing(border-box);
+  .box-shadow(1px 1px 1px red);
+  .transform(rotate(-5deg));
+  .transition(background-color linear .8s)
+}  
+ */
+/* 网站皮肤相关 */
+/* 通用颜色
+ * 命名规则：
+ * prefix-color-colorvalue[num], like @border-color-gray2: #dedede
+ * num只有存在两个相近颜色时才使用
+ *
+ * 关于前缀(prefix)：
+ * border: 边框颜色
+ * font: 文字颜色
+ * bg: 背景颜色
+ */
+/* 通用样式 */
+/* 三角箭头
+ *
+ *  使用方法
+ *  <div class="icon-triangle-up"></div>
+ */
+/* 箭头 */
+/*
+ *  使用方法
+ *  <div class="any-class-name">
+ *      <div class="arrow-bar arrow-bar-top"></div>
+ *      <div class="arrow-bar arrow-bar-bottom"></div>
+ *  </div>
+ */
+/** 箭头
+ * 
+ * 使用方法
+ * <div class="any-class-name">
+ *     <div class="arrow-bar arrow-bar-top"></div>
+ *     <div class="arrow-bar arrow-bar-bottom"></div>
+ * </div>
+ */
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+@media screen and (max-width: 375px) {
+  html,
+  body {
+    width: 100%;
+    min-height: 100%;
+  }
+}
+@media screen and (min-width: 375px) {
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+}
+.mt7 {
+  margin-top: 7px;
+}
+.personal-info {
+  padding: 45px 0;
+}
+.wrap-info {
+  z-index: 10;
+}
+.head-portrait {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto;
+}
+.head-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+.person-name {
+  font-size: 18px;
+  color: #fff;
+  line-height: 34px;
+  text-align: center;
+}
+.person-phone {
+  font-size: 14px;
+  color: #fff;
+  line-height: 14px;
+  text-align: center;
+}
+.head-bg,
+.head-mask {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.head-bg {
+  z-index: 4;
+}
+.head-mask {
+  background-color: rgba(250, 133, 98, 0.7);
+  z-index: 5;
+}
+.center-my-order {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.order-title {
+  border: none;
+  background-image: -webkit-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(180deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-top: 1px solid #ebebeb;
+}
+.order-title h2 {
+  padding-left: 8px;
+  font-size: 14px;
+  color: #464646;
+  line-height: 40px;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.order-title h2:after {
+  content: '';
+  position: absolute;
+  top: 13px;
+  left: 0;
+  width: 3px;
+  height: 14px;
+  background: #f1633d;
+}
+.wrap-order-icon {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.payment span {
+  background: url(/static/img/payment.png) no-repeat;
+}
+.peceipt span {
+  background: url(/static/img/peceipt.png) no-repeat;
+}
+.sign span {
+  background: url(/static/img/sign.png) no-repeat;
+}
+.worked span {
+  background: url(/static/img/worked.png) no-repeat;
+}
+.wrap-order-icon > div {
+  width: 25%;
+  height: 44px;
+}
+.wrap-order-icon > div a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.wrap-order-icon > div span:nth-of-type(1) {
+  display: block;
+  width: 30px;
+  height: 20px;
+  background-size: contain;
+  background-position-x: center;
+  margin: 0 auto;
+}
+.wrap-order-icon > div p {
+  font-size: 14px;
+  color: #474747;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 14px;
+}
+.center-money {
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-position: bottom;
+  border: none;
+  background-image: -webkit-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(180deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-bottom: 1px solid #ebebeb;
+  border-top: 1px solid #ebebeb;
+}
+.center-my-balance,
+.center-my-deposit {
+  width: 50%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.center-my-deposit {
+  border-left: 1px solid #ebebeb;
+}
+.center-my-balance p,
+.center-my-deposit p {
+  text-align: center;
+}
+.center-my-balance p:nth-of-type(1),
+.center-my-deposit p:nth-of-type(1) {
+  line-height: 26px;
+  font-size: 16px;
+}
+.center-my-balance p:nth-of-type(2),
+.center-my-deposit p:nth-of-type(2) {
+  line-height: 22px;
+  font-size: 12px;
+  color: #464646;
+}
+.center-my-balance p:nth-of-type(1) {
+  color: #fa8562;
+}
+.center-my-deposit p:nth-of-type(1) {
+  color: #3899bf;
+}
+.help-setting {
+  border: none;
+  background-image: -webkit-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(180deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-top: 1px solid #ebebeb;
+  margin-bottom: 46px;
+}
+.customer-service,
+.setting {
+  font-size: 14px;
+  color: #464646;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+  line-height: 40px;
+}
+.customer-service:after,
+.setting:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 12px;
+  width: 8px;
+  height: 40px;
+  background: url(/static/img/right_arrow.png) no-repeat;
+  background-size: contain;
+  background-position-y: center;
+}
+.footer-nav {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 49px;
+  border: none;
+  background-image: -webkit-linear-gradient(270deg, #efe7e7, #efe7e7 50%, transparent 50%);
+  background-image: -moz-linear-gradient(270deg, #efe7e7, #efe7e7 50%, transparent 50%);
+  background-image: -o-linear-gradient(270deg, #efe7e7, #efe7e7 50%, transparent 50%);
+  background-image: linear-gradient(180deg, #efe7e7, #efe7e7 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-top: 1px solid #efe7e7;
+}
+.footer-nav-wrap {
+  width: 25%;
+  text-align: center;
+  font-size: 12px;
+  color: #6e6968;
+}
+.footer-nav-wrap a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.go-index span:nth-of-type(1) {
+  background: url(/static/img/home_black.png) no-repeat;
+}
+.go-member span:nth-of-type(1) {
+  background: url(/static/img/member_black.png) no-repeat;
+}
+.go-order span:nth-of-type(1) {
+  background: url(/static/img/order_black.png) no-repeat;
+}
+.go-center span:nth-of-type(1) {
+  background: url(/static/img/center_black.png) no-repeat;
+}
+.footer-nav-wrap.active .go-index span:nth-of-type(1) {
+  background-image: url(/static/img/home_orange.png);
+}
+.footer-nav-wrap.active .go-member span:nth-of-type(1) {
+  background-image: url(/static/img/member_orange.png);
+}
+.footer-nav-wrap.active .go-order span:nth-of-type(1) {
+  background-image: url(/static/img/order_orange.png);
+}
+.footer-nav-wrap.active .go-center span:nth-of-type(1) {
+  background-image: url(/static/img/center_orange.png);
+}
+.footer-nav-wrap.active .go-index span:nth-of-type(2),
+.footer-nav-wrap.active .go-member span:nth-of-type(2),
+.footer-nav-wrap.active .go-order span:nth-of-type(2),
+.footer-nav-wrap.active .go-center span:nth-of-type(2) {
+  color: #f1633d;
+}
+.go-index span:nth-of-type(1),
+.go-member span:nth-of-type(1),
+.go-order span:nth-of-type(1),
+.go-center span:nth-of-type(1) {
+  display: block;
+  width: 30px;
+  height: 25px;
+  margin: 0 auto;
+  background-size: contain;
+  background-position-x: center;
+  background-position-y: bottom;
+  margin-top: 3px;
+}
+.go-index span:nth-of-type(2),
+.go-member span:nth-of-type(2),
+.go-order span:nth-of-type(2),
+.go-center span:nth-of-type(2) {
+  display: block;
+  margin-top: 4px;
+}

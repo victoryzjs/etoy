@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品列表</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="address=no" />
+	<script type="text/javascript" src="../static/lib/mod.js"></script>
+</head>
+<body>
+	<nav class="clearfix pl12 switch-option bg-white pf">
+		<div class="fl ranking active">综合排序</div>
+		<div class="fl popularity">人气最高</div>
+		<div class="fl price">价格<i class="price_icon fr"></i></div>
+		<div class="fl shaixuan pr">
+			<div>
+				<span></span>
+			</div>
+		</div>
+	</nav>
+
+	<section class="switch-goods-list bg-white">
+		<ul class="switch-goods-list-ul">
+			<li class="switch-goods-list-one plr12 clearfix">
+				<a href="detail.html" class="inline-block">
+					<div class="fl switch-goods-list-one-left">
+						<img src="../static/img/boy.png" alt="">
+					</div>
+					<div class="switch-goods-list-one-right pr">
+						<p>超级玩具多功能套餐一超级玩具多功能级玩具多功......</p>
+						<p class="pa">销量：99</p>
+						<p class="pa">￥30.00/周</p>
+					</div>					
+				</a>
+			</li>
+		</ul>
+	</section>
+	<div class="wrap-screen pf bg-white">
+		<div class="settings bg-white">
+			<div class="select-value select-age plr12 pr">年龄段
+				<span class="fr select-condition">全部</span>
+			</div>
+			<div class="select-value select-brand plr12 pr">品牌
+			<span class="fr select-condition">全部</span></div>
+			<div class="select-value select-function plr12 pr">功能<span class="fr select-condition">全部</span></div>
+		</div>
+
+		<div>
+			<div class="submit-select">
+				<form action="#">
+					<input type="text" hidden>
+					<input type="text" hidden>
+					<input type="text" hidden>
+					<span class="confirm">确认</span>
+					<span class="cancel">取消</span>
+				</form>
+			</div>
+		</div>			
+	</div>
+	<!-- start select age -->
+	<div class="bg-white wrap-screen-list pf">
+		<div class="select-ay clearfix">
+			<div class="select-all fl">全选</div>
+			<div class="select-yes fr">确认</div>
+		</div>
+		<ul class="select-condition-list">
+			<!-- <li class="plr12 active">Anpanman面包超人1</li>
+			<li class="plr12">Anpanman面包超人2</li>
+			<li class="plr12">Anpanman面包超人3</li>
+			<li class="plr12 active">Anpanman面包超人4</li>
+			<li class="plr12 active">Anpanman面包超人5</li> -->
+		</ul>
+	</div>
+	<!-- end -->
+
+	<link rel="import" href="../static/common/html/loading.html?__inline">
+</body>
+<script>
+	require('../static/modules/list/list.js');
+</script>
+</html>

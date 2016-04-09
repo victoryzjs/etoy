@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>押金</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="address=no" />
+	<script type="text/javascript" src="../static/lib/mod.js"></script>
+</head>
+<body>
+	<section class="deposit">
+		<div class="deposit-all">
+			<p>押金总计</p>
+			<p><span>￥</span>900.00</p>
+		</div>
+		<div class="can-use-deposit clearfix plr12">
+			<span class="fl">可用押金：</span>
+			<span class="fl">￥200.00</span>
+		</div>
+		<div class="cannot-use-deposit clearfix plr12">
+			<span class="fl">冻结押金：</span>
+			<span class="fl">￥700.00</span>
+		</div>
+		<div class="out-deposit plr12">
+			<button>退还押金</button>
+		</div>
+		<div class="out-deposit-rule plr12">
+			<p class="out-deposit-rule-title">
+				押金规则：
+			</p>
+			<p class="out-deposit-rule-cont">
+				1.我们所提供的玩具均为3C认证品牌，质量好，价格较高，为保证双方的利益，租赁玩具前需交纳一定押金，希望宝爸宝妈给予理解。
+			</p>
+			<p class="out-deposit-rule-cont">
+				 2.玩具租赁前一次性交纳1000元押金，账户内储值金额 用完后联系客服人员即可退还。 
+			</p>
+		</div>
+	</section>
+
+	<!-- start pop -->
+	<div class="mask pf"></div>
+	<!-- end -->
+	<div class="is-or-not pf bg-white">
+		<div>是否确定退还？</div>
+		<div class="clearfix">
+			<span class="fl is-yes">否</span>
+			<span class="fl is-not">是</span>
+		</div>
+	</div>
+</body>
+<script>
+	require('../static/modules/deposit/deposit.js');
+</script>
+</html>

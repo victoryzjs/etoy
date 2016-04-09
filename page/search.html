@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>客服咨询</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="address=no" />
+	<script type="text/javascript" src="../static/lib/mod.js"></script>
+</head>
+<body>
+	<section class="search-header plr12">
+		<form action="#" class="clearfix">
+			<label for="#" class="search-cont fl pr">
+				<input type="text" placeholder="搜索单品玩具">
+				<span class="search-close fl pa"></span>
+			</label>
+			<button class="fl search-btn">搜索</button>
+		</form>
+	</section>
+	<!-- start 搜索结果为空 -->
+	<section class="search-result-null">
+		<div>
+			<img src="../static/img/search_go.png" alt="搜索为空">
+		</div>
+		<p>没有搜索到您想要的商品噢～</p>
+	</section>
+	<!-- end -->
+	<!-- start 搜索到结果-->
+	<section class="search-result-have bg-white">
+		<ul>
+			<li class="cart-list-one clearfix plr12">
+				<a href="#">
+					<div class="cart-goods-pic fl">
+						<img src="../static/img/goods_1.png" alt="">
+					</div>
+					<div class="cart-goods-desc pr">
+						<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
+						<div class="cart-goods-price clearfix pa">
+							<span class="inline-block fl">￥10.00元/周</span>
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- end -->
+</body>
+<script>
+	require('../static/modules/search/search.js');
+</script>
+</html>

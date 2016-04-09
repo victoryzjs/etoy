@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>我的订单</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="address=no" />
+	<script type="text/javascript" src="../static/lib/mod.js"></script>
+</head>
+<body>
+	<section>
+		<nav class="order-status bg-white">
+			<div class="tobecall fr"><span></span></div>
+			<div class="wrap-status clearfix">
+				<div class="tobepaid fl active">待支付</div>
+				<div class="tobegetgoods fl">待收货</div>
+				<div class="tosigned fl">已签收</div>
+				<div class="togone fl">已完成</div>				
+			</div>
+		</nav>
+	</section>
+	<section class="bg-white mt7">
+		<div class="order-one-header clearfix plr12">
+			<span class="order-one-status fr">待支付</span>
+			<span class="order-one-number">订单编号：NA123456789</span>
+		</div>
+		<div class="order-one-detail ptb10 clearfix plr12">
+			<a href="#">
+				<div class="order-one-pic fl">
+					<img src="../static/img/goods_1.png" alt="">
+				</div>
+				<div class="order-one-cont">
+					<p>超级玩具多功能套餐一超级玩具多超级玩具多功能套餐一超级玩具多</p>
+					<p class="pr">下单时间：2016.3.28</p>
+					<p>￥10.00/周</p>
+				</div>
+			</a>
+		</div>
+		<div class="order-one-other plr12 clearfix">
+			<span class="fl">共1件商品</span>
+			<span class="fl">租赁时间10周</span>
+			<span class="fl">总计 100.00</span>
+		</div>
+		<div class="clearfix order-btn plr12">
+			<a href="#" class="fr">付款</a>
+			<a href="#" class="fr">取消</a>
+		</div>
+	</section>
+
+	<nav class="footer-nav clearfix pf bg-white">
+		<div class="footer-nav-wrap fl">
+			<a href="index.html">
+				<div class="go-index">
+					<span></span>
+					<span>首页</span>
+				</div>				
+			</a>
+		</div>
+		<div class="footer-nav-wrap fl">
+			<a href="member.html">
+				<div class="go-member">
+					<span></span>
+					<span>会员</span>
+				</div>
+			</a>
+		</div>
+		<div class="footer-nav-wrap fl active">
+			<a href="orders.html">
+				<div class="go-order">
+					<span></span>
+					<span>我的订单</span>
+				</div>
+			</a>
+		</div>
+		<div class="footer-nav-wrap fl">
+			<a href="personal_center.html">
+				<div class="go-center">
+					<span></span>
+					<span>个人中心</span>
+				</div>
+			</a>
+		</div>
+	</nav>
+</body>
+<script>
+	require('../static/modules/orders/orders.js');
+</script>
+</html>

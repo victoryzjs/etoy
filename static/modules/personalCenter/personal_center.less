@@ -1,0 +1,227 @@
+@import '../../common/css/mixin.less';
+
+html,
+body {
+	width: 100%;
+	min-height: 100%;
+}
+
+@media screen and (max-width: 375px) {
+	html,
+	body {
+		width: 100%;
+		min-height: 100%;
+	}
+}
+
+@media screen and (min-width: 375px) {
+	html,
+	body {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.mt7 {
+	margin-top: 7px;
+}
+
+.personal-info {
+	padding: 45px 0;
+}
+
+.wrap-info {
+	z-index: 10;
+}
+
+.head-portrait {
+	width: 75px;
+	height: 75px;
+	margin: 0 auto;
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		border-radius: 100%;
+	}
+}
+
+.person-name {
+	font-size: 18px;
+	color: #fff;
+	line-height: 34px;
+	text-align: center;
+}
+
+.person-phone {
+	font-size: 14px;
+	color: #fff;
+	line-height: 14px;
+	text-align: center;
+}
+
+.head-bg,
+.head-mask {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;	
+}
+
+.head-bg {
+	z-index: 4;
+}
+
+.head-mask {
+	background-color: rgba(250, 133, 98, 0.7);
+	z-index: 5;
+}
+
+.center-my-order {
+	.retina1px(#ebebeb);
+	border-bottom: 1px solid #ebebeb;
+} 
+
+.order-title {
+	.retinaT(#ebebeb);
+	border-top: 1px solid #ebebeb;
+}
+
+.order-title h2 {
+	padding-left: 8px;
+	font-size: 14px;
+	color: #464646;
+	line-height: 40px;
+	.retina1px(#ebebeb);
+	border-bottom: 1px solid #ebebeb;
+}
+
+.order-title h2:after {
+	content: '';
+	position: absolute;
+	top: 13px;
+	left: 0;
+	width: 3px;
+	height: 14px;
+	background: #f1633d;
+}
+
+.wrap-order-icon {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.payment span {
+	background: url(../../img/payment.png) no-repeat;
+}
+
+.peceipt span {
+	background: url(../../img/peceipt.png) no-repeat;
+}
+
+.sign span {
+	background: url(../../img/sign.png) no-repeat;
+}
+
+.worked span {
+	background: url(../../img/worked.png) no-repeat;
+}
+
+.wrap-order-icon>div {
+	width: 25%;
+	height: 44px;
+	a {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	span:nth-of-type(1) {
+		display: block;
+		width: 30px;
+		height: 20px;
+		background-size: contain;
+		background-position-x: center;
+		margin: 0 auto;
+	}
+	p {
+		font-size: 14px;
+		color: #474747;
+		text-align: center;
+		margin-top: 10px;
+		line-height: 14px;
+	}
+}
+
+.center-money {
+	.retina1px(#ebebeb);
+	.retinaT(#ebebeb);
+	border-bottom: 1px solid #ebebeb;
+	border-top: 1px solid #ebebeb;
+}
+
+.center-my-balance,
+.center-my-deposit {
+	width: 50%;
+	.box-sizing(border-box);
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+.center-my-deposit {
+	border-left: 1px solid #ebebeb;
+}
+
+.center-my-balance,
+.center-my-deposit {
+	p {
+		text-align: center;
+	}
+	p:nth-of-type(1) {
+		line-height: 26px;
+		font-size: 16px;
+	}
+
+	p:nth-of-type(2) {
+		line-height: 22px;
+		font-size: 12px;
+		color: #464646;
+	}
+}
+
+.center-my-balance p:nth-of-type(1) {
+	color: #fa8562;
+}
+
+.center-my-deposit p:nth-of-type(1) {
+	color: #3899bf;
+}
+
+.help-setting {
+	.retinaT(#ebebeb);
+	border-top: 1px solid #ebebeb;
+	margin-bottom: 46px;
+}
+
+.customer-service,
+.setting {
+	font-size: 14px;
+	color: #464646;
+	.retina1px(#ebebeb);
+	border-bottom: 1px solid #ebebeb;
+	line-height: 40px;
+}
+
+.customer-service:after,
+.setting:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 12px;
+	width: 8px;
+	height: 40px;
+	background: url(../../img/right_arrow.png) no-repeat;
+	background-size: contain;
+	background-position-y: center;
+}
+
+@import '../../common/css/common_nav.less';

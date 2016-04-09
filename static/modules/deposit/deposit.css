@@ -1,0 +1,165 @@
+/* ===test=== */
+/* 
+.test {
+  .linear-gradient(#f4f4f3, #efefee);
+  .linear-gradient(rgba(0,0,0,0.5), rgba(255,255,255, 0.5));
+  .box-sizing(border-box);
+  .box-shadow(1px 1px 1px red);
+  .transform(rotate(-5deg));
+  .transition(background-color linear .8s)
+}  
+ */
+/* 网站皮肤相关 */
+/* 通用颜色
+ * 命名规则：
+ * prefix-color-colorvalue[num], like @border-color-gray2: #dedede
+ * num只有存在两个相近颜色时才使用
+ *
+ * 关于前缀(prefix)：
+ * border: 边框颜色
+ * font: 文字颜色
+ * bg: 背景颜色
+ */
+/* 通用样式 */
+/* 三角箭头
+ *
+ *  使用方法
+ *  <div class="icon-triangle-up"></div>
+ */
+/* 箭头 */
+/*
+ *  使用方法
+ *  <div class="any-class-name">
+ *      <div class="arrow-bar arrow-bar-top"></div>
+ *      <div class="arrow-bar arrow-bar-bottom"></div>
+ *  </div>
+ */
+/** 箭头
+ * 
+ * 使用方法
+ * <div class="any-class-name">
+ *     <div class="arrow-bar arrow-bar-top"></div>
+ *     <div class="arrow-bar arrow-bar-bottom"></div>
+ * </div>
+ */
+html,
+body {
+  height: 100%;
+}
+.deposit-all {
+  padding-top: 41px;
+  padding-bottom: 41px;
+  background-color: #ef6444;
+}
+.deposit-all p {
+  color: #fff;
+  text-align: center;
+}
+.deposit-all p:nth-of-type(1) {
+  font-size: 15px;
+  line-height: 15px;
+}
+.deposit-all p:nth-of-type(2) {
+  font-size: 42px;
+  margin-top: 31px;
+  line-height: 32px;
+}
+.deposit-all p:nth-of-type(2) span {
+  font-size: 15px;
+  line-height: 15px;
+}
+.can-use-deposit,
+.cannot-use-deposit {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+  background-color: #fff;
+  line-height: 40px;
+  font-size: 14px;
+}
+.can-use-deposit span:nth-of-type(1),
+.cannot-use-deposit span:nth-of-type(1) {
+  color: #474747;
+}
+.can-use-deposit span:nth-of-type(2) {
+  color: #ef6444;
+}
+.cannot-use-deposit span:nth-of-type(2) {
+  color: #a5a5a5;
+}
+.out-deposit button {
+  height: 44px;
+  width: 100%;
+  border-radius: 5px;
+  background: #EF6444;
+  font-size: 16px;
+  color: #fff;
+  background-color: #ef6444;
+  border: none;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.out-deposit-rule {
+  font-size: 13px;
+  color: #b2b2b2;
+}
+.out-deposit-rule-title {
+  line-height: 13px;
+}
+.out-deposit-rule-cont {
+  line-height: 25px;
+  margin-top: 5px;
+}
+.mask {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.is-or-not {
+  top: 40%;
+  left: 50%;
+  margin-left: -100px;
+  z-index: 11;
+  width: 200px;
+  height: 80px;
+  border-radius: 5px;
+}
+.is-or-not div:nth-of-type(1) {
+  color: #474747;
+  line-height: 40px;
+  text-align: center;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.is-or-not div:nth-of-type(2) {
+  line-height: 40px;
+}
+.is-or-not div:nth-of-type(2) span {
+  height: 100%;
+  text-align: center;
+}
+.is-yes {
+  width: 30%;
+  color: #474747;
+}
+.is-not {
+  width: 70%;
+  background-color: #f1856c;
+  color: #fff;
+}

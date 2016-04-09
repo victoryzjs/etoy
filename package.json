@@ -1,0 +1,17 @@
+{
+  "name": "etoy",
+  "version": "0.0.1",
+  "description": "",
+  "main": "fis-conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "fis-parser-less": "^0.1.3",
+    "fis3-hook-commonjs": "^0.1.14",
+    "fis3-postpackager-loader": "^1.3.15"
+  }
+}

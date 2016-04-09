@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>会员</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="address=no" />
+	<script type="text/javascript" src="../static/lib/mod.js"></script>
+</head>
+<body>
+	<section class="member-choice-cont plr12">
+		<form action="#">
+			<div class="member-choice-cont-wrap">
+				<label class="inline-block">
+					<img src="../static/img/member_500.png" alt="">
+					<input type="radio" name="member" value="" hidden>
+				</label>
+			</div>
+			<div class="member-choice-cont-wrap">
+				<label class="inline-block">
+					<img src="../static/img/member_1000.png" alt="">
+					<input type="radio" name="member" value="" hidden>
+				</label>	
+			</div>
+			<div class="member-choice-cont-wrap">
+				<label class="inline-block">
+					<img src="../static/img/member_2000.png" alt="">
+					<input type="radio" name="member" value="" hidden>
+				</label>
+			</div>
+		</form>
+		<p class="notice">
+			注：用户在第一次购买储值卡时需同时交纳1000元押金
+		</p>
+	</section>
+	<nav class="footer-nav clearfix pf bg-white">
+		<div class="footer-nav-wrap fl">
+			<a href="index.html">
+				<div class="go-index">
+					<span></span>
+					<span>首页</span>
+				</div>				
+			</a>
+		</div>
+		<div class="footer-nav-wrap fl active">
+			<a href="member.html">
+				<div class="go-member">
+					<span></span>
+					<span>会员</span>
+				</div>
+			</a>
+		</div>
+		<div class="footer-nav-wrap fl">
+			<a href="orders.html">
+				<div class="go-order">
+					<span></span>
+					<span>我的订单</span>
+				</div>
+			</a>
+		</div>
+		<div class="footer-nav-wrap fl">
+			<a href="personal_center.html">
+				<div class="go-center">
+					<span></span>
+					<span>个人中心</span>
+				</div>
+			</a>
+		</div>
+	</nav>
+</body>
+<script>
+	require('../static/modules/member/member.js');
+</script>
+</html>

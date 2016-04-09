@@ -1,0 +1,224 @@
+/* ===test=== */
+/* 
+.test {
+  .linear-gradient(#f4f4f3, #efefee);
+  .linear-gradient(rgba(0,0,0,0.5), rgba(255,255,255, 0.5));
+  .box-sizing(border-box);
+  .box-shadow(1px 1px 1px red);
+  .transform(rotate(-5deg));
+  .transition(background-color linear .8s)
+}  
+ */
+/* 网站皮肤相关 */
+/* 通用颜色
+ * 命名规则：
+ * prefix-color-colorvalue[num], like @border-color-gray2: #dedede
+ * num只有存在两个相近颜色时才使用
+ *
+ * 关于前缀(prefix)：
+ * border: 边框颜色
+ * font: 文字颜色
+ * bg: 背景颜色
+ */
+/* 通用样式 */
+/* 三角箭头
+ *
+ *  使用方法
+ *  <div class="icon-triangle-up"></div>
+ */
+/* 箭头 */
+/*
+ *  使用方法
+ *  <div class="any-class-name">
+ *      <div class="arrow-bar arrow-bar-top"></div>
+ *      <div class="arrow-bar arrow-bar-bottom"></div>
+ *  </div>
+ */
+/** 箭头
+ * 
+ * 使用方法
+ * <div class="any-class-name">
+ *     <div class="arrow-bar arrow-bar-top"></div>
+ *     <div class="arrow-bar arrow-bar-bottom"></div>
+ * </div>
+ */
+.detail-slide img {
+  width: 100%;
+  height: 100%;
+}
+.swiper-pagination-bullet-active {
+  background-color: #f13d68;
+}
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+}
+.goods-detail-desc {
+  padding-top: 12px;
+}
+.goods-detail-desc h2 {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  line-height: 18px;
+  font-size: 14px;
+  color: #595757;
+  border-bottom: 1px solid #ebebeb;
+}
+.goods-detail-desc-price {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.goods-detail-desc-price-left {
+  width: 60%;
+}
+.goods-detail-desc-price-left p:first-child {
+  line-height: 22px;
+  font-size: 18px;
+  color: #f13d68;
+}
+.goods-detail-desc-price-left p:last-child {
+  line-height: 16px;
+  font-size: 12px;
+  color: #a6a7a7;
+  margin-top: 7px;
+}
+.goods-detail-desc-price-right {
+  width: 40%;
+  line-height: 45px;
+  text-align: right;
+  color: #ef6444;
+}
+.goods-guide-btn,
+.goods-parameter {
+  width: 50%;
+  line-height: 48px;
+  text-align: center;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+  color: #595757;
+  font-size: 14px;
+}
+.goods-guide-btn.active,
+.goods-parameter.active {
+  color: #ef6444;
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ef6444, #ef6444 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ef6444, #ef6444 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ef6444, #ef6444 50%, transparent 50%);
+  background-image: linear-gradient(0, #ef6444, #ef6444 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ef6444;
+}
+.goods-guide-cont,
+.good-parameter-cont {
+  display: none;
+}
+.goods-guide-cont.active,
+.good-parameter-cont.active {
+  display: block;
+}
+.goods-guide-cont img {
+  width: 100%;
+  height: auto;
+}
+.good-parameter-cont {
+  padding-bottom: 48px;
+}
+.good-parameter-cont li {
+  border: none;
+  background-image: -webkit-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(90deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(0, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-bottom: 1px solid #ebebeb;
+}
+.desc-name,
+.desc-value {
+  line-height: 48px;
+  font-size: 14px;
+}
+.desc-name {
+  width: 40%;
+  color: #9fa0a0;
+}
+.desc-value {
+  width: 60%;
+  color: #595757;
+}
+.detail-cart {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 49px;
+  border: none;
+  background-image: -webkit-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -moz-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: -o-linear-gradient(270deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-image: linear-gradient(180deg, #ebebeb, #ebebeb 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-top: 1px solid #ebebeb;
+}
+.my-cart,
+.add-cart {
+  text-align: center;
+}
+.my-cart {
+  width: 37%;
+  font-size: 12px;
+  color: #595757;
+}
+.my-cart a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.my-cart-cont {
+  line-height: 44px;
+  padding-top: 4px;
+}
+.my-cart-cont-icon {
+  width: 26px;
+  height: 24px;
+  background: url(/static/img/cart.png) no-repeat 100% 0;
+  background-size: contain;
+  padding-left: 50%;
+  margin-left: -15px;
+}
+.my-cart-cont-name {
+  line-height: 20px;
+}
+.add-cart {
+  width: 63%;
+  font-size: 12px;
+  color: #fff;
+  background-color: #f1633d;
+}
