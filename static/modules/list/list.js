@@ -3,13 +3,13 @@
  * @require ../../common/css/common.css
  * @require ../../lib/zepto.js
  * @require ../../lib/fastclick.js
+ * @require ../../lib/baiduTemplate.js
  * @require ../ui/dropload/dropload.less
  */
-
-
 $(function() {
-	var $dropload = new(require('../ui/dropload/dropload.js'));
+	var DropLoad = require('../ui/dropload/dropload.js');
 	var $globalLoading = require('../ui/globalLoading/loading.js');
+	var $loading = require('../ui/loading/loading.js');
 	var $wrapScreen = $('.wrap-screen').eq(0);
 	var $shaixuan = $('.shaixuan').eq(0);
 	var $cancel = $('.cancel').eq(0);
@@ -20,16 +20,143 @@ $(function() {
 	var $selectYes = $('.select-yes').eq(0);
 	var $selectAll = $('.select-all').eq(0);
 	var $selectConditionList = $('.select-condition-list').eq(0);
-	$dropload.init();
-	$dropload.start();
+	var $tip = require('../ui/tip/tip.js');
+	var skip = 0;
+	var bt = baidu.template;
+	var listData = {'list':[]};
+	var isAsc = true;
 	$globalLoading.close();
+	$loading.init();
 
+	function getAllList(condition1, id) {
+		var condition1 = condition1 ? '&'+condition1 : '';
+		var condition = 'limit=8&skip=' + skip + condition1;
+		$.ajax({
+			type: 'GET',
+			url: '/good/find?'+condition,
+			contentType: 'application/json',
+			success: function(data){
+				for(var attr in data ){
+					console.log(attr+'='+data[attr]);
+				}
+				if(id == '.price') {
+					isAsc = !isAsc;
+				}
+				$loading.close();
+				listData.list = listData.list.concat(data);
+				if(data.length < 8) {
+					$dropload.stop();
+				}else {
+					skip+=data.length;
+					$dropload.start();
+				}	
+				$('#wrap-list-tpl').html(bt('list-tpl', listData));			
+			},
+			error: function(xhr, type){
+				alert('Ajax error!')
+			}
+		})
+	}
+	function getConditionList(condition) {
+		var condition = condition ? '&'+condition : '';
+		$.ajax({
+			type: 'GET',
+			url: '/good/find?'+condition,
+			contentType: 'application/json',
+			success: function(data){
+				for(var attr in data[0] ){
+					console.log(attr+'='+data[0][attr]);
+				}
+				$loading.close();
+				listData.list = listData.list.concat(data);
+				if(data.length < 8) {
+					$dropload.stop();
+				}else {
+					skip+=data.length;
+					$dropload.start();
+				}	
+				$('#wrap-list-tpl').html(bt('list-tpl', listData));			
+			},
+			error: function(xhr, type){
+				alert('Ajax error!')
+			}
+		})
+	}
+	//初次访问页面ajax请求数据
+	var $dropload = new DropLoad(function() {
+		getAllList();
+	});
+	getAllList();
+
+	function getData(id, item) {
+		item = item ? item : '';
+		$(id).on('click', function() {
+			if(id == '.price') {
+				if(isAsc == true) {
+					item = 'sort=rentPrice%20ASC';
+				}else {
+					item = 'sort=rentPrice%20DESC';
+				}
+			}
+			listData.list = [];
+			skip = 0;
+			$loading.open()
+			$dropload.stop();
+			$('.switch-option-one').removeClass('active');
+			$(this).addClass('active');
+			$dropload = new DropLoad(function() {
+				getAllList(item, id);
+			});
+			$('#wrap-list-tpl').html(' ');	
+			getAllList(item, id);
+		});		
+	}
+	getData('.ranking');
+	getData('.popularity', 'sort=rentNum%20DESC');
+	getData('.price', 'sort=rentPrice%20ASC');
+
+
+	//筛选
+
+	//测试数据
+	var condition = {
+		'age': ['0-6个月（趟着玩）', '6-9个月（爬着学）', '9-18个月（学走路）', '18-36个月（发展兴趣）', '3岁以上（综合锻炼）'],
+		'brand': ['Anpanman面包超人', 'Bright starts美国', 'Btoys美国', 'Chicco智高', 'Evenflo美国', 'Fisher Price费雪', 'Grow up高思维', 'Haba国德', 'Kiddieland童梦圆', 'Leap frog美国跳蛙', 'Lego乐高', 'Little tike小泰克', 'Playkool孩之宝', 'Pororo韩国', 'Radio美国', 'Rastar星辉', 'Simba国德仙霸', 'Step2美国晋阶', 'Toyroyal日本皇室', 'V-tech伟易达', 'Weplay台湾', 'Gonge丹麦', 'Baghera法国', '其他'],
+		'func': {
+			'fun0': '健身架',
+			'fun1': '摇摇椅',
+			'fun2': '学爬玩具',
+			'fun3': '角色扮演',
+			'fun4': '敲弹击琴',
+			'fun5': '手工拼插',
+			'fun6': '滑梯组合',
+			'fun7': '玩沙嬉水',
+			'fun8': '学习屋/桌',
+			'fun9': '益智玩具',
+			'fun10': '学步车',
+			'fun11': '手推车',
+			'fun12': '电动车',
+			'fun13': '滑行车',
+			'fun14': '脚踏车',
+			'fun15': '感统训练'
+		}
+	};
+	var funcCondition = {};
+	funcCondition = deepClone(condition.func);
+	condition.func = toArr(condition.func);
+
+	var infoBag = {
+		'brand': [],
+		'age': [],
+		'func': []
+	};
 	$wrapScreen.css('height', $WH);
 	$shaixuan.on('click', function() {
 		$wrapScreen.show();
 	});
 	$cancel.on('click', function() {
 		$wrapScreen.hide();
+
 	});
 
 	$wrapScreenList.css({
@@ -42,90 +169,159 @@ $(function() {
 
 		$(item).on('click', function() {
 			if($(item).hasClass('select-age')) {
-				$selectConditionList.attr('data-name', 'ul-age').html(insertData(condition['age']));
-				console.log($selectConditionList.attr('data-name'));
+				$selectAll.html('单选');
+				$selectConditionList.attr('data-name', 'ul-age').html(insertData(condition['age'], 'age'));
+
 
 			}else if($(item).hasClass('select-brand')) {
-				$selectConditionList.attr('data-name', 'ul-brand').html(insertData(condition['brand']));
+				$selectConditionList.attr('data-name', 'ul-brand').html(insertData(condition['brand'],'brand'));
+				$selectAll.html('单选');
 			}else if($(item).hasClass('select-function')) {
-				$selectConditionList.attr('data-name', 'ul-func').html(insertData(condition['func']));	
+				if(infoBag.func.length < condition.func.length) {
+					$selectAll.html('全选');
+				}else {
+					$selectAll.html('取消');
+				}
+				
+				$selectConditionList.attr('data-name', 'ul-func').html(insertData(condition['func'], 'func'));	
 			}
 			$wrapScreenList.animate({
 				'left': 0
 			}, 200);
 		})
 	});
+	//点击确认按钮dom插入数据
 	$selectYes.on('click', function() {
 		$wrapScreenList.animate({
 			'left': $WW
 		}, 200);
-	});
+		if(infoBag.age.length != 0) {
+			$('.select-age span').eq(0).html(infoBag.age[0]);
+		}
+		if(infoBag.brand.length != 0) {
+			$('.select-brand span').eq(0).html(infoBag.brand[0]);
+		}
+		if(infoBag.func.length != 0){
+			var funcHtml = '';
+			for(var i=0,len=infoBag.func.length; i<len; i++){
+				funcHtml += infoBag.func[i] + ',';
+			}
+			$('.select-function span').eq(0).html(funcHtml);
+		}else {
+			$('.select-function span').eq(0).html('选择一项或多个');
+		}
+		
 
+	});
 	//全选
 	$selectAll.on('click', function() {
-		$selectConditionList.find('li').addClass('active');
+		if($selectAll.html() == '全选') {
+			$selectConditionList.attr('data-name', 'ul-func').html(insertData(condition['func'], 'func'));
+			$selectConditionList.find('li').each(function(index, item) {
+				$(item).addClass('active');
+			});
+			for(var i=0,len=condition.func.length; i<len; i++) {
+				infoBag['func'][i] = condition.func[i];
+			}
+			$selectAll.html('取消');
+		}else if($selectAll.html() == '取消') {
+			$selectConditionList.attr('data-name', 'ul-func').html(insertData(condition['func'], 'func'));
+			$selectConditionList.find('li').each(function(index, item) {
+				$(item).removeClass('active');
+			});
+			infoBag['func'] = [];
+			$selectAll.html('全选');
+		}
 	});
-	//发送ajax请求获取信息
-	$.get('../../../test.txt', function(response){
-	})
 
 	//单击选中或取消
 
 	$selectConditionList.on('click', function(e) {
 		var $li = $(e.target);
 		var $ul = $li.parent();
+
 		if($ul.attr('data-name') == 'ul-age') {
 
-			if(isHave(infoBag['age'], $li.html())){
-				infoBag['age'].push($li.html());
-			}
-			console.log(infoBag['age']);
+			infoBag['age'] = [$li.html()];
+			$ul.find('li').each(function(index, item) {
+				$(item).removeClass('active');
+			});
+			$li.addClass('active');
 
 		}else if($ul.attr('data-name') == 'ul-brand') {
 
-			if(isHave(infoBag['brand'], $li.html())){
-				infoBag['brand'].push($li.html());
-			}
+			infoBag['brand'] = [$li.html()];
+			$ul.find('li').each(function(index, item) {
+				$(item).removeClass('active');
+			});
+			$li.addClass('active');
 
 		}else if($ul.attr('data-name') == 'ul-func') {
 
 			if(isHave(infoBag['func'], $li.html())){
 				infoBag['func'].push($li.html());
 			}
-
-
+			if(!$li.hasClass('active')) {
+				$li.addClass('active');
+			}else {
+				$li.removeClass('active');
+			}
+			if(infoBag.func.length < condition.func.length) {
+				$selectAll.html('全选');
+			}else {
+				$selectAll.html('取消');
+			}
 			
 		}
-		if(!$li.hasClass('active')) {
-			$li.addClass('active');
-		}else {
-			$li.removeClass('active');
-		}
-		console.log(infoBag);
 	});
 
+	//点击confirm确认按钮提交
+	$('.confirm').eq(0).on('click', function() {
+		$('#wrap-list-tpl').html(' ');	
+		$wrapScreen.hide();
+		var data = toPost(infoBag, funcCondition);
+		skip = 0;
+		data.skip = skip;
+		listData.list = [];
+		$loading.open()
+		$dropload.stop();
+		console.log(decodeURI($.param(data)));
+		console.log(JSON.stringify(data));
+		$('.switch-option-one').removeClass('active');
+		$dropload = new DropLoad(function() {
+			getConditionList($.param(data));
+		});
+		getConditionList($.param(data));
+		
+	});
 
-
-	//测试数据
-	var condition = {
-		'brand': ['美德斯邦威', '贵人鸟', '安踏', '微星', '戴尔'],
-		'age': ['11-15', '16-24', '25-30', '31-35'],
-		'func': ['吃', '喝', '玩', '乐']
-	};
-
-	function insertData(data) {
+	//将func处理成数组
+	function toArr(obj) {
+		var arr = [];
+		for(var attr in obj) {
+			arr.push(obj[attr]);
+		}
+		return arr;
+	}
+	//将选中的数据插入
+	function insertData(data, item) {
 		var len = data.length;
 		var cont = '';
 		for(var i = 0; i < len; i++) {
-			cont += '<li class="plr12">' + data[i] + '</li>';
+			cont += '<li class="plr12 '+ (isActive(infoBag[item], data[i])?'active':'') +'">' + data[i] + '</li>';
 		}
 		return cont;
 	}
-	var infoBag = {
-		'brand': [],
-		'age': [],
-		'func': []
+	//插入数据的时候判断该数据是否已经选中过
+	Array.prototype.S=String.fromCharCode(2);
+	Array.prototype.in_array=function(e){
+	    var r=new RegExp(this.S+e+this.S);
+	    return (r.test(this.S+this.join(this.S)+this.S));
 	};
+	function isActive(nowData, data) {
+		return (nowData.in_array(data));
+	}
+	
 	//是否选中，选中再次选取删除
 	function isHave(data, value) {
 		var flag = true;
@@ -133,12 +329,43 @@ $(function() {
 			if(item == value){
 				data.splice(index, 1);
 				flag = false;
-				console.log(11122)
 				return;
 			}
 		});
 		return flag;
 	}
-	
+	//解析infoBag为post请求参数形式
+	function toPost(obj1, obj2) {
+		var toBeJson = {};
+		if(obj1.age.length != 0) {
+			toBeJson.suitableAge = obj1.age[0];
+		}
+		if(obj1.brand.length != 0) {
+			toBeJson.brand = obj1.brand[0];
+		}
+		if(obj1.func.length != 0) {
+			toBeJson = {
+				fun: {}
+			};
+			for(var i=0,len=obj1.func.length; i<len; i++) {
+				for(var attr in obj2){
+					if(obj1.func[i] == obj2[attr]){
+						toBeJson['fun'][attr] = true;
+					}
+				}
+			}
+		}
+		
+		return toBeJson;
+	}
+	//对象深度克隆
+	function deepClone(obj) {
+		var o = obj instanceof Array ? [] : {};
+		for(var k in obj) 
+			o[k] = typeof obj[k] === Object ? deepClone(obj[k]) : obj[k];
+		return o;
+	}
 
 });
+// http://localhost:1337/good/find?brand=Grow%20up%E9%AB%98%E6%80%9D%E7%BB%B4&skip=0
+// http://localhost:1337/good/find?&brand=Grow+up%E9%AB%98%E6%80%9D%E7%BB%B4&skip=0

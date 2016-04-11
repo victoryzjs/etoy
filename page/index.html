@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>客服咨询</title>
+	<title>首页</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
 	<meta content="yes" name="apple-mobile-web-app-capable" />
@@ -15,25 +15,25 @@
 	<!-- start slide -->
 	<section class="detail-slide">
 		<div class="swiper-container">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<a href="#" class="clearfix">
-						<img data-src="../static/img/slide.png" class="swiper-lazy fl">
-						<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					</a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#" class="clearfix">
-						<img data-src="../static/img/slide.png" class="swiper-lazy fl">
-						<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					</a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#" class="clearfix">
-						<img data-src="../static/img/slide.png" class="swiper-lazy fl">
-						<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-					</a>
-				</div>
+			<div class="swiper-wrapper" id="wrap-banner">
+<!-- 				<div class="swiper-slide">
+	<a href="#" class="clearfix">
+		<img data-src="../static/img/slide.png" class="swiper-lazy fl">
+		<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+	</a>
+</div>
+<div class="swiper-slide">
+	<a href="#" class="clearfix">
+		<img data-src="../static/img/slide.png" class="swiper-lazy fl">
+		<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+	</a>
+</div>
+<div class="swiper-slide">
+	<a href="#" class="clearfix">
+		<img data-src="../static/img/slide.png" class="swiper-lazy fl">
+		<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+	</a>
+</div> -->
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
@@ -71,15 +71,17 @@
 	<!-- end -->
 	<!-- start banner -->
 	<section class="banner pr">
+		<a href="list.html">
 		<div class="banner-bg pr">
 			<img src="../static/img/index_banner.png" alt="" class="inline-block">
 		</div>
 		<div class="up-banner-cont pa">
 			<div class="up-banner-cont-wrap">
 				<h2>全部玩具</h2>
-				<a href="#" class="orange-rectangle pr">点击查看更多</a>			
+				<span href="#" class="orange-rectangle pr">点击查看更多</span>			
 			</div>
 		</div>
+		</a>
 	</section>
 	<!-- end -->
 	
@@ -90,14 +92,14 @@
 				新品上架
 			</div>
 			<div class="goods-header-more fr">
-				<a href="#" class="inline-block">
+				<a href="list.html" class="inline-block">
 					更多
 				</a>
 			</div>
 		</div>
 		<div class="good-cont ">
-			<ul class="clearfix good-cont-wrap">
-				<li class="fl">
+			<ul class="clearfix good-cont-wrap" id="wrap-goods-new">
+				<!-- <li class="fl">
 					<a href="" class="inline-block">
 						<div class="good-cont-wrap-pic">
 							<img src="../static/img/goods.png" alt="" class="inline-block">
@@ -129,7 +131,7 @@
 							<p>￥36.00/周</p>
 						</div>						
 					</a>
-				</li>		
+				</li>	 -->	
 			</ul>
 		</div>
 	</section>
@@ -141,14 +143,14 @@
 				热门推荐
 			</div>
 			<div class="goods-header-more fr">
-				<a href="#" class="inline-block">
+				<a href="list.html" class="inline-block">
 					更多
 				</a>
 			</div>
 		</div>
 		<div class="good-cont ">
-			<ul class="clearfix good-cont-wrap">
-				<li class="fl">
+			<ul class="clearfix good-cont-wrap" id="wrap-hot-goods">
+				<!-- <li class="fl">
 					<a href="" class="inline-block">
 						<div class="good-cont-wrap-pic">
 							<img src="../static/img/goods.png" alt="" class="inline-block">
@@ -180,7 +182,7 @@
 							<p>￥36.00/周</p>
 						</div>						
 					</a>
-				</li>
+				</li> -->
 			</ul>
 		</div>
 	</section>
@@ -220,6 +222,52 @@
 		</div>
 	</nav>
 	<link rel="import" href="../static/common/html/loading.html?__inline">
+	<!-- start   banner -->
+	<script id="banner-tpl" type="text/html">
+		<% for(var i=0,len=banner.length; i<len; i++) { %>
+			<div class="swiper-slide">
+				<a href="#" class="clearfix">
+					<img data-src="<%= banner[i].imgPath %>" class="swiper-lazy fl">
+					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+				</a>
+			</div>
+		<% } %>
+	</script>
+	<!--  end -->
+	<!--  start 热门推荐tpl -->
+	<script id="hot-tpl" type="text/html">
+	<% for(var i=0,len=hotGood.length; i<len; i++){ %>
+		<li class="fl">
+			<a href="" class="inline-block">
+				<div class="good-cont-wrap-pic">
+					<img src="<%= hotGood[i].thumb %>" alt="" class="inline-block">
+				</div>
+				<div class="good-cont-wrap-cont">
+					<p><%=  hotGood[i].title %></p>
+					<p>￥<%= hotGood[i].rentPrice %>/周</p>
+				</div>						
+			</a>
+		</li>
+	<% } %>
+	</script>
+	<!-- end -->
+	<!-- start 新品上架tpl-->
+	<script id="new-tpl" type="text/html">
+	<% for(var i=0,len=latestGood.length; i<len; i++){ %>
+		<li class="fl">
+			<a href="" class="inline-block">
+				<div class="good-cont-wrap-pic">
+					<img src="<%= latestGood[i].thumb %>" alt="" class="inline-block">
+				</div>
+				<div class="good-cont-wrap-cont">
+					<p><%=  latestGood[i].title %></p>
+					<p>￥<%= latestGood[i].rentPrice %>/周</p>
+				</div>						
+			</a>
+		</li>
+	<% } %>
+	</script>
+	<!-- end -->
 
 </body>
 <script type="text/javascript" src="../../static/lib/swiper/swiper-3.3.1.jquery.min.js"></script>
