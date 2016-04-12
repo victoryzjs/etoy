@@ -141,6 +141,24 @@
 .lease-time {
 	.retina1px(#ebebeb);
 	border-bottom: 1px solid #ebebeb;
+	input::-webkit-textfield-decoration-container {
+	    background-color: orange;	
+	}
+	::-webkit-datetime-edit-fields-wrapper{
+		background-color: #fff;	
+	}
+	input::-webkit-datetime-edit-fields-wrapper{
+		background-color: green;	
+	}
+	input::-webkit-inner-spin-button { 
+		visibility: hidden; 
+	}
+	input::-webkit-calendar-picker-indicator {
+		background-color: red;
+	}
+	input::-webkit-datetime-edit{
+		background-color: red;
+	}
 }
 
 .lease-time>div {

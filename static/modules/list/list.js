@@ -36,21 +36,25 @@ $(function() {
 			url: '/good/find?'+condition,
 			contentType: 'application/json',
 			success: function(data){
-				for(var attr in data ){
-					console.log(attr+'='+data[attr]);
-				}
-				if(id == '.price') {
-					isAsc = !isAsc;
-				}
+				$('.result-null').hide();
 				$loading.close();
-				listData.list = listData.list.concat(data);
-				if(data.length < 8) {
+				if(data.data.length <= 0) {
+					$('.result-null').show();
 					$dropload.stop();
 				}else {
-					skip+=data.length;
-					$dropload.start();
-				}	
-				$('#wrap-list-tpl').html(bt('list-tpl', listData));			
+					if(id == '.price') {
+						isAsc = !isAsc;
+					}
+					listData.list = listData.list.concat(data.data);
+					if(data.data.length < 8) {
+						$dropload.stop();
+					}else {
+						skip+=data.data.length;
+						$dropload.start();
+					}	
+					$('#wrap-list-tpl').html(bt('list-tpl', listData));							
+				}
+	
 			},
 			error: function(xhr, type){
 				alert('Ajax error!')
@@ -64,18 +68,22 @@ $(function() {
 			url: '/good/find?'+condition,
 			contentType: 'application/json',
 			success: function(data){
-				for(var attr in data[0] ){
-					console.log(attr+'='+data[0][attr]);
-				}
+				$('.result-null').hide();
 				$loading.close();
-				listData.list = listData.list.concat(data);
-				if(data.length < 8) {
+				if(data.data.length <= 0) {
+					$('.result-null').show();
 					$dropload.stop();
 				}else {
-					skip+=data.length;
-					$dropload.start();
-				}	
-				$('#wrap-list-tpl').html(bt('list-tpl', listData));			
+					listData.list = listData.list.concat(data.data);
+					if(data.data.length < 8) {
+						$dropload.stop();
+					}else {
+						skip+=data.data.length;
+						$dropload.start();
+					}	
+					$('#wrap-list-tpl').html(bt('list-tpl', listData));						
+				}
+		
 			},
 			error: function(xhr, type){
 				alert('Ajax error!')
