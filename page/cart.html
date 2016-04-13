@@ -15,7 +15,7 @@
 <!-- start cart list -->
 	<section class="bg-white">
 		<ul class="cart-list">
-			<li class="cart-list-one clearfix plr12 active">
+			<!-- <li class="cart-list-one clearfix plr12">
 				<div class="cart-choice-btn fl"></div>
 				<div class="cart-goods-pic fl">
 					<img src="../static/img/goods_1.png" alt="">
@@ -27,45 +27,20 @@
 						<span class="inline-block pa delete-btn">删除</span>
 					</div>
 				</div>
-			</li>
-			<li class="cart-list-one clearfix plr12">
-				<div class="cart-choice-btn fl"></div>
-				<div class="cart-goods-pic fl">
-					<img src="../static/img/goods_1.png" alt="">
-				</div>
-				<div class="cart-goods-desc pr">
-					<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
-					<div class="cart-goods-price clearfix pa">
-						<span class="inline-block fl">￥10.00元/周</span>
-						<span class="inline-block pa delete-btn">删除</span>
-					</div>
-				</div>
-			</li>
-			<li class="cart-list-one clearfix plr12">
-				<div class="cart-choice-btn fl"></div>
-				<div class="cart-goods-pic fl">
-					<img src="../static/img/goods_1.png" alt="">
-				</div>
-				<div class="cart-goods-desc pr">
-					<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
-					<div class="cart-goods-price clearfix pa">
-						<span class="inline-block fl">￥10.00元/周</span>
-						<span class="inline-block pa delete-btn">删除</span>
-					</div>
-				</div>
-			</li>
+				<input type="text" hidden value="11111111111" data-price="55">
+			</li> -->
 		</ul>
 	</section>
 	<!-- end -->
 	<!-- start cartBar -->
-	<section class="clearfix cart-detail-go pf">
+	<section class="clearfix cart-detail-go pf bg-white">
 		<div class="all-choice-btn fl clearfix">
 			<span class="fl"></span>
 			<span class="fl">全选</span>
 		</div>
 		<div class="total-money fl
-		">合计： <span>40.00元</span></div>
-		<div class="settlement-btn fl"><a href="place_order.html">结算(<span>2</span>)</a></div>
+		">合计： <span>0.00</span>元</div>
+		<div class="settlement-btn fl"><a href="javascript:void(0)">结算(<span>0</span>)</a></div>
 	</section>
 	<!-- end -->
 
@@ -75,9 +50,31 @@
 			<img src="../static/img/cart_null.png" alt="">
 		</div>
 		<div class="go-buy">
-			<a href="#">去逛逛</a>
+			<a href="list.html">去逛逛</a>
 		</div>
 	</section>
+	<!-- end -->
+	<link rel="import" href="../static/common/html/loading.html?__inline">
+	<!-- start cart list-->
+	<script id="list-tpl" type="text/html">
+	<% for(var i=0,len=listData.length; i<len; i++){ %>
+		<li class="cart-list-one clearfix plr12">
+				<div class="cart-choice-btn fl"></div>
+				<div class="cart-goods-pic fl">
+					<img src="<%= listData[i].good.thumb %>" alt="">
+				</div>
+				<div class="cart-goods-desc pr">
+					<p class="cart-goods-name"><%= listData[i].good.thumb %></p>
+					<div class="cart-goods-price clearfix pa">
+						<span class="inline-block fl">￥<%= listData[i].good.rentPrice %>元/周</span>
+						<span class="inline-block pa delete-btn">删除</span>
+					</div>
+				</div>
+				<input type="text" hidden value="<%= listData[i].id %>" data-price="<%= listData[i].good.rentPrice %>">
+			</li>
+		</li>
+	<% } %>
+	</script>
 	<!-- end -->
 </body>
 <script>

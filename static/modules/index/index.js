@@ -50,7 +50,7 @@ $(function() {
 			$globalLoading.close();
 			alert('Ajax error!')
 		}
-	})
+	});
 	var swiperTimer = setInterval(function() {
 		if(flag) {
 			clearInterval(swiperTimer);

@@ -15,8 +15,8 @@
 	<!-- start slide -->
 	<section class="detail-slide">
 		<div class="swiper-container">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
+			<div class="swiper-wrapper" id="wrap-banner">
+				<!-- <div class="swiper-slide">
 					<a href="#" class="clearfix">
 						<img data-src="../static/img/detail_slide.png" class="swiper-lazy fl">
 						<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
@@ -33,7 +33,7 @@
 						<img data-src="../static/img/detail_slide.png" class="swiper-lazy fl">
 						<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 					</a>
-				</div>
+				</div> -->
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
@@ -42,14 +42,14 @@
 	<!-- start goods detail -->
 	<section class="goods-detail bg-white">
 		<div class="goods-detail-desc">
-			<h2 class="plr12 ptb12">超级玩具快乐组合套餐一超级玩具快乐组合套餐一超级玩具套餐一超级玩具......</h2>
+			<!-- <h2 class="plr12 ptb12">超级玩具快乐组合套餐一超级玩具快乐组合套餐一超级玩具套餐一超级玩具......</h2>
 			<div class="goods-detail-desc-price clearfix plr12">
 				<div class="goods-detail-desc-price-left fl">
 					<p>￥30.00/周</p>
 					<p>购买价：￥3180</p>
 				</div>
 				<div class="goods-detail-desc-price-right fl">有货</div>
-			</div>
+			</div> -->
 		</div>
 	</section>
 	<!-- end -->
@@ -61,7 +61,7 @@
 			<div class="goods-parameter fl">商品参数</div>
 		</div>
 		<div class="goods-detail-switch-cont">
-			<div class="goods-guide-cont active clearfix">
+			<!-- <div class="goods-guide-cont active clearfix">
 				<img src="../static/img/shop_detail.png" class="fl" alt="">
 				<img src="../static/img/shop_detail_2.png" class="fl" alt="">
 			</div>
@@ -122,7 +122,7 @@
 						FXO10070
 					</div>					
 				</li>
-			</ul>
+			</ul>  -->
 		</div>
 	</section>
 	<!-- end -->
@@ -142,6 +142,97 @@
 	</section>
 	
 	<!-- end -->
+	<link rel="import" href="../static/common/html/loading.html?__inline">
+
+	<!-- start   banner -->
+	<script id="banner-tpl" type="text/html">
+		<% for(var i=0,len=banner.length; i<len; i++) { %>
+			<div class="swiper-slide">
+				<a href="#" class="clearfix">
+					<img data-src="<%= banner[i] %>" class="swiper-lazy fl">
+					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+				</a>
+			</div>
+		<% } %>
+	</script>
+	<!--  end -->
+
+	<script id="detail-tpl" type="text/html">
+		<h2 class="plr12 ptb12"><%= detailInfo.title %></h2>
+		<div class="goods-detail-desc-price clearfix plr12">
+			<div class="goods-detail-desc-price-left fl">
+				<p>￥<%= detailInfo.rentPrice %>/周</p>
+				<p>购买价：￥<%= detailInfo.tradePrice %></p>
+			</div>
+			<div class="goods-detail-desc-price-right fl"><%=  detailInfo.leftNum>0 ? '有货' : '无货' %></div>
+		</div>
+	</script>
+
+	<script id="good-parameter-cont-tpl" type="text/html">
+		<div class="goods-guide-cont active clearfix">
+			<%= detailInfo.content %>
+		</div>
+		<ul class="good-parameter-cont ">
+			<li class="clearfix plr12">
+				<div class="desc-name fl">
+					商品编码：
+				</div>
+				<div class="desc-value fl">
+					<%= detailInfo.goodsCode ? detailInfo.goodsCode : '' %>
+				</div>					
+			</li>
+			<li class="clearfix plr12">
+				<div class="desc-name fl">
+					商品名称：
+				</div>
+				<div class="desc-value fl">
+					<%= detailInfo.title ? detailInfo.title : '' %>
+				</div>					
+			</li>
+			<li class="clearfix plr12">
+				<div class="desc-name fl">
+					适合年龄：
+				</div>
+				<div class="desc-value fl">
+					<%= detailInfo.suitableAge ? detailInfo.suitableAge : '' %>
+				</div>					
+			</li>
+			<li class="clearfix plr12">
+				<div class="desc-name fl">
+					品牌：
+				</div>
+				<div class="desc-value fl">
+					<%= detailInfo.brand ? detailInfo.brand : '' %>
+				</div>					
+			</li>
+			<li class="clearfix plr12">
+				<div class="desc-name fl">
+					分类：
+				</div>
+				<div class="desc-value fl">
+					<%= detailInfo.funShow ? detailInfo.funShow : '' %>
+				</div>					
+			</li>
+			<li class="clearfix plr12">
+				<div class="desc-name fl">
+					材质：
+				</div>
+				<div class="desc-value fl">
+					<%= detailInfo.material ? detailInfo.material : '' %>
+				</div>					
+			</li>
+			<li class="clearfix plr12">
+				<div class="desc-name fl">
+					货号：
+				</div>
+				<div class="desc-value fl">
+					<%= detailInfo.goodsNumber ? detailInfo.goodsNumber : '' %>
+				</div>					
+			</li>
+		</ul> 
+	</script>
+
+
 </body>
 <script type="text/javascript" src="../../static/lib/swiper/swiper-3.3.1.jquery.min.js"></script>
 <script>

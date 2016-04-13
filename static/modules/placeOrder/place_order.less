@@ -1,6 +1,5 @@
 @import '../../common/css/mixin.less';
 
-
 .about-info1 {
 	.retina1px(#ebebeb);
 	border-bottom: 1px solid #ebebeb;
@@ -75,6 +74,10 @@
 		background-size: contain;
 		background-position-y: center;
 	}
+	input, select {
+		font-size: 14px;
+		color: #747474;
+	}
 }
 
 .user-address input {
@@ -107,6 +110,8 @@
 	padding-bottom: 8px;
 	padding-left: 40px;
 	border: none;
+	font-size: 14px;
+	color: #747474;
 	outline: none;
 }
 
@@ -141,24 +146,6 @@
 .lease-time {
 	.retina1px(#ebebeb);
 	border-bottom: 1px solid #ebebeb;
-	input::-webkit-textfield-decoration-container {
-	    background-color: orange;	
-	}
-	::-webkit-datetime-edit-fields-wrapper{
-		background-color: #fff;	
-	}
-	input::-webkit-datetime-edit-fields-wrapper{
-		background-color: green;	
-	}
-	input::-webkit-inner-spin-button { 
-		visibility: hidden; 
-	}
-	input::-webkit-calendar-picker-indicator {
-		background-color: red;
-	}
-	input::-webkit-datetime-edit{
-		background-color: red;
-	}
 }
 
 .lease-time>div {
@@ -169,7 +156,7 @@
 		width: 100%;
 		height: 43px;
 		color: #b2b2b2;
-		font-size: 13px;
+		font-size: 14px;
 		border: none;
 		outline: none;
 	}
@@ -179,12 +166,107 @@
 		outline: none;
 		padding: 8px 8px 8px 0;
 		border: none;
-		font-size: 13px;
+		font-size: 14px;
 		.box-sizing(border-box);
+		color: #747474;
 	}
 
 }
 
 .lease-time>div:last-child {
 	border-bottom: none;
+}
+
+.lease-delivery select {
+	width: 100%;
+	height: 43px;
+	color: #b2b2b2;
+	font-size: 14px;
+	border: none;
+	outline: none;
+	background-color: #fff;
+	margin-left: -3px;
+}
+
+.cost {
+	.retina1px(#ebebeb);
+	.retinaT(#ebebeb);
+	border-top: 1px solid #ebebeb;
+	border-bottom: 1px solid #ebebeb;
+}
+
+.cost ul li {
+	line-height: 43px;
+	span {
+		color: #595757;
+	}
+}
+
+.freight span i {
+	position: absolute;
+	top: 10px;
+	left: 0;
+	background-color: #f1633d;
+	font-size: 10px;
+	height: 20px;
+	font-style: normal;
+	line-height: 20px;
+	padding:2px 5px;
+	margin-left: -170px;
+}
+
+.freight span i:after {
+	content: '';
+	position: absolute;
+	right: -5px;
+	top: 50%;
+	margin-top: -5px;
+	border-left: 5px solid #f1633d;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+}
+
+.all-money {
+	line-height: 40px;
+	.retina1px(#ebebeb);
+	border-bottom: 1px solid #ebebeb;
+	margin-bottom: 49px;
+	div:nth-of-type(1) {
+		width: 40%;
+		font-size: 12px;
+		color: #595757;
+		text-align: left;
+		span {
+			float: left;
+			width: 18px;
+			height: 40px;
+			background: url(../../img/no_choice.png) no-repeat;
+			background-size: contain;
+			background-position-y: center;
+			margin-right: 4px;
+		}
+	}
+	div:nth-of-type(2) {
+		width: 60%;
+		color: #f1633d;
+		font-size: 14px;
+		text-align: right;
+	}
+}
+
+.all-money .agreen.active span {
+	background-image: url(../../img/is_choice.png);
+}
+
+.submit-order {
+	width: 100%;
+	height: 49px;
+	font-size: 14px;
+	line-height: 49px;
+	text-align: center;
+	color: #fff;
+	background-color: #f1633d;
+	position: fixed;
+	left: 0;
+	bottom: 0;
 }
