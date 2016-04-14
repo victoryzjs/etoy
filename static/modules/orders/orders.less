@@ -1,5 +1,11 @@
 @import '../../common/css/mixin.less';
 
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
 .tobecall {
 	width: 50px;
 	height: 40px;
@@ -118,6 +124,9 @@
 		height: 100%;
 		text-align: center;
 		color: #747474;
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
 	}
 	span:nth-of-type(1) {
 		text-align: left;
@@ -153,5 +162,16 @@
 		border: 1px solid #595757;
 	}
 }
+
+#tobepaid,
+#tobegetgoods,
+#tosigned,
+#togone {
+	margin-bottom: 50px;
+	display: none;
+}
+
+
+
 
 @import '../../common/css/common_nav.less';

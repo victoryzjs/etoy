@@ -16,39 +16,111 @@
 		<nav class="order-status bg-white">
 			<div class="tobecall fr"><span></span></div>
 			<div class="wrap-status clearfix">
-				<div class="tobepaid fl active">待支付</div>
-				<div class="tobegetgoods fl">待收货</div>
-				<div class="tosigned fl">已签收</div>
-				<div class="togone fl">已完成</div>				
+				<div class="tobepaid fl active" data-name="tobepaid">待支付</div>
+				<div class="tobegetgoods fl" data-name="tobegetgoods">待收货</div>
+				<div class="tosigned fl" data-name="tosigned">已签收</div>
+				<div class="togone fl" data-name="togone">已完成</div>				
 			</div>
 		</nav>
 	</section>
 	<section class="bg-white mt7">
-		<div class="order-one-header clearfix plr12">
-			<span class="order-one-status fr">待支付</span>
-			<span class="order-one-number">订单编号：NA123456789</span>
+		<div class="is-show" id="tobepaid">
+			<div class="order-one-header clearfix plr12">
+				<span class="order-one-status fr">待支付</span>
+				<span class="order-one-number">订单编号：NA123456789</span>
+			</div>
+			<div class="order-one-detail ptb10 clearfix plr12">
+				<a href="#">
+					<div class="order-one-pic fl">
+						<img src="../static/img/goods_1.png" alt="">
+					</div>
+					<div class="order-one-cont">
+						<p>超级玩具多功能套餐一超级玩具多超级玩具多功能套餐一超级玩具多</p>
+						<p class="pr">下单时间：2016.3.28</p>
+						<p>￥10.00/周</p>
+					</div>
+				</a>
+			</div>
+			<div class="order-one-other plr12 clearfix">
+				<span class="fl">共1件商品</span>
+				<span class="fl">租赁时间10周</span>
+				<span class="fl">总计 100.00</span>
+			</div>
+			<div class="clearfix order-btn plr12">
+				<a href="#" class="fr">付款</a>
+				<a href="#" class="fr">取消</a>
+			</div>			
 		</div>
-		<div class="order-one-detail ptb10 clearfix plr12">
-			<a href="#">
-				<div class="order-one-pic fl">
-					<img src="../static/img/goods_1.png" alt="">
-				</div>
-				<div class="order-one-cont">
-					<p>超级玩具多功能套餐一超级玩具多超级玩具多功能套餐一超级玩具多</p>
-					<p class="pr">下单时间：2016.3.28</p>
-					<p>￥10.00/周</p>
-				</div>
-			</a>
+		<div class="is-show" id="tobegetgoods">
+			<div class="order-one-header clearfix plr12">
+				<span class="order-one-status fr">待收货</span>
+				<span class="order-one-number">订单编号：NA123456789</span>
+			</div>
+			<div class="order-one-detail ptb10 clearfix plr12">
+				<a href="#">
+					<div class="order-one-pic fl">
+						<img src="../static/img/goods_1.png" alt="">
+					</div>
+					<div class="order-one-cont">
+						<p>超级玩具多功能套餐一超级玩具多超级玩具多功能套餐一超级玩具多</p>
+						<p class="pr">下单时间：2016.3.28</p>
+						<p>￥10.00/周</p>
+					</div>
+				</a>
+			</div>
+			<div class="order-one-other plr12 clearfix">
+				<span class="fl">共1件商品</span>
+				<span class="fl">租赁时间10周</span>
+				<span class="fl">总计 100.00</span>
+			</div>
 		</div>
-		<div class="order-one-other plr12 clearfix">
-			<span class="fl">共1件商品</span>
-			<span class="fl">租赁时间10周</span>
-			<span class="fl">总计 100.00</span>
+		<div class="is-show" id="tosigned">
+			<div class="order-one-header clearfix plr12">
+				<span class="order-one-status fr">已签收</span>
+				<span class="order-one-number">订单编号：NA123456789</span>
+			</div>
+			<div class="order-one-detail ptb10 clearfix plr12">
+				<a href="#">
+					<div class="order-one-pic fl">
+						<img src="../static/img/goods_1.png" alt="">
+					</div>
+					<div class="order-one-cont">
+						<p>超级玩具多功能套餐一超级玩具多超级玩具多功能套餐一超级玩具多</p>
+						<p class="pr">下单时间：2016.3.28</p>
+						<p>￥10.00/周</p>
+					</div>
+				</a>
+			</div>
+			<div class="order-one-other plr12 clearfix">
+				<span class="fl">共1件商品</span>
+				<span class="fl">租赁时间10周</span>
+				<span class="fl">总计 100.00</span>
+			</div>
 		</div>
-		<div class="clearfix order-btn plr12">
-			<a href="#" class="fr">付款</a>
-			<a href="#" class="fr">取消</a>
+		<div class="is-show" id="togone">
+			<div class="order-one-header clearfix plr12">
+				<span class="order-one-status fr">已完成</span>
+				<span class="order-one-number">订单编号：NA123456789</span>
+			</div>
+			<div class="order-one-detail ptb10 clearfix plr12">
+				<a href="#">
+					<div class="order-one-pic fl">
+						<img src="../static/img/goods_1.png" alt="">
+					</div>
+					<div class="order-one-cont">
+						<p>超级玩具多功能套餐一超级玩具多超级玩具多功能套餐一超级玩具多</p>
+						<p class="pr">下单时间：2016.3.28</p>
+						<p>￥10.00/周</p>
+					</div>
+				</a>
+			</div>
+			<div class="order-one-other plr12 clearfix">
+				<span class="fl">共1件商品</span>
+				<span class="fl">租赁时间10周</span>
+				<span class="fl">总计 100.00</span>
+			</div>
 		</div>
+
 	</section>
 
 	<nav class="footer-nav clearfix pf bg-white">
@@ -85,6 +157,7 @@
 			</a>
 		</div>
 	</nav>
+	<link rel="import" href="../static/common/html/loading.html?__inline">
 </body>
 <script>
 	require('../static/modules/orders/orders.js');

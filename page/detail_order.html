@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>订单详情</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="address=no" />
+	<script type="text/javascript" src="../static/lib/mod.js"></script>
+</head>
+<body>
+	<section class="wrap-init-tpl">
+<!-- 		<div class="pl12 bg-white about-info1">
+			<div class="user-name pr">
+				<input type="text" placeholder="请在此输入您的姓名">
+				<i class="pa"></i>
+			</div>
+			<div class="user-phone pr">
+				<input type="text" placeholder="请在此输入您的电话">
+				<i class="pa"></i>
+			</div>
+			<div class="user-address pr clearfix">
+				<input type="text" value="北京" class="fl" readonly="readonly">
+				<div class="wrap-select clearfix">
+					<div class="fl pr">
+						<select>
+							<option value="">请选择地区</option>
+							<option value="海淀区">海淀区</option>
+							<option value="朝阳区">朝阳区</option>
+							<option value="东城区">东城区</option>
+							<option value="西城区">西城区</option>
+							<option value="崇文区">崇文区</option>
+							<option value="宣武区">宣武区</option>
+							<option value="丰台区">丰台区</option>
+							<option value="石景山区">石景山区</option>
+							<option value="顺义区">顺义区</option>
+							<option value="昌平区">昌平区</option>
+							<option value="门头沟区">门头沟区</option>
+							<option value="通州区">通州区</option>
+							<option value="房山区">房山区</option>
+							<option value="大兴区">大兴区</option>
+							<option value="怀柔区">怀柔区</option>
+						</select>
+						<i class="pa"></i>
+					</div>
+					<div class="fl pr">
+						<select>
+							<option value="">请选择范围</option>
+							<option value="4环内">4环内</option>
+							<option value="4到5环之间">4到5环之间</option>
+							<option value="5到6环之间">5到6环之间</option>
+							<option value="六环外">六环外</option>
+						</select>
+						<i class="pa"></i>
+					</div>
+				</div>
+				<i class="pa"></i>
+			</div>
+			<div class="user-detail-address">
+				<textarea name="" id="" placeholder="请填写详细地址"></textarea>
+			</div>
+		</div>
+		<div class="goods-list-info mt7 pl12 bg-white">
+			<div class="goods-list-number clearfix">
+				<span class="fl">玩具清单</span>
+				<span class="fr">共4件</span>
+			</div>
+			<ul>
+				<li class="cart-list-one clearfix">
+					<a href="#">
+						<div class="cart-goods-pic fl">
+							<img src="../static/img/goods_1.png" alt="">
+						</div>
+						<div class="cart-goods-desc pr">
+							<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
+							<div class="cart-goods-price clearfix pa">
+								<span class="inline-block fl">￥10.00元/周</span>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="cart-list-one clearfix">
+					<a href="#">
+						<div class="cart-goods-pic fl">
+							<img src="../static/img/goods_1.png" alt="">
+						</div>
+						<div class="cart-goods-desc pr">
+							<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
+							<div class="cart-goods-price clearfix pa">
+								<span class="inline-block fl">￥10.00元/周</span>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="lease-time pl12 mt7 bg-white">
+			<div class="lease-week">
+				<input type="text" readonly="readonly" placeholder="请在此选择配送时间" >
+			</div>
+			<div class="lease-delivery">
+				<select>
+					<option value="">请选择租赁周数</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select> 
+			</div>
+			<div class="lease-cont">
+				<textarea name="" id="" placeholder="填写"></textarea>
+			</div>
+		</div>
+
+		<div class="cost mt7 plr12 bg-white">
+			<ul>
+				<li class="clearfix"><span class="fl">租金</span><span class="fr">-￥400.00</span></li>
+				<li class="clearfix freight"><span class="fl">运费</span><span class="fr pr">-￥20.00<i>订单不满150另收20元运费</i></span></li>
+				<li class="clearfix"><span class="fl">优惠</span><span class="fr">+￥0.00</span></li>
+				<li class="clearfix"><span class="fl">押金</span><span class="fr">-￥1000.00</span></li>
+			</ul>
+		</div>
+		<div class="all-money clearfix plr12 bg-white">
+			<div class="fl agreen active"><span></span>同意租赁协议</div>
+			<div class="fr">总计：￥1400.00</div>
+		</div>
+		<div class="submit-order">
+			提交订单
+		</div> -->
+	</section>
+	<!-- start cart list-->
+	<script id="init-tpl" type="text/html">
+		<div class="detail-header">
+			立即支付吧
+		</div>
+		<div class="order-state clearfix bg-white plr12">
+			<span class="fl">订单状态</span>
+			<span class="fr">待支付</span>
+		</div>
+		<div class="pl12 bg-white about-info1">
+			<div class="user-name pr">
+				<input type="text" value="<%=  initData.address.recipient ? initData.address.recipient : '' %>" placeholder="请在此输入您的姓名" readonly="readonly">
+				<i class="pa"></i>
+			</div>
+			<div class="user-phone pr">
+				<input type="text" value="<%=  initData.address.phone ? initData.address.phone : '' %>" placeholder="请在此输入您的电话" readonly="readonly">
+				<i class="pa"></i>
+			</div>
+			<div class="user-address pr clearfix">
+				<input type="text" value="<%=  initData.address.city ? initData.address.city : '' %>" class="fl" readonly="readonly">
+				<div class="wrap-select clearfix">
+					<div class="fl pr">
+						<input type="text" value="<%= initData.address.district %>" readonly="readonly">
+					</div>
+					<div class="fl pr">
+						<input type="text" value="<%= initData.address.ring %>" readonly="readonly">
+					</div>
+				</div>
+				<i class="pa"></i>
+			</div>
+			<div class="user-detail-address">
+				<textarea class="address" name="" id="" placeholder="请填写详细地址" readonly="readonly"><%=  initData.address.address ? initData.address.address : '' %></textarea>
+			</div>
+		</div>
+		<div class="goods-list-info mt7 pl12 bg-white">
+			<div class="goods-list-number clearfix">
+				<span class="fl">订单编号</span>
+				<span class="fr">共<%= initData.goods.length %>件</span>
+			</div>
+			<ul>
+				<% for(var i=0,len=initData.goods.length; i<len; i++) { %>
+					<li class="cart-list-one clearfix">
+						<a href="javascript:void(0)">
+							<div class="cart-goods-pic fl">
+								<img src="<%= initData.goods[i].good.thumb %>" alt="">
+							</div>
+							<div class="cart-goods-desc pr">
+								<p class="cart-goods-name"><%= initData.goods[i].good.title %></p>
+								<div class="cart-goods-price clearfix pa">
+									<span class="inline-block fl">￥<%= initData.goods[i].good.rentPrice %>元/周</span>
+								</div>
+							</div>
+						</a>
+					</li>
+				<% } %>
+			</ul>
+		</div>
+
+		<div class="lease-time pl12 mt7 bg-white">
+			<div class="rentTime">
+				租赁时间：
+			</div>	
+			<div class="deliveryTime">
+				配送时间：
+			</div>
+			<div class="getTime">
+				取货时间：
+			</div>
+		</div>
+
+		<div class="cost mt7 plr12 bg-white">
+			<ul>
+				<li class="clearfix"><span class="fl">租金</span><span class="fr rent-price">-￥<span>400.00</span></span></li>
+				<li class="clearfix freight"><span class="fl">运费</span><span class="fr pr freight-span">-￥<span>20.00</span><i>订单不满150另收20元运费</i></span></li>
+				<li class="clearfix"><span class="fl">优惠</span><span class="fr discount">+￥<span>0.00</span></span></li>
+				<li class="clearfix"><span class="fl">押金</span><span class="fr bond">-￥<span>1000.00</span></span></li>
+			</ul>
+		</div>
+		<div class="all-money clearfix plr12 bg-white">
+			<div class="fl agreen"></div>
+			<div class="fr allCount">总计：￥<span>1400.00</span></div>
+		</div>
+		<div class="at-once-go bg-white plr12 clearfix">
+			<a href="#" class="go-btn fr">立即支付</a>
+			<span class="cancel-btn fr" >取消</span>
+		</div>
+	</script>
+	<!-- end -->
+</body>
+<script>
+	require('../static/modules/detailOrder/detail_order.js');
+</script>
+</html>

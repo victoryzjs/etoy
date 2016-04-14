@@ -238,7 +238,7 @@
 	<script id="hot-tpl" type="text/html">
 	<% for(var i=0,len=hotGood.length; i<len; i++){ %>
 		<li class="fl">
-			<a href="" class="inline-block">
+			<a href="detail.html?id=<%= hotGood[i].id %>" class="inline-block">
 				<div class="good-cont-wrap-pic">
 					<img src="<%= hotGood[i].thumb %>" alt="" class="inline-block">
 				</div>
@@ -255,7 +255,7 @@
 	<script id="new-tpl" type="text/html">
 	<% for(var i=0,len=latestGood.length; i<len; i++){ %>
 		<li class="fl">
-			<a href="" class="inline-block">
+			<a href="detail.html?id=<%= latestGood[i].id %>" class="inline-block">
 				<div class="good-cont-wrap-pic">
 					<img src="<%= latestGood[i].thumb %>" alt="" class="inline-block">
 				</div>
