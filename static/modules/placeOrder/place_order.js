@@ -170,11 +170,13 @@ $(function() {
 			prompt.init('请同意租赁协议');
 			return false;
 		}
+		postData.cartIds = getQueryStringArgs();
 		return 	postData;
 	}
 	//订单提交
 	$('.submit-order').on('click', function() {
 		var res = getData();
+		console.log(res);
 		if(res) {
 			$.ajax({
 					type: 'POST',
