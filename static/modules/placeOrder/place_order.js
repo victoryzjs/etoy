@@ -14,6 +14,8 @@ $(function() {
 	var prompt = require('../ui/prompt/prompt.js');
 	var bt=baidu.template;
 	var flag = false;
+	//fastclick初始化
+	FastClick.attach(document.body);
 	//测试数据
 	var testData = {
 		"code": 200,
@@ -66,7 +68,8 @@ $(function() {
 	// 	dataType: 'json',
 	// 	data: getQueryStringArgs(),
 	// 	success: function(data){
-	// 		handingData(testData);		
+	// 		console.log(data);
+	// 		// handingData(testData);		
 	// 	},
 	// 	error: function(xhr, type){
 	// 		alert('Ajax error!')
@@ -176,16 +179,17 @@ $(function() {
 	//订单提交
 	$('.submit-order').on('click', function() {
 		var res = getData();
-		console.log(res);
+		var obj = {};
 		if(res) {
 			$.ajax({
 					type: 'POST',
 					url: '/wxApi/order/submit',
 					contentType: 'application/json',
 					dataType: 'json',
-					data: res,
+					data: JSON.stringify(res),
 					success: function(data){
-						window.location.href = 'pay.html?'+data.orderId;		
+						console.log(data);
+						// window.location.href = 'pay.html?'+data.data.orderId;		
 					},
 					error: function(xhr, type){
 						alert('Ajax error!')

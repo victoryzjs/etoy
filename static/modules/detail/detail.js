@@ -12,6 +12,7 @@ $(function() {
 	//进去页面加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $loading = require('../ui/loading/loading.js');
+	var prompt = require('../ui/prompt/prompt.js');
 	var bt=baidu.template;
 	var flag = false;
 	var mySwiper = new Swiper('.swiper-container',{
@@ -64,6 +65,7 @@ $(function() {
 			contentType: 'application/json',
 			success: function(data){
 				$loading.close();
+				prompt.init(data.msg);
 			},
 			error: function(xhr, type){
 				$globalLoading.close();

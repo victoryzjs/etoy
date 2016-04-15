@@ -375,5 +375,3 @@ $(function() {
 	}
 
 });
-// http://localhost:1337/good/find?brand=Grow%20up%E9%AB%98%E6%80%9D%E7%BB%B4&skip=0
-// http://localhost:1337/good/find?&brand=Grow+up%E9%AB%98%E6%80%9D%E7%BB%B4&skip=0

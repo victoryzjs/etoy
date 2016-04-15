@@ -102,64 +102,13 @@ $(function() {
 		$('.allCount span').html(allCount+1000);
 
 	}
-
-	//订单提交
-	$('.submit-order').on('click', function() {
-		var res = getData();
-		if(res) {
-			$.ajax({
-					type: 'POST',
-					url: '/wxApi/order/submit',
-					contentType: 'application/json',
-					dataType: 'json',
-					data: res,
-					success: function(data){
-						window.location.href = 'pay.html?'+data.orderId;		
-					},
-					error: function(xhr, type){
-						alert('Ajax error!')
-					}
-				})
-		}
-	});
-	//同意协议
-	$('.agreen').on('click', function() {
-		if(!flag) {
-			$(this).addClass('active');
-			flag = true;
-		}else {
-			$(this).removeClass('active');
-			flag = false;
-		}
-	});
-	//获取cartId
-	function getQueryStringArgs() {
-		var qs = (location.search.length > 0 ? location.search.substring(1) : "");
-		
-		return qs.replace(/\&/g,",");
+	//将时间戳转为日期格式
+	function userDate(uData){
+	  var myDate = new Date(uData*1000);
+	  var year = myDate.getFullYear();
+	  var month = myDate.getMonth() + 1;
+	  var day = myDate.getDate();
+	  return year + '-' + month + '-' + day;
 	}
-	//判断电话号码是否正确
-	function isTelOrMobile(telephone){  
-	    var teleReg = /^((0\d{2,3})-)(\d{7,8})$/;  
-	    var mobileReg =/^1[358]\d{9}$/;   
-	    if (!teleReg.test(telephone) && !mobileReg.test(telephone)){  
-	        return false;  
-	    }else{  
-	        return true;  
-	    }  
-	}
-	//将日期转为时间戳
-	function get_unix_time(dateStr)
-	{
-	    var newstr = dateStr.replace(/-/g,'/'); 
-	    var date =  new Date(newstr); 
-	    var time_str = date.getTime().toString();
-	    return time_str.substr(0, 10);
-	}
-	//日期选择
-	$('.lease-week input').mdater({ 
-    	minDate : new Date(2015, 10, 1)
-	});
-
-
+	console.log(userDate(1460390400000));
 });

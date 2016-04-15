@@ -15,45 +15,49 @@ $(function() {
 	var wrapCartId = [];
 	var allPrice = 0;
 	var bt=baidu.template;
+	var prompt = require('../ui/prompt/prompt.js');
+	var deleteFlag = false;
+
+
 	//测试数据
-	var testData = {
-		"code": 200,
-		"data": [
-				{
-					"good": {
-						"title": "f",
-						"rentPrice": 32,
-						"leftNum": 2,
-						"id": "570a639a2a3178482c5251a9",
-						"thumb": "/img/570a63942a3178482c5251a8"
-					},
-					"createdAt": "2016-04-10T14:56:51.563Z",
-					"id": "570a69b3c31d56004d08dfd9"
-				},
-				{
-					"good": {
-						"title": "f",
-						"rentPrice": 32,
-						"leftNum": 2,
-						"id": "570a639a2a3178482c5251a9",
-						"thumb": "/img/570a63942a3178482c5251a8"
-					},
-					"createdAt": "2016-04-10T14:56:51.563Z",
-					"id": "570a69b3c31d56004d08dfd9"
-				},
-				{
-					"good": {
-						"title": "f",
-						"rentPrice": 32,
-						"leftNum": 2,
-						"id": "570a639a2a3178482c5251a9",
-						"thumb": "/img/570a63942a3178482c5251a8"
-					},
-					"createdAt": "2016-04-10T14:56:51.563Z",
-					"id": "570a69b3c31d56004d08dfd9"
-				}
-			]
-		}
+	// var testData = {
+	// 	"code": 200,
+	// 	"data": [
+	// 			{
+	// 				"good": {
+	// 					"title": "f",
+	// 					"rentPrice": 32,
+	// 					"leftNum": 2,
+	// 					"id": "570a639a2a3178482c5251a9",
+	// 					"thumb": "/img/570a63942a3178482c5251a8"
+	// 				},
+	// 				"createdAt": "2016-04-10T14:56:51.563Z",
+	// 				"id": "570a69b3c31d56004d08dfd9"
+	// 			},
+	// 			{
+	// 				"good": {
+	// 					"title": "f",
+	// 					"rentPrice": 32,
+	// 					"leftNum": 2,
+	// 					"id": "570a639a2a3178482c5251a9",
+	// 					"thumb": "/img/570a63942a3178482c5251a8"
+	// 				},
+	// 				"createdAt": "2016-04-10T14:56:51.563Z",
+	// 				"id": "570a69b3c31d56004d08dfd9"
+	// 			},
+	// 			{
+	// 				"good": {
+	// 					"title": "f",
+	// 					"rentPrice": 32,
+	// 					"leftNum": 2,
+	// 					"id": "570a639a2a3178482c5251a9",
+	// 					"thumb": "/img/570a63942a3178482c5251a8"
+	// 				},
+	// 				"createdAt": "2016-04-10T14:56:51.563Z",
+	// 				"id": "570a69b3c31d56004d08dfd9"
+	// 			}
+	// 		]
+	// 	}
 	//请求数据
 	$.ajax({
 		type: 'POST',
@@ -61,23 +65,30 @@ $(function() {
 		contentType: 'application/json',
 		dataType: 'json',
 		success: function(data){
-			//$globalLoading.close();
-			//handingData(testData)
+			$globalLoading.close();
+			handingData(data)
+			console.log(data);
 		},
 		error: function(xhr, type){
 			alert('Ajax error!')
 		}
 	})
 	//删除数据
-	function deleteData(id) {
+	function deleteData(id, flag) {
 		$.ajax({
 			type: 'POST',
 			url: '/wxApi/shoppingCart/remove/:'+id,
 			contentType: 'application/json',
 			dataType: 'json',
 			success: function(data){
-				//$globalLoading.close();
-				//handingData(testData)
+				if(data.code = 200) {
+					deleteFlag = true;
+					prompt.init('删除成功！');
+				}else {
+					prompt.init('删除失败！');
+				}
+				
+
 			},
 			error: function(xhr, type){
 				alert('Ajax error!')
@@ -97,13 +108,12 @@ $(function() {
 	
 		$('.cart-list').eq(0).html(bt('list-tpl', listData));
 	}
-	// 测试数据，上线测试需要删除该行，打开ajax中的此函数调用
-	handingData(testData);
 
 
 	$cartList.on('click', function(e) {
 		var $aBtn = $('.settlement-btn a');
 		var $span = $('.settlement-btn span');
+		
 		if($(e.target).hasClass('cart-list-one')) {
 			$li = $(e.target);
 		}else {
@@ -128,9 +138,9 @@ $(function() {
 				wrapCartId.splice(wrapCartId.indexOf($li.find('input').val()), 1);
 				allPrice -= Number($li.find('input').attr('data-price'));
 			}
-			$li.remove();
+			
 			//发送删除请求
-			deleteData($li.find('input').val());
+			deleteData($li.find('input').val(), deleteFlag);
 			if($cartList.find('li').length = 0){
 				wrapCartId = [];
 				$('.all-choice-btn').removeClass('active');
@@ -139,6 +149,16 @@ $(function() {
 				$('.cart-null').show();
 				$('.all-choice-btn').eq(0).removeClass('active');
 			}
+			var deleteTimer = setInterval(function() {
+				if(deleteFlag) {
+					$li.remove();
+					deleteFlag = false;
+					clearInterval(deleteTimer);
+				}
+				if($cartList.find('li').length == 0) {
+					$('.cart-null').show();
+				}
+			}, 100);
 
 		}
 		if($cartList.find('li').length == $cartList.find('li.active').length && $cartList.find('li').length != 0) {
