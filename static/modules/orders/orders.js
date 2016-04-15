@@ -7,13 +7,31 @@
 
 $(function() {
 	//全局加载loading
-	var $globalLoading = require('../ui/globalLoading/loading.js');
+	// var $globalLoading = require('../ui/globalLoading/loading.js');
+	// $globalLoading.close();
 	var $tobepaid = $('#tobepaid');
 	var $tobegetgoods = $('#tobegetgoods');
 	var $tosigned = $('#tosigned');
 	var $togone = $('#togone');
 	var $wrapStatus = $('.wrap-status>div');
-	$globalLoading.close();
+	//请求数据
+	$.ajax({
+		type: 'POST',
+		url: '/wxApi/order/1',
+		dataType: 'json',
+		success: function(data){
+			console.log(data);
+		},
+		error: function(xhr, type){
+			alert('Ajax error!')
+		}
+	})
+
+
+
+
+
+
 	//获取url的hash值
 	function getHash() {
 		return location.hash.substring(1);

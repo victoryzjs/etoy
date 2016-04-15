@@ -110,5 +110,5 @@ $(function() {
 	  var day = myDate.getDate();
 	  return year + '-' + month + '-' + day;
 	}
-	console.log(userDate(1460390400000));
+	console.log(userDate(1460304000));
 });

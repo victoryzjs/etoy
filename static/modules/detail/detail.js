@@ -61,11 +61,16 @@ $(function() {
 		$loading.open();
 		$.ajax({
 			type: 'POST',
-			url: '/wxApi/shoppingCart/add/:' + search.id,
+			url: '/wxApi/shoppingCart/add/' + search.id,
 			contentType: 'application/json',
 			success: function(data){
 				$loading.close();
-				prompt.init(data.msg);
+				if(data.msg) {
+					prompt.init(data.msg);
+				}else {
+					prompt.init('已经添加该商品！');
+				}
+
 			},
 			error: function(xhr, type){
 				$globalLoading.close();

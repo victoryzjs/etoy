@@ -133,6 +133,7 @@
 			提交订单
 		</div> -->
 	</section>
+	<link rel="import" href="../static/common/html/loading.html?__inline">
 	<!-- start cart list-->
 	<script id="init-tpl" type="text/html">
 		<div class="pl12 bg-white about-info1">
@@ -172,8 +173,8 @@
 						<select class="ring">
 							<option value="">请选择范围</option>
 							<option value="4环内" <%= (initData.address.ring == '4环内')?'selected':'' %>>4环内</option>
-							<option value="4环到5环之间" <%= (initData.address.ring == '4环到5环之间')?'selected':'' %>>4环到5环之间</option>
-							<option value="5环到6环之间" <%= (initData.address.ring == '5环到6环之间')?'selected':'' %>>5环到6环之间</option>
+							<option value="4到5环之间" <%= (initData.address.ring == '4到5环之间')?'selected':'' %>>4到5环之间</option>
+							<option value="5到6环之间" <%= (initData.address.ring == '5到6环之间')?'selected':'' %>>5到6环之间</option>
 							<option value="六环外" <%= (initData.address.ring == '六环外')?'selected':'' %>>六环外</option>
 						</select>
 						<i class="pa"></i>
@@ -230,10 +231,9 @@
 
 		<div class="cost mt7 plr12 bg-white">
 			<ul>
-				<li class="clearfix"><span class="fl">租金</span><span class="fr rent-price">-￥<span>400.00</span></span></li>
-				<li class="clearfix freight"><span class="fl">运费</span><span class="fr pr freight-span">-￥<span>20.00</span><i>订单不满150另收20元运费</i></span></li>
-				<li class="clearfix"><span class="fl">优惠</span><span class="fr discount">+￥<span>0.00</span></span></li>
-				<li class="clearfix"><span class="fl">押金</span><span class="fr bond">-￥<span>1000.00</span></span></li>
+				<li class="clearfix"><span class="fl">租金</span><span class="fr rent-price">+￥<span>400.00</span></span></li>
+				<li class="clearfix freight"><span class="fl">运费</span><span class="fr pr freight-span">+￥<span>20.00</span><i>订单不满150另收20元运费</i></span></li>
+				<li class="clearfix"><span class="fl">优惠</span><span class="fr discount">-￥<span>0.00</span></span></li>
 			</ul>
 		</div>
 		<div class="all-money clearfix plr12 bg-white">

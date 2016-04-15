@@ -9,4 +9,18 @@ $(function() {
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	$globalLoading.close();
+	//ajax请求数据
+	$.ajax({
+		type: 'GET',
+		url: '/wxApi/order/defaultInfo',
+		contentType: 'application/json',
+		success: function(data){
+			console.log(data);	
+		},
+		error: function(xhr, type){
+			alert('Ajax error!')
+		}
+	});
 });
+
+
