@@ -11,7 +11,7 @@ $(function() {
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	$globalLoading.close();
-	var prompt = require('../ui/prompt/prompt.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	var bt=baidu.template;
 	var flag = false;
 	//fastclick初始化
@@ -157,14 +157,14 @@ $(function() {
 		if(recipient.length != 0) {
 			postData.recipient = recipient;
 		}else {
-			prompt.init('请填写姓名！');
+			$prompt.init('请填写姓名！');
 			return false;
 		}
 		if(phone.length == 0){
-			prompt.init('请填写手机号！');
+			$prompt.init('请填写手机号！');
 			return false;
 		}else if(!isTelOrMobile(phone)) {
-			prompt.init('手机号不正确！');
+			$prompt.init('手机号不正确！');
 			return false;
 		}else {
 			postData.phone = phone;
@@ -172,41 +172,41 @@ $(function() {
 		if(district.length != 0) {
 			postData.district = district;
 		}else {
-			prompt.init('请选择地区！');
+			$prompt.init('请选择地区！');
 			return false;
 		}
 		if(ring.length != 0) {
 			postData.ring = ring;
 		}else {
-			prompt.init('请选择范围！');
+			$prompt.init('请选择范围！');
 			return false;
 		}
 		if(address.length != 0) {
 			postData.address = address;
 		}else {
-			prompt.init('请填写详细地址！');
+			$prompt.init('请填写详细地址！');
 			return false;
 		}
 		if(rentWeeks.length != 0) {
 			postData.rentWeeks = rentWeeks;
 		}else {
-			prompt.init('请选择租赁周数');
+			$prompt.init('请选择租赁周数');
 			return false;
 		}
 		if(deliveryDay.length != 0) {
 			postData.deliveryDay = get_unix_time(deliveryDay);
 		}else {
-			prompt.init('请选择配送时间');
+			$prompt.init('请选择配送时间');
 			return false;
 		}
 		if(mark.length != 0) {
 			postData.mark = mark;
 		}else {
-			prompt.init('请填写留言');
+			$prompt.init('请填写留言');
 			return false;
 		}
 		if(!flag) {
-			prompt.init('请同意租赁协议');
+			$prompt.init('请同意租赁协议');
 			return false;
 		}
 		postData.cartIds = getQueryStringArgs();

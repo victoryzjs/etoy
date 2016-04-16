@@ -7,27 +7,52 @@
 $(function() {
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
+	var $loading = require('../ui/loading/loading.js');
 	var data = {};
+	$loading.init();
 	$globalLoading.close();
-	$.ajax({
-		type: 'GET',
-		url: '/wxApi/bill/card/1',
-		contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-		dataType: 'json',
-		success: function(data){
-			if(data.code != 200) {
-				alert('请求失败！');
-			}else {
-				data = data.data;
-				open(data);
-			}
-		},
-		error: function(xhr, type){
-			alert('Ajax error!');
-		}
-	})
+	var $choice1 = $('.choice1');
+	var $choice2 = $('.choice2');
+	var $choice3 = $('.choice3');
+	$('.choice1').on('click', function() {
+		$loading.open();
+		getData(1);
+	});
+	$('.choice2').on('click', function() {
+		$loading.open();
+		getData(2);
+	});
+	$('.choice3').on('click', function() {
+		$loading.open();
+		getData(3);
+	});
 
-	function open(data) {
+
+	function getData(id) {
+		$.ajax({
+			type: 'GET',
+			url: '/wxApi/bill/card/' + id,
+			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+			dataType: 'json',
+			success: function(data){
+				$loading.close();
+				if(data.code != 200) {
+					alert('请求失败！');
+				}else {
+					data = data.data;
+					open(data);
+				}
+			},
+			error: function(xhr, type){
+				$loading.close();
+				alert('Ajax error!');
+			}
+		})		
+	}
+
+
+
+	function open() {
 			function onBridgeReady(){
 			   WeixinJSBridge.invoke(
 			       'getBrandWCPayRequest', {

@@ -15,7 +15,7 @@ $(function() {
 	var wrapCartId = [];
 	var allPrice = 0;
 	var bt=baidu.template;
-	var prompt = require('../ui/prompt/prompt.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	var deleteFlag = false;
 
 
@@ -83,9 +83,9 @@ $(function() {
 			success: function(data){
 				if(data.code = 200) {
 					deleteFlag = true;
-					prompt.init('删除成功！');
+					$prompt.init('删除成功！');
 				}else {
-					prompt.init('删除失败！');
+					$prompt.init('删除失败！');
 				}
 				
 
