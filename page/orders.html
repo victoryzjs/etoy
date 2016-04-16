@@ -23,102 +23,14 @@
 			</div>
 		</nav>
 	</section>
-	<section class="bg-white mt7">
-		<div class="is-show" id="tobepaid">
-			<div class="order-one-header clearfix plr12">
-				<span class="order-one-status fr">待支付</span>
-				<span class="order-one-number">订单编号：NA123456789</span>
-			</div>
-			<div class="order-one-detail ptb10 clearfix plr12">
-				<a href="#">
-					<div class="order-one-pic fl">
-						<img src="../static/img/goods_1.png" alt="">
-					</div>
-					<div class="order-one-cont">
-						<p>超级玩具多功能套餐一超级玩具多超级玩具多功能套餐一超级玩具多</p>
-						<p class="pr">下单时间：2016.3.28</p>
-						<p>￥10.00/周</p>
-					</div>
-				</a>
-			</div>
-			<div class="order-one-other plr12 clearfix">
-				<span class="fl">共1件商品</span>
-				<span class="fl">租赁时间10周</span>
-				<span class="fl">总计 100.00</span>
-			</div>
-			<div class="clearfix order-btn plr12">
-				<a href="#" class="fr">付款</a>
-				<a href="#" class="fr">取消</a>
-			</div>			
+	<section class="mt7">
+		<div class="is-show" id="tobepaid">		
 		</div>
 		<div class="is-show" id="tobegetgoods">
-			<div class="order-one-header clearfix plr12">
-				<span class="order-one-status fr">待收货</span>
-				<span class="order-one-number">订单编号：NA123456789</span>
-			</div>
-			<div class="order-one-detail ptb10 clearfix plr12">
-				<a href="#">
-					<div class="order-one-pic fl">
-						<img src="../static/img/goods_1.png" alt="">
-					</div>
-					<div class="order-one-cont">
-						<p>超级玩具多功能套餐一超级玩具多超级玩具多功能套餐一超级玩具多</p>
-						<p class="pr">下单时间：2016.3.28</p>
-						<p>￥10.00/周</p>
-					</div>
-				</a>
-			</div>
-			<div class="order-one-other plr12 clearfix">
-				<span class="fl">共1件商品</span>
-				<span class="fl">租赁时间10周</span>
-				<span class="fl">总计 100.00</span>
-			</div>
 		</div>
 		<div class="is-show" id="tosigned">
-			<div class="order-one-header clearfix plr12">
-				<span class="order-one-status fr">已签收</span>
-				<span class="order-one-number">订单编号：NA123456789</span>
-			</div>
-			<div class="order-one-detail ptb10 clearfix plr12">
-				<a href="#">
-					<div class="order-one-pic fl">
-						<img src="../static/img/goods_1.png" alt="">
-					</div>
-					<div class="order-one-cont">
-						<p>超级玩具多功能套餐一超级玩具多超级玩具多功能套餐一超级玩具多</p>
-						<p class="pr">下单时间：2016.3.28</p>
-						<p>￥10.00/周</p>
-					</div>
-				</a>
-			</div>
-			<div class="order-one-other plr12 clearfix">
-				<span class="fl">共1件商品</span>
-				<span class="fl">租赁时间10周</span>
-				<span class="fl">总计 100.00</span>
-			</div>
 		</div>
 		<div class="is-show" id="togone">
-			<div class="order-one-header clearfix plr12">
-				<span class="order-one-status fr">已完成</span>
-				<span class="order-one-number">订单编号：NA123456789</span>
-			</div>
-			<div class="order-one-detail ptb10 clearfix plr12">
-				<a href="#">
-					<div class="order-one-pic fl">
-						<img src="../static/img/goods_1.png" alt="">
-					</div>
-					<div class="order-one-cont">
-						<p>超级玩具多功能套餐一超级玩具多超级玩具多功能套餐一超级玩具多</p>
-						<p class="pr">下单时间：2016.3.28</p>
-						<p>￥10.00/周</p>
-					</div>
-				</a>
-			</div>
-			<div class="order-one-other plr12 clearfix">
-				<span class="fl">共1件商品</span>
-				<span class="fl">租赁时间10周</span>
-				<span class="fl">总计 100.00</span>
-			</div>
 		</div>
 
 	</section>
@@ -158,6 +70,80 @@
 		</div>
 	</nav>
 	<link rel="import" href="../static/common/html/loading.html?__inline">
+	<!-- start 待支付tpl-->
+	<script id="tobepaid-tpl" type="text/html">
+		<% for(var i=0,len=initData.length; i<len; i++){ %>
+			<div class="wrap-all-one bg-white">
+				<div class="order-one-header clearfix plr12">
+					<span class="order-one-status fr">待支付</span>
+					<span class="order-one-number">订单编号：<%= initData[i].orderNum ? initData[i].orderNum : '' %></span>
+				</div>
+				<div class="order-one-detail clearfix plr12">
+					<a href="detail_order.html#<%= initData[i].orderNum ? initData[i].orderNum : '' %>">
+						<% for(var j=0,leng=(initData[i].goods?initData[i].goods.length:0); j<leng; j++){ %>
+							<div class="wrap-one">
+								<div class="order-one-pic fl">
+									<img src="<%= initData[i].goods[j].thumb %>" alt="">
+								</div>
+								<div class="order-one-cont">
+									<p><%= initData[i].goods[j].title %></p>
+									<p class="pr">下单时间：<%= initData[i].createdAt.substr(0,9) %></p>
+									<p>￥<%= initData[i].goods[j].rentPrice %>/周</p>
+								</div>
+							</div>
+
+						<% } %>
+
+					</a>
+				</div>
+				<div class="order-one-other plr12 clearfix">
+					<span class="fl">共<%= initData[i].goods?initData[i].goods.length:0 %>件商品</span>
+					<span class="fl">租赁时间<%= initData[i].rentWeeks %>周</span>
+					<span class="fl">总计 <%= initData[i].totalPrice %></span>
+				</div>
+				<div class="clearfix order-btn plr12">
+					<a href="pay.html#<%= initData[i].id %>" class="fr">付款</a>
+					<a href="#" class="fr delete-order">取消</a>
+				</div>
+			</div>
+		<% } %>
+	</script>
+	<!-- end -->
+	<!-- start 待支付tpl-->
+	<script id="left-tpl" type="text/html">
+		<% for(var i=0,len=initData.length; i<len; i++){ %>
+			<div class="wrap-all-one bg-white">
+				<div class="order-one-header clearfix plr12">
+					<span class="order-one-status fr"><%= initData[i].state=='s1' ? '待支付' : (initData[i].state=='s2' ? '待收货' : (initData[i].state=='s3' ? '已签收' : '已完成' ) ) %></span>
+					<span class="order-one-number">订单编号：<%= initData[i].orderNum ? initData[i].orderNum : '' %></span>
+				</div>
+				<div class="order-one-detail clearfix plr12">
+					<a href="detail_order.html#<%= initData[i].orderNum ? initData[i].orderNum : '' %>">
+						<% for(var j=0,leng=(initData[i].goods?initData[i].goods.length:0); j<leng; j++){ %>
+							<div class="wrap-one">
+								<div class="order-one-pic fl">
+									<img src="<%= initData[i].goods[j].thumb %>" alt="">
+								</div>
+								<div class="order-one-cont">
+									<p><%= initData[i].goods[j].title %></p>
+									<p class="pr">下单时间：<%= initData[i].createdAt.substr(0,9) %></p>
+									<p>￥<%= initData[i].goods[j].rentPrice %>/周</p>
+								</div>
+							</div>
+
+						<% } %>
+
+					</a>
+				</div>
+				<div class="order-one-other plr12 clearfix">
+					<span class="fl">共<%= initData[i].goods?initData[i].goods.length:0 %>件商品</span>
+					<span class="fl">租赁时间<%= initData[i].rentWeeks %>周</span>
+					<span class="fl">总计 <%= initData[i].totalPrice %></span>
+				</div>
+			</div>
+		<% } %>
+	</script>
+	<!-- end -->
 </body>
 <script>
 	require('../static/modules/orders/orders.js');

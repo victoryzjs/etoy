@@ -77,7 +77,7 @@ $(function() {
 	function deleteData(id, flag) {
 		$.ajax({
 			type: 'POST',
-			url: '/wxApi/shoppingCart/remove/:'+id,
+			url: '/wxApi/shoppingCart/remove/'+id,
 			contentType: 'application/json',
 			dataType: 'json',
 			success: function(data){

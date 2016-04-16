@@ -65,12 +65,7 @@ $(function() {
 			contentType: 'application/json',
 			success: function(data){
 				$loading.close();
-				if(data.msg) {
-					prompt.init(data.msg);
-				}else {
-					prompt.init('已经添加该商品！');
-				}
-
+				prompt.init('添加该商品成功！');
 			},
 			error: function(xhr, type){
 				$globalLoading.close();

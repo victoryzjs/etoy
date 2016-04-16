@@ -16,24 +16,6 @@
 	<section class="detail-slide">
 		<div class="swiper-container">
 			<div class="swiper-wrapper" id="wrap-banner">
-<!-- 				<div class="swiper-slide">
-	<a href="#" class="clearfix">
-		<img data-src="../static/img/slide.png" class="swiper-lazy fl">
-		<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-	</a>
-</div>
-<div class="swiper-slide">
-	<a href="#" class="clearfix">
-		<img data-src="../static/img/slide.png" class="swiper-lazy fl">
-		<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-	</a>
-</div>
-<div class="swiper-slide">
-	<a href="#" class="clearfix">
-		<img data-src="../static/img/slide.png" class="swiper-lazy fl">
-		<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-	</a>
-</div> -->
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
@@ -226,7 +208,7 @@
 	<script id="banner-tpl" type="text/html">
 		<% for(var i=0,len=banner.length; i<len; i++) { %>
 			<div class="swiper-slide">
-				<a href="#" class="clearfix">
+				<a href="<%= banner[i].linkUrl %>" class="clearfix">
 					<img data-src="<%= banner[i].imgPath %>" class="swiper-lazy fl">
 					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 				</a>

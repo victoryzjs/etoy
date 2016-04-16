@@ -80,6 +80,7 @@ $(function() {
 	function handingData(data) {
 		if(data.code != 200){
 			alert("没接收到数据！");
+			return;
 		}
 		var listData = {
 			initData: data.data
@@ -91,6 +92,8 @@ $(function() {
 		$('.lease-week input').mdater({ 
 	    	minDate : new Date(2015, 10, 1)
 		});
+		console.log($('.lease-week input'));
+		console.log($('.lease-week input').mdater);
 		//订单提交
 		$('.submit-order').on('click', function() {
 			var res = getData();
@@ -105,7 +108,7 @@ $(function() {
 						data: JSON.stringify(res),
 						success: function(data){
 							console.log();
-							window.location.href = 'pay.html?'+JSON.parse(data).data.orderId;		
+							window.location.href = 'pay.html#'+JSON.parse(data).data.orderId;		
 						},
 						error: function(xhr, type){
 							alert('Ajax error!')

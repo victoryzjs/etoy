@@ -62,10 +62,9 @@ $(function() {
 		})
 	}
 	function getConditionList(condition) {
-		var condition = condition ? '&'+condition : '';
 		$.ajax({
 			type: 'GET',
-			url: '/good/find?'+condition,
+			url: '/good/find?where='+condition,
 			contentType: 'application/json',
 			success: function(data){
 				$('.result-null').hide();
@@ -128,8 +127,8 @@ $(function() {
 
 	//测试数据
 	var condition = {
-		'age': ['0-6个月（趟着玩）', '6-9个月（爬着学）', '9-18个月（学走路）', '18-36个月（发展兴趣）', '3岁以上（综合锻炼）'],
-		'brand': ['Anpanman面包超人', 'Bright starts美国', 'Btoys美国', 'Chicco智高', 'Evenflo美国', 'Fisher Price费雪', 'Grow up高思维', 'Haba国德', 'Kiddieland童梦圆', 'Leap frog美国跳蛙', 'Lego乐高', 'Little tike小泰克', 'Playkool孩之宝', 'Pororo韩国', 'Radio美国', 'Rastar星辉', 'Simba国德仙霸', 'Step2美国晋阶', 'Toyroyal日本皇室', 'V-tech伟易达', 'Weplay台湾', 'Gonge丹麦', 'Baghera法国', '其他'],
+		'age': ['0-6个月（趟着玩）', '6-9个月（学坐爬）', '9-18个月（学走路）', '18-36个月（兴趣发展）', '3岁以上（综合锻炼）'],
+		'brand': ['Anpanman面包超人', 'Bright starts美国', 'Btoys美国', 'Chicco智高', 'Evenflo美国', 'Fisher Price费雪', 'Grow up高思维', 'Haba国德', 'Kiddieland童梦圆', 'Leap frog美国跳蛙', 'Lego乐高', 'Little tike小泰克', 'Playskool孩之宝', 'Pororo韩国', 'Radio flyer美国', 'Rastar星辉', 'Simba德国仙霸', 'Step2美国晋阶', 'Toyroyal日本皇室', 'V-tech伟易达', 'Weplay台湾', 'Gonge丹麦', 'Baghera法国', '其他'],
 		'func': {
 			'fun0': '健身架',
 			'fun1': '摇摇椅',
@@ -152,7 +151,6 @@ $(function() {
 	var funcCondition = {};
 	funcCondition = deepClone(condition.func);
 	condition.func = toArr(condition.func);
-
 	var infoBag = {
 		'brand': [],
 		'age': [],
@@ -287,20 +285,21 @@ $(function() {
 	$('.confirm').eq(0).on('click', function() {
 		$('#wrap-list-tpl').html(' ');	
 		$wrapScreen.hide();
+		console.log(infoBag);
 		var data = toPost(infoBag, funcCondition);
+		console.log(data);
 		skip = 0;
 		data.skip = skip;
 		listData.list = [];
+		var arguments = encodeURI(JSON.stringify(data));
 		$loading.open()
 		$dropload.stop();
-		console.log(decodeURI($.param(data)));
-		console.log(JSON.stringify(data));
 		$('.switch-option-one').removeClass('active');
 		$dropload = new DropLoad(function() {
-			getConditionList($.param(data));
+			getConditionList(arguments);
 		});
-		getConditionList($.param(data));
-		
+		getConditionList(arguments);
+		console.log(arguments);
 	});
 
 	//将func处理成数组
@@ -352,13 +351,10 @@ $(function() {
 			toBeJson.brand = obj1.brand[0];
 		}
 		if(obj1.func.length != 0) {
-			toBeJson = {
-				fun: {}
-			};
 			for(var i=0,len=obj1.func.length; i<len; i++) {
 				for(var attr in obj2){
 					if(obj1.func[i] == obj2[attr]){
-						toBeJson['fun'][attr] = true;
+						toBeJson['fun.'+attr] = true;
 					}
 				}
 			}

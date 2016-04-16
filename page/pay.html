@@ -13,35 +13,29 @@
 </head>
 <body>
 	<!-- 当余额不足的时候添加active类 -->
-	<section class="order-detail plr12 bg-white active">
+	<section class="order-detail plr12 bg-white">
 		<div>订单编号：1324567894</div>
-		<div>￥1400.00</div>
+		<div>￥<span>0</span></div>
 	</section>
 
 	<!-- start 余额不足 -->
 	<section class="chuxuka pl12 bg-white">
 		<h1>请选择您要购买的储值卡</h1>
 		<div class="number-choice clearfix">
-			<label class="fl number-choice-wrap inline-block active">
-				<div class="clearfix">
-					<span class="fl"></span>
-					<span class="fl">无</span>
-				</div>
-			</label>
-			<label class="fl number-choice-wrap inline-block">
+			<label class="fl number-choice-wrap inline-block active" data-num="500">
 				<div class="clearfix">
 					<span class="fl"></span>
 					<span class="fl">500</span>
 				</div>
 			</label>
-			<label class="fl number-choice-wrap inline-block">
+			<label class="fl number-choice-wrap inline-block" data-num="1000">
 				<div class="clearfix">
 					<span class="fl"></span>
 					<span class="fl">1000</span>
 				</div>
 				<div>送100元</div>
 			</label>
-			<label class="fl number-choice-wrap inline-block">
+			<label class="fl number-choice-wrap inline-block" data-num="2000">
 				<div class="clearfix">
 					<span class="fl"></span>
 					<span class="fl">2000</span>
@@ -51,31 +45,31 @@
 		</div>
 		<div class="now-balance two-column clearfix">
 			<span class="fl">当前余额</span>
-			<span class="fl">￥0.00</span>
+			<span class="fl">￥<span class="money">0.00</span></span>
 		</div>
 		<div class="detailed-list">
 			<ul class="detailed-list-ul">
 				<li class="clearfix  two-column-li">
 					<span class="fl">购买租赁卡</span>
-					<span class="fl">￥1000.00</span>
+					<span class="fl">￥<span class="money">500</span></span>
 				</li>
 				<li class="clearfix  two-column-li">
 					<span class="fl">租赁卡余额扣除(支付订单)</span>
-					<span class="fl">-￥400.00</span>
+					<span class="fl">-￥<span class="money">0.00</span></span>
 				</li>
 				<li class="clearfix  two-column-li">
 					<span class="fl">购买后结余</span>
-					<span class="fl">￥700.00</span>
+					<span class="fl">￥<span class="money">0.00</span></span>
 				</li>
 			</ul>
 		</div>
 		<div class="deposit two-column clearfix">
 			<span class="fl">押金</span>
-			<span class="fl">￥1000.00</span>
+			<span class="fl">￥<span class="money">0</span></span>
 		</div>
 		<div class="total-page two-column clearfix">
 			<span class="fl">计费总计</span>
-			<span class="fl">￥2000.00</span>
+			<span class="fl">￥<span class="money">0.00</span></span>
 		</div>
 	</section>
 	<!-- end -->
@@ -83,8 +77,8 @@
 	<section class="pay-method bg-white">
 		<h1 class="pl12">请选择您的支付方式</h1>
 		<div class="pay-method-choice pl12">
-			<a href="#">
-				<div class="weixin-pay clearfix">
+			<a href="#" class="weixin-pay">
+				<div class="clearfix">
 					<div class="pay-icon pay-weixin-icon fl"></div>
 					<div class="pay-cont clearfix">
 						<span class="fl">微信支付</span>
@@ -92,12 +86,12 @@
 					</div>
 				</div>				
 			</a>
-			<a href="#">
-				<div class="card-pay clearfix">
+			<a href="#" class="card-pay">
+				<div class="clearfix">
 					<div class="pay-icon pay-card-icon fl"></div>
 					<div class="pay-cont clearfix">
 						<span class="fl">储蓄卡支付</span>
-						<span class="right-icon balance fr pr">余额：￥2000.00&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						<span class="right-icon balance fr pr">余额：￥<span>0.00</span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 					</div>
 				</div>				
 			</a>
