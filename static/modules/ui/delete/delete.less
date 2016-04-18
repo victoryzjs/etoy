@@ -1,0 +1,47 @@
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.dialog {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  z-index: 1000;
+  margin-left: -100px;
+  width: 200px;
+  height: 90px;
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #eee;
+  color: #595757;
+  box-sizing: border-box;
+  div:nth-of-type(1) {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+  }
+  span {
+    height: 38px;
+    font-size: 12px;
+    line-height: 38px;
+    text-align: center;
+  }
+  span:nth-of-type(1) {
+    width: 40%;
+
+  }
+  span:nth-of-type(2) {
+    width: 60%;
+    background-color: #FF6B43;
+    color: #fff;
+
+  }
+}
