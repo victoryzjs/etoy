@@ -16,52 +16,6 @@ $(function() {
 	var flag = false;
 	//fastclick初始化
 	FastClick.attach(document.body);
-	//测试数据
-	// var testData = {
-	// 	"code": 200,
-	// 	"data": {
-	// 		"goods": [
-	// 				{
-	// 					"good": {
-	// 						"title": "f",
-	// 						"rentPrice": 32,
-	// 						"leftNum": 2,
-	// 						"id": "570a639a2a3178482c5251a9",
-	// 						"thumb": "/img/570a63942a3178482c5251a8"
-	// 					},
-	// 					"createdAt": "2016-04-10T14:56:51.563Z",
-	// 					"id": "570a69b3c31d56004d08dfd9"
-	// 				},
-	// 				{
-	// 					"good": {
-	// 						"title": "这是小飞机小飞机",
-	// 						"rentPrice": 15,
-	// 						"leftNum": 3,
-	// 						"id": "570ae7cc7485edd82d76e2ca",
-	// 						"thumb": "/img/570a63942a3178482c5251a8"
-	// 					},
-	// 					"createdAt": "2016-04-11T06:30:00.079Z",
-	// 					"id": "570b44681df8973e5851f006"
-	// 				}
-	// 			],
-	// 		"address": {
-	// 			"recipient": "接收人",
-	// 			"phone": "15245013200",
-	// 			"city": "北京",
-	// 			"district": "西城区",
-	// 			"ring": "5环到6环之间",
-	// 			"address": "这是详细地址呀这是详细地址呀"
-	// 		},
-	// 		"deliveryDays": [
-	// 				1460390400000,
-	// 				1460476800000,
-	// 				1460563200000,
-	// 				1460649600000
-	// 			]
-	// 		}
-	// 	}
-	//ajax请求默认信息
-	//JSON.stringify({cartIds:getQueryStringArgs()})
 	$.ajax({
 		type: 'POST',
 		url: '/wxApi/order/defaultInfo',
@@ -240,8 +194,4 @@ $(function() {
 	    var time_str = date.getTime().toString();
 	    return time_str.substr(0, 10);
 	}
-	
-
-
-
 });

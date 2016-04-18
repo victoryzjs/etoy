@@ -73,15 +73,15 @@
 	<!-- start 待支付tpl-->
 	<script id="tobepaid-tpl" type="text/html">
 		<% for(var i=0,len=initData.length; i<len; i++){ %>
-			<div class="wrap-all-one bg-white">
+			<div class="wrap-all-one bg-white" data-order="<%= initData[i].id %>" data-state="<%= initData[i].state %>">
 				<div class="order-one-header clearfix plr12">
 					<span class="order-one-status fr">待支付</span>
 					<span class="order-one-number">订单编号：<%= initData[i].orderNum ? initData[i].orderNum : '' %></span>
 				</div>
 				<div class="order-one-detail clearfix plr12">
-					<a href="detail_order.html#<%= initData[i].orderNum ? initData[i].orderNum : '' %>">
+					<a href="javascript:void(0)">
 						<% for(var j=0,leng=(initData[i].goods?initData[i].goods.length:0); j<leng; j++){ %>
-							<div class="wrap-one">
+							<div class="wrap-one" data-id="<%= initData[i].goods[j] ? initData[i].goods[j].id : '' %>">
 								<div class="order-one-pic fl">
 									<img src="<%= initData[i].goods[j].thumb %>" alt="">
 								</div>
@@ -112,15 +112,15 @@
 	<!-- start 待支付tpl-->
 	<script id="left-tpl" type="text/html">
 		<% for(var i=0,len=initData.length; i<len; i++){ %>
-			<div class="wrap-all-one bg-white">
+			<div class="wrap-all-one bg-white" data-order="<%= initData[i].id %>" data-state="<%= initData[i].state %>">
 				<div class="order-one-header clearfix plr12">
 					<span class="order-one-status fr"><%= initData[i].state=='s1' ? '待支付' : (initData[i].state=='s2' ? '待收货' : (initData[i].state=='s3' ? '已签收' : '已完成' ) ) %></span>
 					<span class="order-one-number">订单编号：<%= initData[i].orderNum ? initData[i].orderNum : '' %></span>
 				</div>
 				<div class="order-one-detail clearfix plr12">
-					<a href="detail_order.html#<%= initData[i].orderNum ? initData[i].orderNum : '' %>">
+					<a href="javascript:void(0)">
 						<% for(var j=0,leng=(initData[i].goods?initData[i].goods.length:0); j<leng; j++){ %>
-							<div class="wrap-one">
+							<div class="wrap-one" data-id="<%= initData[i].goods[j] ? initData[i].goods[j].id : '' %>">
 								<div class="order-one-pic fl">
 									<img src="<%= initData[i].goods[j].thumb %>" alt="">
 								</div>

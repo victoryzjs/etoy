@@ -17,47 +17,6 @@ $(function() {
 	var bt=baidu.template;
 	var $prompt = require('../ui/prompt/prompt.js');
 	var deleteFlag = false;
-
-
-	//测试数据
-	// var testData = {
-	// 	"code": 200,
-	// 	"data": [
-	// 			{
-	// 				"good": {
-	// 					"title": "f",
-	// 					"rentPrice": 32,
-	// 					"leftNum": 2,
-	// 					"id": "570a639a2a3178482c5251a9",
-	// 					"thumb": "/img/570a63942a3178482c5251a8"
-	// 				},
-	// 				"createdAt": "2016-04-10T14:56:51.563Z",
-	// 				"id": "570a69b3c31d56004d08dfd9"
-	// 			},
-	// 			{
-	// 				"good": {
-	// 					"title": "f",
-	// 					"rentPrice": 32,
-	// 					"leftNum": 2,
-	// 					"id": "570a639a2a3178482c5251a9",
-	// 					"thumb": "/img/570a63942a3178482c5251a8"
-	// 				},
-	// 				"createdAt": "2016-04-10T14:56:51.563Z",
-	// 				"id": "570a69b3c31d56004d08dfd9"
-	// 			},
-	// 			{
-	// 				"good": {
-	// 					"title": "f",
-	// 					"rentPrice": 32,
-	// 					"leftNum": 2,
-	// 					"id": "570a639a2a3178482c5251a9",
-	// 					"thumb": "/img/570a63942a3178482c5251a8"
-	// 				},
-	// 				"createdAt": "2016-04-10T14:56:51.563Z",
-	// 				"id": "570a69b3c31d56004d08dfd9"
-	// 			}
-	// 		]
-	// 	}
 	//请求数据
 	$.ajax({
 		type: 'POST',
@@ -75,6 +34,7 @@ $(function() {
 	})
 	//删除数据
 	function deleteData(id, flag) {
+		
 		$.ajax({
 			type: 'POST',
 			url: '/wxApi/shoppingCart/remove/'+id,

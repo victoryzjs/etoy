@@ -9,8 +9,8 @@
 $(function() {
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
-	$globalLoading.close();
 	var $loading = require('../ui/loading/loading.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	var $tobepaid = $('#tobepaid');
 	var $tobegetgoods = $('#tobegetgoods');
 	var $tosigned = $('#tosigned');
@@ -21,8 +21,15 @@ $(function() {
 	var $tpl = 'tobepaid-tpl';
 	$loading.init();
 	var $initObj = window.location.hash ? window.location.hash : '#tobepaid';
-
-	$ajax(1, $($initObj), 'tobepaid-tpl');
+	if($initObj == '#tobepaid') {
+		$ajax(1, $($initObj), 'tobepaid-tpl');	
+	}else if($initObj == '#tobegetgoods') {
+		$ajax(2, $($initObj), 'left-tpl');	
+	}else if($initObj == '#tosigned') {
+		$ajax(3, $($initObj), 'left-tpl');	
+	}else if($initObj == '#togone') {
+		$ajax(4, $($initObj), 'left-tpl');	
+	}
 
 	function $ajax(arg, obj, tpl) {
 		$.ajax({
@@ -30,6 +37,7 @@ $(function() {
 			url: '/wxApi/order/'+arg,
 			dataType: 'json',
 			success: function(data){
+				$globalLoading.close();
 				if(data.code != 200) {
 					alert('没有接收到数据！');
 				}else {
@@ -49,13 +57,32 @@ $(function() {
 			initData: data.data
 		}
 		obj.html(bt(tpl, listData));
-		$('.delete-order').on('click', function() {
-			alert();
+		$('.wrap-all-one').on('click', function() {
+
+			console.log(this);
+			location.href="detail_order.html#"+encodeURI($(this).attr('data-order'));
+		});
+		$('.delete-order').on('click', function(e) {
+			e.stopPropagation();
+			var $parent = $(e.target).parents('.wrap-all-one');
+			$.ajax({
+				type: 'GET',
+				url: '/wxApi/order/cancel/'+encodeURI($(this).parents('.wrap-all-one').attr('data-order')),
+				dataType: 'json',
+				success: function(data){
+					if(data.code != 200) {
+						alert('没有接收到数据！');
+					}else {
+						$parent.remove();
+						$prompt.init(data.msg);
+					}
+				},
+				error: function(xhr, type){
+					alert('Ajax error!')
+				}
+			})
 		});
 	}
-	
-
-
 	//将时间戳转为日期
 	function getLocalTime(nS) {     
     	return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,9)
@@ -116,6 +143,4 @@ $(function() {
 			$togone.show();
 		}
 	});
-
-
 });

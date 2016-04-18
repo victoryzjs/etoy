@@ -91,9 +91,9 @@ $(function() {
 	}
 	//初次访问页面ajax请求数据
 	var $dropload = new DropLoad(function() {
-		getAllList();
+		getConditionList(getQueryStringArgs());
 	});
-	getAllList();
+	getConditionList(getQueryStringArgs());
 
 	function getData(id, item) {
 		item = item ? item : '';
@@ -369,5 +369,24 @@ $(function() {
 			o[k] = typeof obj[k] === Object ? deepClone(obj[k]) : obj[k];
 		return o;
 	}
-
+	//获取参数
+	function getQueryStringArgs() {
+		var qs = (location.hash.length > 0 ? location.hash.substring(1) : "");
+		if(qs == 'beLatest') {
+			return encodeURI(JSON.stringify({"beLatest":true}))
+		}else if(qs == 'beHot') {
+			return encodeURI(JSON.stringify({"beHot":true}))
+		}
+	}
+$.ajax({
+		type: 'GET',
+		url: '/good/find?where='+encodeURI(JSON.stringify({ "title": { "like": "%飞%" }})),
+		contentType: 'application/json',
+		success: function(data){
+			console.log(data);
+		},
+		error: function(xhr, type){
+			alert('Ajax error!')
+		}
+	})
 });
