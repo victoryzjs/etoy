@@ -4,6 +4,7 @@
  * @require ../../lib/zepto.js
  * @require ../../lib/baiduTemplate.js
  * @require ../../lib/fastclick.js
+ * @require ../../lib/alert/zepto.alert.js
  */
 
 $(function() {
@@ -65,22 +66,34 @@ $(function() {
 		$('.delete-order').on('click', function(e) {
 			e.stopPropagation();
 			var $parent = $(e.target).parents('.wrap-all-one');
-			$.ajax({
-				type: 'GET',
-				url: '/wxApi/order/cancel/'+encodeURI($(this).parents('.wrap-all-one').attr('data-order')),
-				dataType: 'json',
-				success: function(data){
-					if(data.code != 200) {
-						alert('没有接收到数据！');
-					}else {
-						$parent.remove();
-						$prompt.init(data.msg);
-					}
-				},
-				error: function(xhr, type){
-					alert('Ajax error!')
-				}
-			})
+			var $this = $(this);
+			$.dialog({
+				content : '是否确认删除？',
+				title: null,
+		        ok : function() {
+					$.ajax({
+						type: 'GET',
+						url: '/wxApi/order/cancel/'+encodeURI($this.parents('.wrap-all-one').attr('data-order')),
+						dataType: 'json',
+						success: function(data){
+							if(data.code != 200) {
+								alert('没有接收到数据！');
+							}else {
+								$parent.remove();
+								$prompt.init(data.msg);
+							}
+						},
+						error: function(xhr, type){
+							alert('Ajax error!')
+						}
+					})
+		            return true;
+		        },
+		        cancel : function() {
+		            return true;
+		        },
+		        lock : true
+			});
 		});
 	}
 	//将时间戳转为日期

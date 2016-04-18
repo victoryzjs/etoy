@@ -5,7 +5,7 @@
  * @require ../../lib/zepto.js
  * @require ../../lib/baiduTemplate.js
  * @require ../../lib/fastclick.js
- * @require ../../lib/mdater/zepto.mdater.js
+ * @require ../../lib/alert/zepto.alert.js
  */
 $(function() {
 	//全局加载loading
@@ -32,36 +32,53 @@ $(function() {
 		if(data.code != 200){
 			alert("没接收到数据！");
 		}
+		data.data.deliveryDay = userDate(data.data.deliveryDay)
 		var listData = {
 			initData: data.data
 		}
-		
 		$('.wrap-init-tpl').eq(0).html(bt('init-tpl', listData));
-		countMoney(data);
-
-	}
-	//计算金额
-	function countMoney(data) {
-		var count = 0;
-		var allCount = 0;
-		for(var i=0,len=data.data.goods.length; i<len; i++) {
-			count +=data.data.goods[i].good.rentPrice;
-			allCount += data.data.goods[i].good.rentPrice;
+		if(data.data.state == 's1') {
+			$('.state1').show();
+		}else {
+			$('.state2').show();
 		}
-		if(count < 150) {
-			$('.freight-span span').html(20);
-			allCount +=20;
-		}
-		$('.rent-price span').html(count);
-		$('.allCount span').html(allCount+1000);
-
+		$('.cancel-btn').on('click', function(e) {
+			console.log(111);
+			e.stopPropagation();
+			$.dialog({
+				content : '是否确认删除？',
+				title: null,
+		        ok : function() {
+					$.ajax({
+						type: 'GET',
+						url: '/wxApi/order/cancel/'+encodeURI(getQueryStringArgs()),
+						dataType: 'json',
+						success: function(data){
+							if(data.code != 200) {
+								alert('取消失败！');
+							}else {
+								location.reload();
+							}
+						},
+						error: function(xhr, type){
+							alert('Ajax error!')
+						}
+					})
+		            return true;
+		        },
+		        cancel : function() {
+		            return true;
+		        },
+		        lock : true
+			});
+		});
 	}
 	//将时间戳转为日期格式
 	function userDate(uData){
 	  var myDate = new Date(uData*1000);
 	  var year = myDate.getFullYear();
-	  var month = myDate.getMonth() + 1;
-	  var day = myDate.getDate();
+	  var month = (myDate.getMonth() + 1) > 9 ? (myDate.getMonth() + 1) : ('0'+(myDate.getMonth() + 1)) ;
+	  var day = myDate.getDate()>9 ? myDate.getDate() : ('0'+myDate.getDate());
 	  return year + '-' + month + '-' + day;
 	}
 	//获取cartId

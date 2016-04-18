@@ -6,6 +6,8 @@
  */
 
 $(function() {
+	//全局加载loading
+	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $hash = window.location.hash.substring(1);
 	var $orderDetail = $('.order-detail');
 	var $chuxuka = $('.chuxuka');
@@ -23,20 +25,13 @@ $(function() {
 	var argu = {};
 	argu.orderId = $hash;
 	argu.cartType = 1;
-	// {
-	//   "code": 200,
-	//   "data": {
-	//     "currentBalance": 679,
-	//     "currentDeposit": 0,
-	//     "orderPrice": 116400
-	//   }
-	// }
 	//请求数据
 	$.ajax({
 		type: 'GET',
 		url: '/wxApi/order/pay/'+$hash,
 		dataType: 'json',
 		success: function(data){
+			$globalLoading.close();
 			if(data.code != 200) {
 				alert('请求有误');
 			}else {
@@ -44,6 +39,7 @@ $(function() {
 			}
 		},
 		error: function(xhr, type){
+			$globalLoading.close();
 			alert('Ajax error!')
 		}
 	})

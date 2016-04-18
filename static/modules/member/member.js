@@ -55,17 +55,10 @@ $(function() {
 	function open() {
 			function onBridgeReady(){
 			   WeixinJSBridge.invoke(
-			       'getBrandWCPayRequest', {
-			           "appId" : data.appId,    
-			           "timeStamp": Math.floor(data.timeStamp/1000),  
-			           "nonceStr" : data.nonceStr,
-			           "package" : data.package,     
-			           "signType" : "MD5",
-			           "paySign" :data.paySign
-			       },
+			       'getBrandWCPayRequest', data,
 			       function(res){     
 			           if(res.err_msg == "get_brand_wcpay_request：ok" ) {
-			           		alert(111);
+			           		alert('error');
 			           }
 			       }
 			   ); 

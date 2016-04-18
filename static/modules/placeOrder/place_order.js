@@ -156,12 +156,7 @@ $(function() {
 			$prompt.init('请选择配送时间');
 			return false;
 		}
-		if(mark.length != 0) {
-			postData.mark = mark;
-		}else {
-			$prompt.init('请填写留言');
-			return false;
-		}
+		postData.mark = mark ? mark : '';
 		if(!flag) {
 			$prompt.init('请同意租赁协议');
 			return false;
