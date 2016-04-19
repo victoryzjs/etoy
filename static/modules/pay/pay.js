@@ -32,8 +32,8 @@ $(function() {
 		dataType: 'json',
 		success: function(data){
 			$globalLoading.close();
-			if(data.code != 200) {
-				alert('请求有误');
+			if(data.code == 234) {
+				location.href = data.directUrl;
 			}else {
 				handleData(data.data);
 			}
@@ -105,10 +105,10 @@ $(function() {
 		$.ajax({
 			type: 'POST',
 			url: '/wxApi/bill/payOrderByBalance',
-			data: JSON.stringify(argu),
+			data: "orderId="+argu.orderId,
 			success: function(data){
-				if(data.code != 200) {
-					alert('请求有误');
+				if(data.code == 234) {
+					location.href = data.directUrl;
 				}else {
 					window.location.href = 'pay_success.html';
 				}

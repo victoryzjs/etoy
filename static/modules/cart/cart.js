@@ -45,8 +45,8 @@ $(function() {
 				if(data.code = 200) {
 					deleteFlag = true;
 					$prompt.init('删除成功！');
-				}else {
-					$prompt.init('删除失败！');
+				}else if(data.code==234 ) {
+					location.href = data.directUrl;
 				}
 				
 

@@ -38,11 +38,8 @@ $(function() {
 				$('#wrap-banner').html(bt('banner-tpl', bannerData));
 				$('#wrap-goods-new').html(bt('new-tpl', latestGoodData));
 				$('#wrap-hot-goods').html(bt('hot-tpl', hotGoodData));			
-			}else {
-				$tip.init().open();
-				setTimeout(function() {
-					$tip.close();
-				}, 3000);
+			}else if(data.code==234 ) {
+				location.href = data.directUrl;
 			}
 
 		},

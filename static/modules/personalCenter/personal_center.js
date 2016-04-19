@@ -22,8 +22,8 @@ $(function() {
 				$('.person-phone').html(data.data.phone);
 				$('.center-my-balance p:first-child').html(data.data.balance);
 				$('.center-my-deposit p:first-child').html(data.data.deposit);
-			}else {
-				alert("获取数据失败！");
+			}else if(data.code == 234){
+				location.href = data.directUrl;
 			}
 		},
 		error: function(xhr, type){

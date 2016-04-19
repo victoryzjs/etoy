@@ -43,11 +43,8 @@ $(function() {
 				$('.goods-detail-switch-cont').eq(0).html(bt('good-parameter-cont-tpl', goodsData));
 
 				$('#wrap-banner').html(bt('banner-tpl', bannerData));		
-			}else {
-				$tip.init().open();
-				setTimeout(function() {
-					$tip.close();
-				}, 3000);
+			}else if(data.code==234 ) {
+				location.href = data.directUrl;
 			}
 
 		},

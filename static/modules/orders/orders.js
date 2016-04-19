@@ -39,8 +39,8 @@ $(function() {
 			dataType: 'json',
 			success: function(data){
 				$globalLoading.close();
-				if(data.code != 200) {
-					alert('没有接收到数据！');
+				if(data.code == 234) {
+					location.href = data.directUrl;
 				}else {
 					handleData(obj, tpl, data);
 				}

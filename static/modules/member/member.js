@@ -36,8 +36,8 @@ $(function() {
 			dataType: 'json',
 			success: function(data){
 				$loading.close();
-				if(data.code != 200) {
-					alert('请求失败！');
+				if(data.code == 234) {
+					location.href = data.directUrl;
 				}else {
 					data = data.data;
 					open(data);

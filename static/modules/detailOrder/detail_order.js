@@ -29,10 +29,11 @@ $(function() {
 	})
 
 	function handingData(data) {
-		if(data.code != 200){
-			alert("没接收到数据！");
+		if(data.code == 234 ) {
+			location.href = data.directUrl;
 		}
-		data.data.deliveryDay = userDate(data.data.deliveryDay)
+		data.data.deliveryDay = userDate(data.data.deliveryDay);
+		data.data.rentBackDay = userDate(data.data.rentBackDay);
 		var listData = {
 			initData: data.data
 		}
@@ -43,7 +44,6 @@ $(function() {
 			$('.state2').show();
 		}
 		$('.cancel-btn').on('click', function(e) {
-			console.log(111);
 			e.stopPropagation();
 			$.dialog({
 				content : '是否确认删除？',

@@ -23,7 +23,6 @@ $(function() {
 		dataType: 'json',
 		data: JSON.stringify({cartIds:getQueryStringArgs()}),
 		success: function(data){
-			console.log(data);
 			handingData(data);		
 		},
 		error: function(xhr, type){
@@ -32,9 +31,8 @@ $(function() {
 	})
 
 	function handingData(data) {
-		if(data.code != 200){
-			alert("没接收到数据！");
-			return;
+		if(data.code == 234){
+			location.href = data.directUrl;
 		}
 		var listData = {
 			initData: data.data

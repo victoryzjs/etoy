@@ -9,11 +9,13 @@
 
 $(function() {
 	$.ajax({
-		type: 'GET',
-		url: '/good/find?where='+encodeURI(JSON.stringify({ "title": { "like": "%飞%" }})),
+		type: 'POST',
+		url: '/good/find?where='+encodeURI(JSON.stringify({ "title": { "like": "%f%" }})),
 		contentType: 'application/json',
 		success: function(data){
-			alert(data.data[0]);
+			if(data.code == 234) {
+				location.href = data.directUrl;
+			}
 		},
 		error: function(xhr, type){
 			alert('Ajax error!')

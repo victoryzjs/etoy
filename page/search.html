@@ -48,6 +48,26 @@
 		</ul>
 	</section>
 	<!-- end -->
+	<!-- list start-->
+	<script id="list-tpl" type="text/html">
+		<%for(var i=0, len=list.length; i<len; i++) {%>
+			<li class="switch-goods-list-one plr12 clearfix">
+				<a href="detail.html?id=<%= list[i].id %>" class="inline-block">
+					<div class="fl switch-goods-list-one-left">
+						<img src="<%= list[i].thumb %>" alt="">
+					</div>
+					<div class="switch-goods-list-one-right pr">
+						<p><%= list[i].title %></p>
+						<p class="pa">销量：<%= list[i].rentNum %></p>
+						<p class="pa">￥<%= list[i].rentPrice %>/周</p>
+					</div>					
+				</a>
+			</li>
+		<% } %>
+	</script>
+	<!--end-->
+
+
 </body>
 <script>
 	require('../static/modules/search/search.js');

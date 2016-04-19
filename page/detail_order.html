@@ -18,9 +18,6 @@
 	<link rel="import" href="../static/common/html/loading.html?__inline">
 	<!-- start cart list-->
 	<script id="init-tpl" type="text/html">
-		<div class="detail-header">
-			<%= initData.state=='s1'?'立即支付吧':(initData.state=='s0'?'已经取消':'已经支付') %>
-		</div>
 		<div class="order-state clearfix bg-white plr12">
 			<span class="fl">订单状态</span>
 			<span class="fr"><%= initData.stateParse %></span>
@@ -76,13 +73,13 @@
 
 		<div class="lease-time pl12 mt7 bg-white">
 			<div class="rentTime">
-				租赁时间：<%= initData.createdAt.substring(0, 10) %>
+				租赁周数：<%= initData.rentWeeks %>
 			</div>	
 			<div class="deliveryTime">
 				配送时间：<%= initData.deliveryDay %>
 			</div>
 			<div class="getTime">
-				取货时间：
+				回收时间：<%= initData.rentBackDay %>
 			</div>
 		</div>
 
