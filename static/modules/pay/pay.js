@@ -44,21 +44,21 @@ $(function() {
 		}
 	})
 	function handleData(data) {
-		$orderDetail.find('span').html(data.orderPrice);
+		$orderDetail.find('span').html(data.orderPrice/100);
 		if(data.currentBalance >= data.orderPrice) {
 			$cardPay.addClass('active');
-			$('.balance span').html(data.currentBalance);
+			$('.balance span').html(data.currentBalance/100);
 			argu = {
 				"orderId" : $hash
 			};
 		}else {
-			money1 = data.currentBalance;
-			money3 = data.orderPrice;
+			money1 = data.currentBalance/100;
+			money3 = data.orderPrice/100;
 			$orderDetail.addClass('active');
 			$weixinPay.addClass('active');
 			$chuxuka.show();
-			$('.money').eq(0).html(data.currentBalance);
-			$('.money').eq(2).html(data.orderPrice);
+			$('.money').eq(0).html(data.currentBalance/100);
+			$('.money').eq(2).html(data.orderPrice/100);
 			if(data.currentDeposit == 0) {
 				$('.money').eq(4).html(1000);
 				money4 = 1000;
@@ -94,7 +94,7 @@ $(function() {
 	//动态计算购买后结余和计费总价
 	function calculate() {
 		$('.money').eq(3).html(money1 + money2 - money3);
-		$('.money').eq(5).html(money1 + money2 - money3 + money4);
+		$('.money').eq(5).html(money2  + money4);
 	}
 	//点击微信支付
 	$weixinPay.on('click', function() {

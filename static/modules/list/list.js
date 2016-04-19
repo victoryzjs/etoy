@@ -107,7 +107,7 @@ $(function() {
 			}
 			listData.list = [];
 			skip = 0;
-			$loading.open()
+			$loading.open();
 			$dropload.stop();
 			$('.switch-option-one').removeClass('active');
 			$(this).addClass('active');

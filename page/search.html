@@ -32,42 +32,30 @@
 	<!-- start 搜索到结果-->
 	<section class="search-result-have bg-white">
 		<ul>
-			<li class="cart-list-one clearfix plr12">
-				<a href="#">
-					<div class="cart-goods-pic fl">
-						<img src="../static/img/goods_1.png" alt="">
-					</div>
-					<div class="cart-goods-desc pr">
-						<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
-						<div class="cart-goods-price clearfix pa">
-							<span class="inline-block fl">￥10.00元/周</span>
-						</div>
-					</div>
-				</a>
-			</li>
+			
 		</ul>
 	</section>
 	<!-- end -->
 	<!-- list start-->
 	<script id="list-tpl" type="text/html">
 		<%for(var i=0, len=list.length; i<len; i++) {%>
-			<li class="switch-goods-list-one plr12 clearfix">
-				<a href="detail.html?id=<%= list[i].id %>" class="inline-block">
-					<div class="fl switch-goods-list-one-left">
+			<li class="cart-list-one clearfix plr12">
+				<a href="detail.html?id=<%= list[i].id %>">
+					<div class="cart-goods-pic fl">
 						<img src="<%= list[i].thumb %>" alt="">
 					</div>
-					<div class="switch-goods-list-one-right pr">
-						<p><%= list[i].title %></p>
-						<p class="pa">销量：<%= list[i].rentNum %></p>
-						<p class="pa">￥<%= list[i].rentPrice %>/周</p>
-					</div>					
+					<div class="cart-goods-desc pr">
+						<p class="cart-goods-name"><%= list[i].title %></p>
+						<div class="cart-goods-price clearfix pa">
+							<span class="inline-block fl">￥<%= list[i].rentPrice %>元/周</span>
+						</div>
+					</div>
 				</a>
 			</li>
 		<% } %>
 	</script>
 	<!--end-->
-
-
+	<link rel="import" href="../static/common/html/loading.html?__inline">
 </body>
 <script>
 	require('../static/modules/search/search.js');

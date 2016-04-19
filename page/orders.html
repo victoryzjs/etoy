@@ -111,7 +111,7 @@
 				<div class="order-one-other plr12 clearfix">
 					<span class="fl">共<%= initData[i].goods?initData[i].goods.length:0 %>件商品</span>
 					<span class="fl">租赁时间<%= initData[i].rentWeeks %>周</span>
-					<span class="fl">总计 <%= initData[i].totalPrice %></span>
+					<span class="fl">总计 <%= initData[i].totalPrice/100 %></span>
 				</div>
 				<div class="clearfix order-btn plr12">
 					<a href="pay.html#<%= initData[i].id %>" class="fr">付款</a>
@@ -150,7 +150,7 @@
 				<div class="order-one-other plr12 clearfix">
 					<span class="fl">共<%= initData[i].goods?initData[i].goods.length:0 %>件商品</span>
 					<span class="fl">租赁时间<%= initData[i].rentWeeks %>周</span>
-					<span class="fl">总计 <%= initData[i].totalPrice %></span>
+					<span class="fl">总计 <%= initData[i].totalPrice/100 %></span>
 				</div>
 			</div>
 		<% } %>

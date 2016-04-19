@@ -16,6 +16,7 @@
 	<section class="wrap-init-tpl">
 	</section>
 	<link rel="import" href="../static/common/html/loading.html?__inline">
+<!-- 					<li class="clearfix"><span class="fl">优惠</span><span class="fr discount">+￥0.00</span></li> -->
 	<!-- start cart list-->
 	<script id="init-tpl" type="text/html">
 		<div class="order-state clearfix bg-white plr12">
@@ -85,14 +86,13 @@
 
 		<div class="cost mt7 plr12 bg-white">
 			<ul>
-				<li class="clearfix"><span class="fl">租金</span><span class="fr rent-price">-￥<%= initData.rentPrice %></span></li>
-				<li class="clearfix freight"><span class="fl">运费</span><span class="fr pr freight-span">-￥<%= initData.fee %><i>订单不满150另收20元运费</i></span></li>
-				<li class="clearfix"><span class="fl">优惠</span><span class="fr discount">+￥0.00</span></li>
+				<li class="clearfix"><span class="fl">租金</span><span class="fr rent-price">￥<%= initData.rentPrice/100 %></span></li>
+				<li class="clearfix freight"><span class="fl">运费</span><span class="fr pr freight-span">￥<%= initData.fee/100 %><i>订单不满150另收20元运费</i></span></li>
 			</ul>
 		</div>
 		<div class="all-money clearfix plr12 bg-white">
 			<div class="fl agreen"></div>
-			<div class="fr allCount">总计：￥<span><%= initData.totalPrice %></span></div>
+			<div class="fr allCount">总计：￥<span><%= initData.totalPrice/100 %></span></div>
 		</div>
 		<div class="at-once-go bg-white clearfix">
 			<div class="state1">
