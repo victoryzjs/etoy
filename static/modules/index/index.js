@@ -18,7 +18,7 @@ $(function() {
 
 	//ajax请求数据
 	$.ajax({
-		type: 'POST',
+		type: 'GET',
 		url: '/wxApi/home',
 		contentType: 'application/json',
 		success: function(data){

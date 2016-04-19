@@ -52,7 +52,7 @@ $(function() {
 
 
 
-	function open() {
+	function open(data) {
 			function onBridgeReady(){
 			   WeixinJSBridge.invoke(
 			       'getBrandWCPayRequest', data,
