@@ -65,6 +65,9 @@ $(function() {
 			}
 		}
 		calculate();
+		$('.orderNum').html(data.orderNum);
+		localStorage.setItem('orderNum', data.orderNum);
+		localStorage.setItem('orderId', $hash);
 	}
 	//选择储蓄卡
 	$('.number-choice>label').on('click', function() {

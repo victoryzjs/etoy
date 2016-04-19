@@ -15,6 +15,7 @@
 	<section class="wrap-init-tpl">
 	</section>
 	<link rel="import" href="../static/common/html/loading.html?__inline">
+	<!-- // <li class="clearfix"><span class="fl">优惠</span><span class="fr discount">-￥<span>0.00</span></span></li> -->
 	<!-- start cart list-->
 	<script id="init-tpl" type="text/html">
 		<div class="pl12 bg-white about-info1">
@@ -103,7 +104,12 @@
 				</select> 
 			</div>
 			<div class="lease-week">
-				<input type="text" readonly="readonly" placeholder="请在此选择配送时间" class="deliveryDay">
+				<select class="deliveryDay">
+					<option value="">请在此选择配送时间</option>
+					<% for(var i=0,len=initData.deliveryDays.length; i<len; i++) { %>
+						<option value="<%= initData.deliveryDays[i] %>"><%= initData.parseDelivertyDays[i] %></option>
+					<% } %>
+				</select>
 			</div>
 			<div class="lease-cont">
 				<textarea class="mark" name="" id="" placeholder="留言"></textarea>
@@ -114,11 +120,10 @@
 			<ul>
 				<li class="clearfix"><span class="fl">租金</span><span class="fr rent-price">+￥<span>400.00</span></span></li>
 				<li class="clearfix freight"><span class="fl">运费</span><span class="fr pr freight-span">+￥<span>20.00</span><i>订单不满150另收20元运费</i></span></li>
-				<li class="clearfix"><span class="fl">优惠</span><span class="fr discount">-￥<span>0.00</span></span></li>
 			</ul>
 		</div>
 		<div class="all-money clearfix plr12 bg-white">
-			<div class="fl agreen"><span></span>同意租赁协议</div>
+			<div class="fl agreen active"><span></span>同意租赁协议</div>
 			<div class="fr al	lCount">总计：￥<span>1400.00</span></div>
 		</div>
 		<div class="submit-order">

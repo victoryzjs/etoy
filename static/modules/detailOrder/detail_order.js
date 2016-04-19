@@ -75,7 +75,7 @@ $(function() {
 	}
 	//将时间戳转为日期格式
 	function userDate(uData){
-	  var myDate = new Date(uData*1000);
+	  var myDate = new Date(uData);
 	  var year = myDate.getFullYear();
 	  var month = (myDate.getMonth() + 1) > 9 ? (myDate.getMonth() + 1) : ('0'+(myDate.getMonth() + 1)) ;
 	  var day = myDate.getDate()>9 ? myDate.getDate() : ('0'+myDate.getDate());

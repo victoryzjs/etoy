@@ -156,4 +156,13 @@ $(function() {
 			$togone.show();
 		}
 	});
+	//点击电话按钮弹窗
+	$('.tobecall').on('click', function() {
+		$('.mask').show();
+		$('.phone-dialog').show();
+	});
+	$('.phone-dialog div').on('click', function() {
+		$('.mask').hide();
+		$('.phone-dialog').hide();
+	});
 });

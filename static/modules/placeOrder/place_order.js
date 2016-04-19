@@ -5,7 +5,6 @@
  * @require ../../lib/zepto.js
  * @require ../../lib/baiduTemplate.js
  * @require ../../lib/fastclick.js
- * @require ../../lib/mdater/zepto.mdater.js
  */
 $(function() {
 	//全局加载loading
@@ -13,9 +12,7 @@ $(function() {
 	$globalLoading.close();
 	var $prompt = require('../ui/prompt/prompt.js');
 	var bt=baidu.template;
-	var flag = false;
-	//fastclick初始化
-	FastClick.attach(document.body);
+	var flag = true;
 	$.ajax({
 		type: 'POST',
 		url: '/wxApi/order/defaultInfo',
@@ -23,6 +20,10 @@ $(function() {
 		dataType: 'json',
 		data: JSON.stringify({cartIds:getQueryStringArgs()}),
 		success: function(data){
+			data.data.parseDelivertyDays = [];
+			data.data.deliveryDays.forEach(function(value, index, arr) {
+				data.data.parseDelivertyDays.push(userDate(value));
+			});
 			handingData(data);		
 		},
 		error: function(xhr, type){
@@ -40,16 +41,9 @@ $(function() {
 		
 		$('.wrap-init-tpl').eq(0).html(bt('init-tpl', listData));
 		countMoney(data);
-		//日期选择
-		$('.lease-week input').mdater({ 
-	    	minDate : new Date(2015, 10, 1)
-		});
-		console.log($('.lease-week input'));
-		console.log($('.lease-week input').mdater);
 		//订单提交
 		$('.submit-order').on('click', function() {
 			var res = getData();
-			console.log(res);
 			var obj = {};
 			if(res) {
 				$.ajax({
@@ -59,7 +53,9 @@ $(function() {
 						dataType: 'html',
 						data: JSON.stringify(res),
 						success: function(data){
-							console.log();
+							if(data.code == 234) {
+								location.href = data.directUrl;
+							}
 							window.location.href = 'pay.html#'+JSON.parse(data).data.orderId;		
 						},
 						error: function(xhr, type){
@@ -93,8 +89,7 @@ $(function() {
 			allCount +=20;
 		}
 		$('.rent-price span').html(count);
-		$('.allCount span').html(allCount+1000);
-
+		$('.allCount span').html(allCount);
 	}
 	//获取信息
 	function getData() {
@@ -149,7 +144,7 @@ $(function() {
 			return false;
 		}
 		if(deliveryDay.length != 0) {
-			postData.deliveryDay = get_unix_time(deliveryDay);
+			postData.deliveryDay = deliveryDay;
 		}else {
 			$prompt.init('请选择配送时间');
 			return false;
@@ -177,14 +172,14 @@ $(function() {
 	        return false;  
 	    }else{  
 	        return true;  
-	    }  
+	    }
 	}
-	//将日期转为时间戳
-	function get_unix_time(dateStr)
-	{
-	    var newstr = dateStr.replace(/-/g,'/'); 
-	    var date =  new Date(newstr); 
-	    var time_str = date.getTime().toString();
-	    return time_str.substr(0, 10);
+	//将时间戳转为日期格式
+	function userDate(uData){
+	  var myDate = new Date(uData);
+	  var year = myDate.getFullYear();
+	  var month = (myDate.getMonth() + 1) > 9 ? (myDate.getMonth() + 1) : ('0'+(myDate.getMonth() + 1)) ;
+	  var day = myDate.getDate()>9 ? myDate.getDate() : ('0'+myDate.getDate());
+	  return year + '-' + month + '-' + day;
 	}
 });
