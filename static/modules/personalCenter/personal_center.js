@@ -9,6 +9,7 @@ $(function() {
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	$globalLoading.close();
+	var $orderIcon = $('.order-icon');
 	//ajax请求数据
 	$.ajax({
 		type: 'GET',
@@ -22,6 +23,12 @@ $(function() {
 				$('.person-phone').html(data.data.phone);
 				$('.center-my-balance p:first-child').html(data.data.balance);
 				$('.center-my-deposit p:first-child').html(data.data.deposit);
+				$orderIcon.each(function(index) {
+					console.log(data.data.orderCntInfo[index]);
+					console.log(this);
+					$(this).find('i').html(data.data.orderCntInfo['s'+(index+1)]);
+				});
+
 			}else if(data.code == 234){
 				location.href = data.directUrl;
 			}

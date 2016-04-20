@@ -3,6 +3,8 @@
  * @require ../../common/css/common.css
  * @require ../../lib/zepto.js
  * @require ../../lib/fastclick.js
+ * @require ../../lib/alert/zepto.alert.js
+ * @require ../../lib/alert/zepto.alert.css
  */
 $(function() {
 	//全局加载loading
@@ -15,16 +17,50 @@ $(function() {
 	var $choice2 = $('.choice2');
 	var $choice3 = $('.choice3');
 	$('.choice1').on('click', function() {
-		$loading.open();
-		getData(1);
+		$.dialog({
+			content : '确认购买500元储值卡<br>(首次购买需缴纳1000元押金)',
+			title: null,
+	        ok : function() {
+				$loading.open();
+				getData(1);
+	            return true;
+	        },
+	        cancel : function() {
+	            return true;
+	        },
+	        lock : true
+		});
+		
 	});
 	$('.choice2').on('click', function() {
-		$loading.open();
-		getData(2);
+		$.dialog({
+			content : '确认购买1000元储值卡<br>(首次购买需缴纳1000元押金)',
+			title: null,
+	        ok : function() {
+				$loading.open();
+				getData(2);
+	            return true;
+	        },
+	        cancel : function() {
+	            return true;
+	        },
+	        lock : true
+		});
 	});
 	$('.choice3').on('click', function() {
-		$loading.open();
-		getData(3);
+		$.dialog({
+			content : '确认购买2000元储值卡<br>(首次购买需缴纳1000元押金)',
+			title: null,
+	        ok : function() {
+				$loading.open();
+				getData(3);
+	            return true;
+	        },
+	        cancel : function() {
+	            return true;
+	        },
+	        lock : true
+		});
 	});
 
 

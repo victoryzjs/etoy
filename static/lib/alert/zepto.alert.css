@@ -4,8 +4,7 @@
 }
 .rDialog-wrap {
     position: relative;
-    background: #000;
-    opacity: .7;
+    background: rgba(0,0,0,0.7);
     background-clip: padding-box;
     border-radius: 10px;
 	-moz-border-radius: 10px;

@@ -113,6 +113,7 @@ $(function() {
 				if(data.code == 234) {
 					location.href = data.directUrl;
 				}else {
+					
 					window.location.href = 'pay_success.html';
 				}
 			},
