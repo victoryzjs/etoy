@@ -41,6 +41,10 @@ $(function() {
 		
 		$('.wrap-init-tpl').eq(0).html(bt('init-tpl', listData));
 		countMoney(data);
+		//点击周数动态调整金额
+		$('.rentWeeks').on('change', function() {
+			countMoney(data, $(this).val())
+		});
 		//订单提交
 		$('.submit-order').on('click', function() {
 			var res = getData();
@@ -77,13 +81,16 @@ $(function() {
 	}
 	// handingData(testData);
 	//计算金额
-	function countMoney(data) {
+	function countMoney(data, weeks) {
+		weeks = weeks?weeks:1;
 		var count = 0;
 		var allCount = 0;
 		for(var i=0,len=data.data.goods.length; i<len; i++) {
 			count +=data.data.goods[i].good.rentPrice;
 			allCount += data.data.goods[i].good.rentPrice;
 		}
+		count = count * weeks;
+		allCount = allCount * weeks;
 		if(count < 150) {
 			$('.freight-span span').html(20);
 			allCount +=20;
