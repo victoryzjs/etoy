@@ -9,6 +9,7 @@
  */
 
 $(function() {
+	FastClick.attach(document.body);
 	//进去页面加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $loading = require('../ui/loading/loading.js');
@@ -84,8 +85,6 @@ $(function() {
 		}
 
 	}, 100);
-	//fastclick初始化
-	FastClick.attach(document.body);
 
 	$('.goods-detail-switch').on('click', function(event) {
 		if($.trim($(event.target).html()) == '玩乐指导') {

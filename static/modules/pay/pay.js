@@ -6,6 +6,7 @@
  */
 
 $(function() {
+	FastClick.attach(document.body);
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $hash = window.location.hash.substring(1);

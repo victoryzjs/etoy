@@ -8,6 +8,7 @@
  */
 
 $(function() {
+	FastClick.attach(document.body);
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	$globalLoading.close();
 	var $allChoiceBtn = $('.all-choice-btn').eq(0);

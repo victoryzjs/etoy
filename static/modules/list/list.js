@@ -7,6 +7,7 @@
  * @require ../ui/dropload/dropload.less
  */
 $(function() {
+	FastClick.attach(document.body);
 	var DropLoad = require('../ui/dropload/dropload.js');
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $loading = require('../ui/loading/loading.js');

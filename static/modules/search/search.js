@@ -4,10 +4,12 @@
  * @require ../../common/css/common_list.less
  * @require ../../lib/zepto.js
  * @require ../../lib/baiduTemplate.js
+ * @require ../../lib/fastclick.js
  */
 
 
 $(function() {
+	FastClick.attach(document.body);
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $loading = require('../ui/loading/loading.js');
 	var $searchCont = $('.search-cont input');

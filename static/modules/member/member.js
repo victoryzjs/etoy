@@ -7,6 +7,7 @@
  * @require ../../lib/alert/zepto.alert.css
  */
 $(function() {
+	FastClick.attach(document.body);
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $loading = require('../ui/loading/loading.js');
@@ -89,20 +90,20 @@ $(function() {
 
 
 	function open(data) {
-			function onBridgeReady(){
-			   WeixinJSBridge.invoke(
-			       'getBrandWCPayRequest', data,
-			       function(res){     
-			           if(res.err_msg == "get_brand_wcpay_request：ok" ) {
-			           		alert('error');
-			           }
-			       }
-			   ); 
-			}
-			if(typeof WeixinJSBridge == "undefined") {
-				$(document).on('WeixinJSBridgeReady', onBridgeReady);
-			}else {
-				onBridgeReady();
-			}
+		function onBridgeReady(){
+		   WeixinJSBridge.invoke(
+		       'getBrandWCPayRequest', data,
+		       function(res){     
+		           if(res.err_msg == "get_brand_wcpay_request：ok" ) {
+		           		alert('error');
+		           }
+		       }
+		   ); 
+		}
+		if(typeof WeixinJSBridge == "undefined") {
+			$(document).on('WeixinJSBridgeReady', onBridgeReady);
+		}else {
+			onBridgeReady();
+		}
 	}
 });

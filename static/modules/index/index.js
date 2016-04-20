@@ -9,6 +9,7 @@
  */
 
 $(function() {
+	FastClick.attach(document.body);
 	var $loading = require('../ui/loading/loading.js');
 	// $loading.init().open();
 	var $globalLoading = require('../ui/globalLoading/loading.js');

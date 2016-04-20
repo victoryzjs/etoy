@@ -6,6 +6,7 @@
  */
 
 $(function() {
+	FastClick.attach(document.body);
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	$globalLoading.close();
 	var $orderNum =  localStorage.getItem('orderNum')?localStorage.getItem('orderNum'):'';
