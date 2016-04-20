@@ -94,6 +94,8 @@ $(function() {
 		if(count < 150) {
 			$('.freight-span span').html(20);
 			allCount +=20;
+		}else {
+			$('.freight-span span').html(0);
 		}
 		$('.rent-price span').html(count);
 		$('.allCount span').html(allCount);

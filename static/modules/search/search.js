@@ -26,7 +26,9 @@ $(function() {
 					location.href = data.directUrl;
 				}else if(data.data.length == 0) {
 					$searchResultNull.show();
+					$('.search-result-have').hide();
 				}else {
+					$('.search-result-have').show();
 					var listData = {
 						list : data.data
 					};

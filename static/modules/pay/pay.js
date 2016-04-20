@@ -24,7 +24,7 @@ $(function() {
 	var total = 0;
 	var argu = {};
 	argu.orderId = $hash;
-	argu.cartType = 1;
+	argu.cardType = 1;
 	//请求数据
 	$.ajax({
 		type: 'GET',
@@ -78,15 +78,15 @@ $(function() {
 		if(num == 500) {
 			$money1.html(500);
 			money2 = 500;
-			argu.cartType = 1;
+			argu.cardType = 1;
 		}else if(num == 1000) {
 			$money1.html(1000);
 			money2 = 1000;
-			argu.cartType = 2;
+			argu.cardType = 2;
 		}else if(num == 2000) {
 			$money1.html(2000);
 			money2 = 2000;
-			argu.cartType = 3;
+			argu.cardType = 3;
 		}
 		calculate();
 		console.log(argu);
@@ -98,13 +98,39 @@ $(function() {
 	}
 	//点击微信支付
 	$weixinPay.on('click', function() {
-		pay();
+		console.log(argu);
+		$.ajax({
+			type: 'POST',
+			url: '/wxApi/bill/orderAfterCard',
+			data: "orderId="+argu.orderId+'&cardType='+argu.cardType,
+			success: function(data){
+				if(data.code == 234) {
+					location.href = data.directUrl;
+				}else {
+					function onBridgeReady(){
+						WeixinJSBridge.invoke(
+						   'getBrandWCPayRequest', data.data,
+						   function(res){     
+						       if(res.err_msg == "get_brand_wcpay_request：ok" ) {
+						       		alert('error');
+						       }
+						   }
+						); 
+					}
+					if(typeof WeixinJSBridge == "undefined") {
+						$(document).on('WeixinJSBridgeReady', onBridgeReady);
+					}else {
+						onBridgeReady();
+					}
+				}
+			},
+			error: function(xhr, type){
+				alert('Ajax error!')
+			}
+		});	
 	});
 	//点击储蓄卡支付
 	$cardPay.on('click', function() {
-		pay();
-	});
-	function pay() {
 		$.ajax({
 			type: 'POST',
 			url: '/wxApi/bill/payOrderByBalance',
@@ -114,12 +140,12 @@ $(function() {
 					location.href = data.directUrl;
 				}else {
 					
-					window.location.href = 'pay_success.html';
+					// window.location.href = 'pay_success.html';
 				}
 			},
 			error: function(xhr, type){
 				alert('Ajax error!')
 			}
-		})			
-	}
+		});	
+	});
 });

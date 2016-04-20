@@ -42,7 +42,8 @@ $(function() {
 				$('.goods-detail-desc').eq(0).html(bt('detail-tpl', goodsData));
 				$('.goods-detail-switch-cont').eq(0).html(bt('good-parameter-cont-tpl', goodsData));
 
-				$('#wrap-banner').html(bt('banner-tpl', bannerData));		
+				$('#wrap-banner').html(bt('banner-tpl', bannerData));
+				$('.goods-guide-cont').html(data.data.content);
 			}else if(data.code==234 ) {
 				location.href = data.directUrl;
 			}
