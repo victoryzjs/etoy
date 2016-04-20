@@ -25,11 +25,12 @@ $(function() {
 	var bt = baidu.template;
 	var listData = {'list':[]};
 	var isAsc = true;
+	var argu = '';
 	$globalLoading.close();
 	$loading.init();
 
 	function getAllList(condition1, id) {
-		var condition1 = condition1 ? '&'+condition1 : '';
+		var condition1 = condition1 ? ('&'+condition1) : '';
 		var condition = 'limit=8&skip=' + skip + condition1;
 		$.ajax({
 			type: 'GET',
@@ -91,20 +92,27 @@ $(function() {
 	}
 	//初次访问页面ajax请求数据
 	var $dropload = new DropLoad(function() {
-		getAllList(getQueryStringArgs());
+		getAllList('sort=createdAt%20DESC&'+(getQueryStringArgs()?getQueryStringArgs():''));
 	});
-	getAllList(getQueryStringArgs());
+	getAllList('sort=createdAt%20DESC&'+(getQueryStringArgs()?getQueryStringArgs():''));
 
 	function getData(id, item) {
-		item = item ? item : '';
 		$(id).on('click', function() {
 			if(id == '.price') {
 				if(isAsc == true) {
-					item = 'sort=rentPrice%20ASC';
+					item = 'sort=rentPrice%20ASC&';
 				}else {
-					item = 'sort=rentPrice%20DESC';
+					item = 'sort=rentPrice%20DESC&';
 				}
 			}
+			if(id == '.ranking') {
+				item = 'sort=createdAt%20DESC&';
+			}
+			if(id == '.popularity') {
+				item = 'sort=rentNum%20DESC&';
+			}
+			item = argu ? item + 'where=' + argu : item;
+			// item = item + 'where=' + argu;
 			listData.list = [];
 			skip = 0;
 			$loading.open();
@@ -119,13 +127,10 @@ $(function() {
 		});		
 	}
 	getData('.ranking');
-	getData('.popularity', 'sort=rentNum%20DESC');
-	getData('.price', 'sort=rentPrice%20ASC');
+	getData('.popularity');
+	getData('.price');
 
-
-	//筛选
-
-	//测试数据
+	//筛选数据
 	var condition = {
 		'age': ['0-6个月（趟着玩）', '6-9个月（学坐爬）', '9-18个月（学走路）', '18-36个月（兴趣发展）', '3岁以上（综合锻炼）'],
 		'brand': ['Anpanman面包超人', 'Bright starts美国', 'Btoys美国', 'Chicco智高', 'Evenflo美国', 'Fisher Price费雪', 'Grow up高思维', 'Haba国德', 'Kiddieland童梦圆', 'Leap frog美国跳蛙', 'Lego乐高', 'Little tike小泰克', 'Playskool孩之宝', 'Pororo韩国', 'Radio flyer美国', 'Rastar星辉', 'Simba德国仙霸', 'Step2美国晋阶', 'Toyroyal日本皇室', 'V-tech伟易达', 'Weplay台湾', 'Gonge丹麦', 'Baghera法国', '其他'],
@@ -201,12 +206,8 @@ $(function() {
 		$wrapScreenList.animate({
 			'left': $WW
 		}, 200);
-		if(infoBag.age.length != 0) {
-			$('.select-age span').eq(0).html(infoBag.age[0]);
-		}
-		if(infoBag.brand.length != 0) {
-			$('.select-brand span').eq(0).html(infoBag.brand[0]);
-		}
+		$('.select-age span').eq(0).html(infoBag.age[0]?infoBag.age[0]:'选择一项');
+		$('.select-brand span').eq(0).html(infoBag.brand[0]?infoBag.brand[0]:'选择一项');
 		if(infoBag.func.length != 0){
 			var funcHtml = '';
 			for(var i=0,len=infoBag.func.length; i<len; i++){
@@ -247,20 +248,30 @@ $(function() {
 		var $ul = $li.parent();
 
 		if($ul.attr('data-name') == 'ul-age') {
+			if($li.hasClass('active')) {
+				$li.removeClass('active');
+				infoBag['age'] =[];
 
-			infoBag['age'] = [$li.html()];
-			$ul.find('li').each(function(index, item) {
-				$(item).removeClass('active');
-			});
-			$li.addClass('active');
+			}else {
+				$ul.find('li').each(function(index, item) {
+					$(item).removeClass('active');
+				});
+				infoBag['age'] = [$li.html()];
+				$li.addClass('active');
+			}
 
 		}else if($ul.attr('data-name') == 'ul-brand') {
 
-			infoBag['brand'] = [$li.html()];
-			$ul.find('li').each(function(index, item) {
-				$(item).removeClass('active');
-			});
-			$li.addClass('active');
+			if($li.hasClass('active')) {
+				$li.removeClass('active');
+				infoBag['brand'] =[];
+			}else {
+				$ul.find('li').each(function(index, item) {
+					$(item).removeClass('active');
+				});
+				infoBag['brand'] = [$li.html()];
+				$li.addClass('active');
+			}
 
 		}else if($ul.attr('data-name') == 'ul-func') {
 
@@ -285,21 +296,18 @@ $(function() {
 	$('.confirm').eq(0).on('click', function() {
 		$('#wrap-list-tpl').html(' ');	
 		$wrapScreen.hide();
-		console.log(infoBag);
 		var data = toPost(infoBag, funcCondition);
-		console.log(data);
 		skip = 0;
 		data.skip = skip;
 		listData.list = [];
-		var arguments = encodeURI(JSON.stringify(data));
+		argu = JSON.stringify(data);
 		$loading.open()
 		$dropload.stop();
 		$('.switch-option-one').removeClass('active');
 		$dropload = new DropLoad(function() {
-			getConditionList(arguments);
+			getConditionList(argu);
 		});
-		getConditionList(arguments);
-		console.log(arguments);
+		getConditionList(argu);
 	});
 
 	//将func处理成数组
@@ -373,9 +381,9 @@ $(function() {
 	function getQueryStringArgs() {
 		var qs = (location.hash.length > 0 ? location.hash.substring(1) : "");
 		if(qs == 'beLatest') {
-			return encodeURI("where="+JSON.stringify({"beLatest":true}))
+			return "where="+JSON.stringify({"beLatest":true});
 		}else if(qs == 'beHot') {
-			return encodeURI("where="+JSON.stringify({"beHot":true}))
+			return "where="+JSON.stringify({"beHot":true});
 		}
 	}
 });
