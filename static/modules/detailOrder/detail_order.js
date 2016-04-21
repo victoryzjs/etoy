@@ -12,7 +12,7 @@ $(function() {
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	$globalLoading.close();
-	var prompt = require('../ui/prompt/prompt.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	var bt=baidu.template;
 	var flag = false;
 	//ajax请求默认信息
@@ -30,6 +30,9 @@ $(function() {
 	})
 
 	function handingData(data) {
+		if(data.msg) {
+			$prompt.init(data.msg);
+		}
 		if(data.code == 234 ) {
 			location.href = data.directUrl;
 		}
@@ -56,7 +59,7 @@ $(function() {
 						dataType: 'json',
 						success: function(data){
 							if(data.code != 200) {
-								alert('取消失败！');
+								$prompt.init(data.msg);
 							}else {
 								location.reload();
 							}

@@ -28,11 +28,14 @@ $(function() {
 			handingData(data);		
 		},
 		error: function(xhr, type){
-			alert('Ajax error!')
+			alert('Ajax error!');
 		}
 	})
 
 	function handingData(data) {
+		if(data.msg) {
+			$prompt.init(data.msg);
+		}
 		if(data.code == 234){
 			location.href = data.directUrl;
 		}
@@ -55,13 +58,18 @@ $(function() {
 						type: 'POST',
 						url: '/wxApi/order/submit',
 						contentType: 'application/json',
-						dataType: 'html',
 						data: JSON.stringify(res),
 						success: function(data){
+							if(data.msg) {
+								$prompt.init(data.msg);
+							}
 							if(data.code == 234) {
 								location.href = data.directUrl;
 							}
-							window.location.href = 'pay.html#'+JSON.parse(data).data.orderId;		
+							if(data.code == 200) {
+
+								window.location.href = 'pay.html#'+data.data.orderId;		
+							}
 						},
 						error: function(xhr, type){
 							alert('Ajax error!')
@@ -98,8 +106,8 @@ $(function() {
 		}else {
 			$('.freight-span span').html(0);
 		}
-		$('.rent-price span').html(count);
-		$('.allCount span').html(allCount);
+		$('.rent-price span').html(count/100);
+		$('.allCount span').html(allCount/100);
 	}
 	//获取信息
 	function getData() {
@@ -107,7 +115,6 @@ $(function() {
 		var postData = {};
 		var recipient = $.trim($('.user-name input').val());
 		var phone = $.trim($('.user-phone input').val());
-		console.log(phone);
 		var district = $('.district').val();
 		var ring = $('.ring').val();
 		var address = $.trim($('.address').val());

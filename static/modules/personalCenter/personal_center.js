@@ -9,6 +9,7 @@ $(function() {
 	FastClick.attach(document.body);
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	$globalLoading.close();
 	var $orderIcon = $('.order-icon');
 	//ajax请求数据
@@ -17,6 +18,9 @@ $(function() {
 		url: '/wxApi/userInfo',
 		contentType: 'application/json',
 		success: function(data){
+			if(data.msg) {
+				$prompt.init(data.msg);
+			}
 			if(data.code == 200) {
 				$('.head-bg').attr('src', data.data.avatar);
 				$('.head-portrait img').attr('src', data.data.avatar);

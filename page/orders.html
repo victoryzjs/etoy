@@ -100,7 +100,7 @@
 								<div class="order-one-cont">
 									<p><%= initData[i].goods[j].title %></p>
 									<p class="pr">下单时间：<%= initData[i].createdAt.substr(0,9) %></p>
-									<p>￥<%= initData[i].goods[j].rentPrice %>/周</p>
+									<p>￥<%= initData[i].goods[j].rentPrice/100 %>/周</p>
 								</div>
 							</div>
 

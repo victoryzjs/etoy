@@ -11,6 +11,7 @@ $(function() {
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $loading = require('../ui/loading/loading.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	var data = {};
 	$loading.init();
 	$globalLoading.close();
@@ -73,6 +74,9 @@ $(function() {
 			dataType: 'json',
 			success: function(data){
 				$loading.close();
+				if(data.msg) {
+					$prompt.init(data.msg);
+				}
 				if(data.code == 234) {
 					location.href = data.directUrl;
 				}else {

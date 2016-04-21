@@ -16,20 +16,6 @@
 <!-- start cart list -->
 	<section class="bg-white">
 		<ul class="cart-list">
-			<!-- <li class="cart-list-one clearfix plr12">
-				<div class="cart-choice-btn fl"></div>
-				<div class="cart-goods-pic fl">
-					<img src="../static/img/goods_1.png" alt="">
-				</div>
-				<div class="cart-goods-desc pr">
-					<p class="cart-goods-name">玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称玩具名称......</p>
-					<div class="cart-goods-price clearfix pa">
-						<span class="inline-block fl">￥10.00元/周</span>
-						<span class="inline-block pa delete-btn">删除</span>
-					</div>
-				</div>
-				<input type="text" hidden value="11111111111" data-price="55">
-			</li> -->
 		</ul>
 	</section>
 	<!-- end -->
@@ -66,12 +52,13 @@
 				</div>
 				<div class="cart-goods-desc pr">
 					<p class="cart-goods-name"><%= listData[i].good.title %></p>
+					<p class="cart-goods-name">库存：<%= listData[i].good.leftNum %>件</p>
 					<div class="cart-goods-price clearfix pa">
-						<span class="inline-block fl">￥<%= listData[i].good.rentPrice %>元/周</span>
+						<span class="inline-block fl">￥<%= listData[i].good.rentPrice/100 %>元/周</span>
 						<span class="inline-block pa delete-btn">删除</span>
 					</div>
 				</div>
-				<input type="text" hidden value="<%= listData[i].id %>" data-price="<%= listData[i].good.rentPrice %>">
+				<input type="text" hidden value="<%= listData[i].id %>" data-price="<%= listData[i].good.rentPrice/100 %>">
 			</li>
 		</li>
 	<% } %>

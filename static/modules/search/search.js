@@ -11,8 +11,10 @@
 $(function() {
 	FastClick.attach(document.body);
 	var $globalLoading = require('../ui/globalLoading/loading.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	var $loading = require('../ui/loading/loading.js');
 	var $searchCont = $('.search-cont input');
+
 	var bt = baidu.template;
 	var $searchResultNull = $('.search-result-null');
 	$globalLoading.close();
@@ -24,6 +26,9 @@ $(function() {
 			contentType: 'application/json',
 			success: function(data){
 				$loading.close();
+				if(data.msg) {
+					$prompt.init(data.msg);
+				}
 				if(data.code == 234) {
 					location.href = data.directUrl;
 				}else if(data.data.length == 0) {

@@ -10,6 +10,7 @@ $(function() {
 	FastClick.attach(document.body);
 	var DropLoad = require('../ui/dropload/dropload.js');
 	var $globalLoading = require('../ui/globalLoading/loading.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	var $loading = require('../ui/loading/loading.js');
 	var $wrapScreen = $('.wrap-screen').eq(0);
 	var $shaixuan = $('.shaixuan').eq(0);
@@ -38,23 +39,31 @@ $(function() {
 			url: '/good/find?'+condition,
 			contentType: 'application/json',
 			success: function(data){
-				$('.result-null').hide();
-				$loading.close();
-				if(data.data.length <= 0) {
-					$('.result-null').show();
-					$dropload.stop();
-				}else {
-					if(id == '.price') {
-						isAsc = !isAsc;
-					}
-					listData.list = listData.list.concat(data.data);
-					if(data.data.length < 8) {
+				if(data.msg) {
+					$prompt.init(data.msg);
+				}
+				if(data.code==234 ) {
+					location.href = data.directUrl;
+				}
+				if(data.code == 200) {
+					$('.result-null').hide();
+					$loading.close();
+					if(data.data.length <= 0) {
+						$('.result-null').show();
 						$dropload.stop();
 					}else {
-						skip+=data.data.length;
-						$dropload.start();
-					}	
-					$('#wrap-list-tpl').html(bt('list-tpl', listData));							
+						if(id == '.price') {
+							isAsc = !isAsc;
+						}
+						listData.list = listData.list.concat(data.data);
+						if(data.data.length < 8) {
+							$dropload.stop();
+						}else {
+							skip+=data.data.length;
+							$dropload.start();
+						}	
+						$('#wrap-list-tpl').html(bt('list-tpl', listData));							
+					}
 				}
 	
 			},
@@ -66,7 +75,7 @@ $(function() {
 	function getConditionList(condition) {
 		$.ajax({
 			type: 'GET',
-			url: '/good/find?where='+condition,
+			url: '/good/find?limit=8&skip=' + skip + '&where='+condition,
 			contentType: 'application/json',
 			success: function(data){
 				$('.result-null').hide();
@@ -299,7 +308,6 @@ $(function() {
 		$wrapScreen.hide();
 		var data = toPost(infoBag, funcCondition);
 		skip = 0;
-		data.skip = skip;
 		listData.list = [];
 		argu = JSON.stringify(data);
 		$loading.open()

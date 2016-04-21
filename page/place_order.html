@@ -83,7 +83,7 @@
 							<div class="cart-goods-desc pr">
 								<p class="cart-goods-name"><%= initData.goods[i].good.title %></p>
 								<div class="cart-goods-price clearfix pa">
-									<span class="inline-block fl">￥<%= initData.goods[i].good.rentPrice %>元/周</span>
+									<span class="inline-block fl">￥<%= initData.goods[i].good.rentPrice/100 %>元/周</span>
 								</div>
 							</div>
 						</a>
@@ -117,13 +117,13 @@
 
 		<div class="cost mt7 plr12 bg-white">
 			<ul>
-				<li class="clearfix"><span class="fl">租金</span><span class="fr rent-price">￥<span>400.00</span></span></li>
+				<li class="clearfix"><span class="fl">租金</span><span class="fr rent-price">￥<span></span></span></li>
 				<li class="clearfix freight"><span class="fl">运费</span><span class="fr pr freight-span">￥<span>20.00</span><i>订单不满150另收20元运费</i></span></li>
 			</ul>
 		</div>
 		<div class="all-money clearfix plr12 bg-white">
 			<div class="fl agreen active"><span></span>同意租赁协议</div>
-			<div class="fr al	lCount">总计：￥<span>1400.00</span></div>
+			<div class="fr al	lCount">总计：￥<span></span></div>
 		</div>
 		<div class="submit-order">
 			提交订单

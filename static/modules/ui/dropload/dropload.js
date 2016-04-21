@@ -24,16 +24,11 @@ var DropLoad = Base.extend({
             var scrollTop = $window.scrollTop();
             var scrollBtm = scrollTop + $window.height();
             var loadTop = this.$loadTip.offset().top;
-            console.log('loadTop'+loadTop);
-            console.log('scrollBtm'+scrollBtm);
             if(loadTop <= scrollBtm){
                 this.$loadTip.html(this.contents.loading);
                 $window.off('scroll',this.scrollHandlerProxy);
                 this.loadDownFn();
             }
-            console.log(1111111111111111111111111111111111111111);
-            console.log('loadTop'+loadTop);
-            console.log('scrollBtm'+scrollBtm);
         }),300);
     },
     //停止

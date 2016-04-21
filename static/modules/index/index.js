@@ -14,6 +14,7 @@ $(function() {
 	// $loading.init().open();
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $tip = require('../ui/tip/tip.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	var bt=baidu.template;
 	var flag = false;
 
@@ -23,6 +24,9 @@ $(function() {
 		url: '/wxApi/home',
 		contentType: 'application/json',
 		success: function(data){
+			if(data.msg) {
+				$prompt.init(data.msg);
+			}
 			flag = true;
 			$globalLoading.close();
 			if(data.code == 200) {

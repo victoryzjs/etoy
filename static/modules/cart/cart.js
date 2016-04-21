@@ -10,7 +10,6 @@
 $(function() {
 	FastClick.attach(document.body);
 	var $globalLoading = require('../ui/globalLoading/loading.js');
-	$globalLoading.close();
 	var $allChoiceBtn = $('.all-choice-btn').eq(0);
 	var $cartList = $('.cart-list').eq(0);
 	var checkedFlag = 0;
@@ -28,7 +27,6 @@ $(function() {
 		success: function(data){
 			$globalLoading.close();
 			handingData(data)
-			console.log(data);
 		},
 		error: function(xhr, type){
 			alert('Ajax error!')
@@ -36,19 +34,22 @@ $(function() {
 	})
 	//删除数据
 	function deleteData(id, flag) {
-		
 		$.ajax({
 			type: 'GET',
 			url: '/wxApi/shoppingCart/remove/'+id,
 			contentType: 'application/json',
 			dataType: 'json',
 			success: function(data){
+
 				if(data.code = 200) {
 					deleteFlag = true;
-					$prompt.init('删除成功！');
+					$prompt.init(data.msg);
 				}else if(data.code==234 ) {
 					location.href = data.directUrl;
+				}else {
+					$prompt.init(data.msg);
 				}
+
 				
 
 			},
@@ -59,8 +60,12 @@ $(function() {
 	}
 	//处理数据
 	function handingData(data) {
+		if(data.msg) {
+			$prompt.init(data.msg);
+		}
 		if(data.code != 200){
-			alert("没接收到数据！");
+			location.href = data.directUrl;
+			return;
 		}else if(data.data.length == 0) {
 			$('.cart-null').show();
 		}
@@ -107,18 +112,19 @@ $(function() {
 					
 					//发送删除请求
 					deleteData($li.find('input').val(), deleteFlag);
-					if($cartList.find('li').length = 0){
-						wrapCartId = [];
-						$('.all-choice-btn').removeClass('active');
-					}
-					if($('.cart-list li').length == 0) {
-						$('.cart-null').show();
-						$('.all-choice-btn').eq(0).removeClass('active');
-					}
 					var deleteTimer = setInterval(function() {
 						if(deleteFlag) {
 							$li.remove();
 							deleteFlag = false;
+							if($('.cart-list li').length.length == 0){
+								wrapCartId = [];
+								$allChoiceBtn.removeClass('active');
+							}
+							if($('.cart-list li').length == 0) {
+								console.log(156156162061641519);
+								$('.cart-null').show();
+								$('.all-choice-btn').eq(0).removeClass('active');
+							}
 							clearInterval(deleteTimer);
 						}
 						if($cartList.find('li').length == 0) {
@@ -132,9 +138,6 @@ $(function() {
 		        },
 		        lock : true
 			});
-
-
-
 		}
 		if($cartList.find('li').length == $cartList.find('li.active').length && $cartList.find('li').length != 0) {
 			$('.all-choice-btn').addClass('active');
@@ -159,34 +162,36 @@ $(function() {
 
 	//全选
 	$allChoiceBtn.on('click', function(e) {
-		if(!$(this).hasClass('active')) {
-			$(this).addClass('active');
-			$cartList.find('li').addClass('active');
-			$('.settlement-btn span').html($('.cart-list li').length);
-			$('.cart-list input').each(function() {
-				wrapCartId.push($(this).val());
-				allPrice += Number($(this).attr('data-price'));
-			});
-		}else {
-			$(this).removeClass('active');
-			$cartList.find('li').removeClass('active');
-			$('.settlement-btn span').html(0);
-			wrapCartId = [];
-			allPrice = 0;
+		if($('.cart-list li').length != 0) {
+			if(!$(this).hasClass('active')) {
+				$(this).addClass('active');
+				$cartList.find('li').addClass('active');
+				$('.settlement-btn span').html($('.cart-list li').length);
+				$('.cart-list input').each(function() {
+					wrapCartId.push($(this).val());
+					allPrice += Number($(this).attr('data-price'));
+				});
+			}else {
+				$(this).removeClass('active');
+				$cartList.find('li').removeClass('active');
+				$('.settlement-btn span').html(0);
+				wrapCartId = [];
+				allPrice = 0;
+			}
+			var $aBtn = $('.settlement-btn a');
+			var $span = $('.settlement-btn span');
+			var num = Number($span.html());
+			if(num > 0) {
+				$('.settlement-btn').css({
+					backgroundColor: '#f1633d'
+				});
+			}else {
+				$('.settlement-btn').css({
+					backgroundColor: '#eee'
+				});
+			}
+			$('.total-money span').html(allPrice.toFixed(2));
 		}
-		var $aBtn = $('.settlement-btn a');
-		var $span = $('.settlement-btn span');
-		var num = Number($span.html());
-		if(num > 0) {
-			$('.settlement-btn').css({
-				backgroundColor: '#f1633d'
-			});
-		}else {
-			$('.settlement-btn').css({
-				backgroundColor: '#eee'
-			});
-		}
-		$('.total-money span').html(allPrice.toFixed(2));
 	});
 	//结算
 	$('.settlement-btn').on('click', function() {

@@ -73,8 +73,8 @@
 		<h2 class="plr12 ptb12"><%= detailInfo.title %></h2>
 		<div class="goods-detail-desc-price clearfix plr12">
 			<div class="goods-detail-desc-price-left fl">
-				<p>￥<%= detailInfo.rentPrice %>/周</p>
-				<p>购买价：￥<%= detailInfo.tradePrice %></p>
+				<p>￥<%= detailInfo.rentPrice/100 %>/周</p>
+				<p>购买价：￥<%= detailInfo.tradePrice/100 %></p>
 			</div>
 			<div class="goods-detail-desc-price-right fl"><%=  detailInfo.leftNum>0 ? '有货' : '无货' %></div>
 		</div>

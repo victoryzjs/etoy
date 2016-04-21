@@ -9,6 +9,7 @@ $(function() {
 	FastClick.attach(document.body);
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	var $hash = window.location.hash.substring(1);
 	var $orderDetail = $('.order-detail');
 	var $chuxuka = $('.chuxuka');
@@ -17,6 +18,7 @@ $(function() {
 	var $totalPage = $('total-page');
 	var $weixinPay = $('.weixin-pay');
 	var $cardPay = $('.card-pay');
+	var $giveMoney = $('.give-money');
 	var money1 = 0;
 	var money2 = 500;
 	var money3 = 0;
@@ -24,6 +26,7 @@ $(function() {
 	var money5 = 0;
 	var total = 0;
 	var argu = {};
+	var give = 0;
 	argu.orderId = $hash;
 	argu.cardType = 1;
 	//请求数据
@@ -33,6 +36,9 @@ $(function() {
 		dataType: 'json',
 		success: function(data){
 			$globalLoading.close();
+			if(data.msg) {
+				$prompt.init(data.msg);
+			}
 			if(data.code == 234) {
 				location.href = data.directUrl;
 			}else {
@@ -80,21 +86,26 @@ $(function() {
 			$money1.html(500);
 			money2 = 500;
 			argu.cardType = 1;
+			$giveMoney.html(0);
+			give = 0;
 		}else if(num == 1000) {
 			$money1.html(1000);
 			money2 = 1000;
 			argu.cardType = 2;
+			$giveMoney.html(100);
+			give = 100;
 		}else if(num == 2000) {
 			$money1.html(2000);
 			money2 = 2000;
 			argu.cardType = 3;
+			$giveMoney.html(300);
+			give = 300;
 		}
 		calculate();
-		console.log(argu);
 	});
 	//动态计算购买后结余和计费总价
 	function calculate() {
-		$('.money').eq(3).html(money1 + money2 - money3);
+		$('.money').eq(3).html(give + money1 + money2 - money3);
 		$('.money').eq(5).html(money2  + money4);
 	}
 	//点击微信支付
@@ -140,8 +151,7 @@ $(function() {
 				if(data.code == 234) {
 					location.href = data.directUrl;
 				}else {
-					
-					// window.location.href = 'pay_success.html';
+					window.location.href = 'pay_success.html';
 				}
 			},
 			error: function(xhr, type){

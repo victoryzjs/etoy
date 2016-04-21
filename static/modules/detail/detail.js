@@ -13,7 +13,7 @@ $(function() {
 	//进去页面加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $loading = require('../ui/loading/loading.js');
-	var prompt = require('../ui/prompt/prompt.js');
+	var $prompt = require('../ui/prompt/prompt.js');
 	var bt=baidu.template;
 	var flag = false;
 	var mySwiper = new Swiper('.swiper-container',{
@@ -29,7 +29,9 @@ $(function() {
 		url: '/good/' + search.id,
 		contentType: 'application/json',
 		success: function(data){
-			console.log(data.data);
+			if(data.msg) {
+				$prompt.init(data.msg);
+			}
 			flag = true;
 			$globalLoading.close();
 			if(data.code == 200) {
@@ -64,7 +66,12 @@ $(function() {
 			contentType: 'application/json',
 			success: function(data){
 				$loading.close();
-				prompt.init('添加该商品成功！');
+				if(data.msg) {
+					$prompt.init(data.msg);
+				}
+				if(data.code == 200) {
+					$prompt.init('添加该商品成功！');
+				}			
 			},
 			error: function(xhr, type){
 				$globalLoading.close();

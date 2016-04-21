@@ -40,6 +40,9 @@ $(function() {
 			dataType: 'json',
 			success: function(data){
 				$globalLoading.close();
+				if(data.msg) {
+					$prompt.init(data.msg);
+				}
 				if(data.code == 234) {
 					location.href = data.directUrl;
 				}else {
