@@ -27,6 +27,7 @@ $(function() {
 	var total = 0;
 	var argu = {};
 	var give = 0;
+	var payFlag = true;
 	argu.orderId = $hash;
 	argu.cardType = 1;
 	//请求数据
@@ -110,36 +111,43 @@ $(function() {
 	}
 	//点击微信支付
 	$weixinPay.on('click', function() {
-		console.log(argu);
-		$.ajax({
-			type: 'POST',
-			url: '/wxApi/bill/orderAfterCard',
-			data: "orderId="+argu.orderId+'&cardType='+argu.cardType,
-			success: function(data){
-				if(data.code == 234) {
-					location.href = data.directUrl;
-				}else {
-					function onBridgeReady(){
-						WeixinJSBridge.invoke(
-						   'getBrandWCPayRequest', data.data,
-						   function(res){     
-						       if(res.err_msg == "get_brand_wcpay_request：ok" ) {
-						       		alert('error');
-						       }
-						   }
-						); 
-					}
-					if(typeof WeixinJSBridge == "undefined") {
-						$(document).on('WeixinJSBridgeReady', onBridgeReady);
+		console.log(payFlag);
+		if(payFlag) {
+			payFlag = false;
+			$.ajax({
+				type: 'POST',
+				url: '/wxApi/bill/orderAfterCard',
+				data: "orderId="+argu.orderId+'&cardType='+argu.cardType,
+				success: function(data){
+					payFlag = true;
+					if(data.code == 234) {
+						location.href = data.directUrl;
 					}else {
-						onBridgeReady();
+						function onBridgeReady(){
+							WeixinJSBridge.invoke(
+							   'getBrandWCPayRequest', data.data,
+							   function(res){     
+							       if(res.err_msg == "get_brand_wcpay_request：ok" ) {
+							       		alert('error');
+							       }
+							   }
+							); 
+						}
+						if(typeof WeixinJSBridge == "undefined") {
+							$(document).on('WeixinJSBridgeReady', onBridgeReady);
+						}else {
+							onBridgeReady();
+						}
 					}
+				},
+				error: function(xhr, type){
+					payFlag = true;
+					alert('Ajax error!')
 				}
-			},
-			error: function(xhr, type){
-				alert('Ajax error!')
-			}
-		});	
+			});	
+		}else {
+			return false;
+		}
 	});
 	//点击储蓄卡支付
 	$cardPay.on('click', function() {

@@ -33,7 +33,7 @@ $(function() {
 
 	function getAllList(condition1, id) {
 		var condition1 = condition1 ? ('&'+condition1) : '';
-		var condition = 'limit=8&skip=' + skip + condition1;
+		var condition = 'limit=8&isUsing=true&skip=' + skip + condition1;
 		$.ajax({
 			type: 'GET',
 			url: '/good/find?'+condition,
@@ -75,7 +75,7 @@ $(function() {
 	function getConditionList(condition) {
 		$.ajax({
 			type: 'GET',
-			url: '/good/find?limit=8&skip=' + skip + '&where='+condition,
+			url: '/good/find?limit=8&isUsing=true&skip=' + skip + '&where='+condition,
 			contentType: 'application/json',
 			success: function(data){
 				$('.result-null').hide();

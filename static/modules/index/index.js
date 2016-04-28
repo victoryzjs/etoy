@@ -6,6 +6,7 @@
  * @require ../../lib/baiduTemplate.js
  * @require ../../lib/swiper/swiper-3.3.1.min.css
  * @require ../ui/loading/loading.less
+ * @require ../../lib/jweixin-1.0.0.js
  */
 
 $(function() {
@@ -64,6 +65,20 @@ $(function() {
 		}
 
 	}, 100);
+
+	$.ajax({
+		type: 'GET',
+		url: '/weChat/jsApiTicket',
+		contentType: 'application/json',
+		success: function(data){
+			console.log(data);
+		},
+		error: function(xhr, type){
+			$globalLoading.close();
+			alert('Ajax error!')
+		}
+	});
+	
 });
 
 

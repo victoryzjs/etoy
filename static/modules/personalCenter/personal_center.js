@@ -26,8 +26,8 @@ $(function() {
 				$('.head-portrait img').attr('src', data.data.avatar);
 				$('.person-name').html(data.data.aliasName);
 				$('.person-phone').html(data.data.phone);
-				$('.center-my-balance p:first-child').html(data.data.balance);
-				$('.center-my-deposit p:first-child').html(data.data.deposit);
+				$('.center-my-balance p:first-child').html(data.data.balance/100);
+				$('.center-my-deposit p:first-child').html(data.data.deposit/100);
 				$orderIcon.each(function(index) {
 					console.log(data.data.orderCntInfo[index]);
 					console.log(this);
