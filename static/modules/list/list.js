@@ -141,27 +141,32 @@ $(function() {
 	getData('.price');
 
 	//筛选数据
+	// var condition = {
+	// 	'age': ['0-6个月（趟着玩）', '6-9个月（学坐爬）', '9-18个月（学走路）', '18-36个月（兴趣发展）', '3岁以上（综合锻炼）'],
+	// 	'brand': ['Anpanman面包超人', 'Bright starts美国', 'Btoys美国', 'Chicco智高', 'Evenflo美国', 'Fisher Price费雪', 'Grow up高思维', 'Haba国德', 'Kiddieland童梦圆', 'Leap frog美国跳蛙', 'Lego乐高', 'Little tike小泰克', 'Playskool孩之宝', 'Pororo韩国', 'Radio flyer美国', 'Rastar星辉', 'Simba德国仙霸', 'Step2美国晋阶', 'Toyroyal日本皇室', 'V-tech伟易达', 'Weplay台湾', 'Gonge丹麦', 'Baghera法国', '其他'],
+	// 	'func': {
+	// 		'fun0': '健身架',
+	// 		'fun1': '摇摇椅',
+	// 		'fun2': '学爬玩具',
+	// 		'fun3': '角色扮演',
+	// 		'fun4': '敲弹击琴',
+	// 		'fun5': '手工拼插',
+	// 		'fun6': '滑梯组合',
+	// 		'fun7': '玩沙嬉水',
+	// 		'fun8': '学习屋/桌',
+	// 		'fun9': '益智玩具',
+	// 		'fun10': '学步车',
+	// 		'fun11': '手推车',
+	// 		'fun12': '电动车',
+	// 		'fun13': '滑行车',
+	// 		'fun14': '脚踏车',
+	// 		'fun15': '感统训练'
+	// 	}
+	// };
 	var condition = {
-		'age': ['0-6个月（趟着玩）', '6-9个月（学坐爬）', '9-18个月（学走路）', '18-36个月（兴趣发展）', '3岁以上（综合锻炼）'],
-		'brand': ['Anpanman面包超人', 'Bright starts美国', 'Btoys美国', 'Chicco智高', 'Evenflo美国', 'Fisher Price费雪', 'Grow up高思维', 'Haba国德', 'Kiddieland童梦圆', 'Leap frog美国跳蛙', 'Lego乐高', 'Little tike小泰克', 'Playskool孩之宝', 'Pororo韩国', 'Radio flyer美国', 'Rastar星辉', 'Simba德国仙霸', 'Step2美国晋阶', 'Toyroyal日本皇室', 'V-tech伟易达', 'Weplay台湾', 'Gonge丹麦', 'Baghera法国', '其他'],
-		'func': {
-			'fun0': '健身架',
-			'fun1': '摇摇椅',
-			'fun2': '学爬玩具',
-			'fun3': '角色扮演',
-			'fun4': '敲弹击琴',
-			'fun5': '手工拼插',
-			'fun6': '滑梯组合',
-			'fun7': '玩沙嬉水',
-			'fun8': '学习屋/桌',
-			'fun9': '益智玩具',
-			'fun10': '学步车',
-			'fun11': '手推车',
-			'fun12': '电动车',
-			'fun13': '滑行车',
-			'fun14': '脚踏车',
-			'fun15': '感统训练'
-		}
+		'age': [],
+		'brand': [],
+		'func': []
 	};
 	var funcCondition = {};
 	funcCondition = deepClone(condition.func);
@@ -396,19 +401,40 @@ $(function() {
 		}
 	}
 
-
-	
-	$.ajax({
-		type: 'GET',
-		url: '/datadict/list/品牌',
-		contentType: 'application/json',
-		success: function(data){
-			console.log(data.data);
-			
-		},
-		error: function(xhr, type){
-			$globalLoading.close();
-			alert('Ajax error!')
-		}
-	});
+	//获取筛选条件
+	function getCondition(con) {
+		$.ajax({
+			type: 'GET',
+			url: '/datadict/list/' + con,
+			contentType: 'application/json',
+			success: function(data){
+				if(data.code == 200) {
+					if(data.data[0].dictType == '功能') {
+						data.data.forEach(function(e) {
+							condition.func.push(e.dictVal);
+						});
+					}else if(data.data[0].dictType == '品牌') {
+						data.data.forEach(function(e) {
+							condition.brand.push(e.dictVal);
+						});
+							
+					}else if(data.data[0].dictType == '年龄段') {
+						data.data.forEach(function(e) {
+							condition.age.push(e.dictVal);
+						});
+							
+					}
+				}
+			},
+			error: function(xhr, type){
+				alert('Ajax error!')
+			}
+		});		
+	}
+	getCondition('功能');
+	getCondition('年龄段');
+	getCondition('品牌');
+	setTimeout(function() {
+		console.log(condition);
+	}, 5000);
 });
