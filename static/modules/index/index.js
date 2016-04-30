@@ -11,6 +11,7 @@
 
 $(function() {
 	FastClick.attach(document.body);
+	var wxShare = require('../config/wxShareConfig.js');
 	var $loading = require('../ui/loading/loading.js');
 	// $loading.init().open();
 	var $globalLoading = require('../ui/globalLoading/loading.js');
@@ -68,10 +69,11 @@ $(function() {
 
 	$.ajax({
 		type: 'GET',
-		url: '/weChat/jsApiTicket',
+		url: '/weChat/jsApiTicket?url='+location.href,
 		contentType: 'application/json',
 		success: function(data){
-			console.log(data);
+			console.log(data.data);
+			wxShare.init(data.data);
 		},
 		error: function(xhr, type){
 			$globalLoading.close();

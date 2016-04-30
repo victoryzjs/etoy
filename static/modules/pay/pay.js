@@ -61,7 +61,7 @@ $(function() {
 			};
 		}else {
 			money1 = data.currentBalance/100;
-			money3 = data.orderPrice/100;
+			money3 = (data.orderPrice/100).toFixed(2);
 			$orderDetail.addClass('active');
 			$weixinPay.addClass('active');
 			$chuxuka.show();
@@ -106,7 +106,7 @@ $(function() {
 	});
 	//动态计算购买后结余和计费总价
 	function calculate() {
-		$('.money').eq(3).html(give + money1 + money2 - money3);
+		$('.money').eq(3).html((give + money1 + money2 - money3).toFixed(2));
 		$('.money').eq(5).html(money2  + money4);
 	}
 	//点击微信支付

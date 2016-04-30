@@ -7,12 +7,11 @@ body {
 }
 
 .cart-list {
-	margin-bottom: 49px;
+	margin-bottom: 98px;
 }
 
 .cart-list-one {
 	.retina1px(#efe7e7);
-	border-bottom: 1px solid #efe7e7;
 	padding-top: 9px;
 	padding-bottom: 9px;
 }
@@ -33,9 +32,9 @@ li.active .cart-choice-btn {
 .cart-goods-pic {
 	width: 70px;
 	height: 70px;
-	border: 1px solid #c4c4c4;
 	.box-sizing(border-box);
 	margin-left: 14px;
+	border: 1px solid #c4c4c4;
 }
 
 .cart-goods-pic img {
@@ -83,11 +82,10 @@ li.active .cart-choice-btn {
 
 .cart-detail-go {
 	width: 100%;
-	bottom: 0;
+	bottom: 49px;
 	left: 0;
 	line-height: 49px;
 	.retinaT(#ebebeb);
-	border-top: 1px solid #ebebeb;
 }
 
 .all-choice-btn {
@@ -155,9 +153,11 @@ body.active {
 	color: #f1633d;
 	width: 120px;
 	height: 34px;
-	border: 1px solid #f1633d;
+	.retinaSquare(#f1633d);
 	border-radius: 5px;
 	text-align: center;
 	line-height: 34px;
 	margin: 20px auto 0;
 }
+
+@import '../../common/css/common_nav.less';

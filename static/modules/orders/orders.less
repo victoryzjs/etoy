@@ -8,10 +8,10 @@ body {
 
 .tobecall {
 	width: 50px;
-	height: 40px;
+	height: 39px;
 	.retina1px(#ebebeb);
-	border-left: 1px solid #ebebeb;
-	border-bottom: 1px solid #ebebeb;
+	.retinaT(#ebebeb);
+	.retina(transparent, transparent,#ebebeb, #ebebeb, 1px);
 	.box-sizing(border-box);
 	span {
 		display: block;
@@ -36,7 +36,6 @@ body {
 		color: #595757;
 		text-align: center;
 		.retina1px(#ebebeb);
-		border-bottom: 1px solid #ebebeb;
 		line-height: 39px;
 		.box-sizing(border-box);
 	}
@@ -49,7 +48,6 @@ body {
 .order-one-header {
 	line-height: 45px;
 	.retina1px(#ebebeb);
-	border-bottom: 1px solid #ebebeb;
 }
 
 .order-one-status {
@@ -69,15 +67,14 @@ body {
 .order-one-detail {
 	.retina1px(#ebebeb);
 	padding-top: 10px;
-	border-bottom: 1px solid #ebebeb;
 	a {
 		display: block;
 	}
 }
 
 .order-one-pic {
-	border: 1px solid #ebebeb;
-	.box-sizing(border-box);
+	.retinaSquare(#c4c4c4);
+	padding: 1px;
 	img {
 		display: block;
 		width: 70px;
@@ -125,7 +122,6 @@ body {
 }
 .order-one-other {
 	line-height: 45px;
-	border-bottom: 1px solid #ebebeb;
 	.box-sizing(border-box);
 	span {
 		width: 33.3333%;
@@ -147,7 +143,7 @@ body {
 
 .order-btn {
 	line-height: 45px;
-	border-bottom: 1px solid #ebebeb;
+	.retina1px(#ebebeb);
 	.box-sizing(border-box);
 	padding-top: 8px;
 	padding-bottom: 7px;
@@ -217,5 +213,18 @@ body {
 	}
 }
 
-
-@import '../../common/css/common_nav.less';
+.go-back-center {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 49px;
+	.retinaT(#ebebeb);
+	a {
+		display: block;
+		height: 100%;
+		line-height: 49px;
+		text-align: center;
+		font-size: 14px;
+		color: #747474;
+	}
+}

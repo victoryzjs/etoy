@@ -395,4 +395,20 @@ $(function() {
 			return "where="+JSON.stringify({"beHot":true});
 		}
 	}
+
+
+	
+	$.ajax({
+		type: 'GET',
+		url: '/datadict/list/品牌',
+		contentType: 'application/json',
+		success: function(data){
+			console.log(data.data);
+			
+		},
+		error: function(xhr, type){
+			$globalLoading.close();
+			alert('Ajax error!')
+		}
+	});
 });
