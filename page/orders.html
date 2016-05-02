@@ -24,6 +24,7 @@
 			</div>
 		</nav>
 	</section>
+	<!-- <span class="fl">租赁时间<%= initData[i].rentWeeks %>周</span> -->
 	<!--电话弹窗-->
 	<div class="mask"></div>
 	<div class="phone-dialog">
@@ -78,8 +79,7 @@
 				</div>
 				<div class="order-one-other plr12 clearfix">
 					<span class="fl">共<%= initData[i].goods?initData[i].goods.length:0 %>件商品</span>
-					<span class="fl">租赁时间<%= initData[i].rentWeeks %>周</span>
-					<span class="fl">总计 <%= initData[i].totalPrice/100 %></span>
+					<span class="fl">总计 <%= initData[i].totalPrice/100 %>元</span>
 				</div>
 				<div class="clearfix order-btn plr12">
 					<a href="pay.html#<%= initData[i].id %>" class="fr">付款</a>
@@ -107,7 +107,7 @@
 								<div class="order-one-cont">
 									<p><%= initData[i].goods[j].title %></p>
 									<p class="pr">下单时间：<%= initData[i].createdAt.substr(0,9) %></p>
-									<p>￥<%= initData[i].goods[j].rentPrice %>/周</p>
+									<p><%= initData[i].rentWeek==1 ? initData[i].goods[j].rentPrice['1']/100 : (initData[i].rentWeek==2 ? initData[i].goods[j].rentPrice['2']/100 : (initData[i].rentWeek == 3 ? initData[i].goods[j].rentPrice['3']/100 : initData[i].goods[j].rentPrice['4']/100))  %>/<%= initData[i].goods[j].rentWeek %></p>
 								</div>
 							</div>
 
@@ -117,8 +117,7 @@
 				</div>
 				<div class="order-one-other plr12 clearfix">
 					<span class="fl">共<%= initData[i].goods?initData[i].goods.length:0 %>件商品</span>
-					<span class="fl">租赁时间<%= initData[i].rentWeeks %>周</span>
-					<span class="fl">总计 <%= initData[i].totalPrice/100 %></span>
+					<span class="fl">总计 <%= initData[i].totalPrice/100 %>元</span>
 				</div>
 			</div>
 		<% } %>

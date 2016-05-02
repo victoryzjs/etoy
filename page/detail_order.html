@@ -16,6 +16,9 @@
 	<section class="wrap-init-tpl">
 	</section>
 	<link rel="import" href="../static/common/html/loading.html?__inline">
+	<!-- <div class="rentTime">
+	租赁周数：<%= initData.rentWeeks %>
+	</div>	 -->
 <!-- 					<li class="clearfix"><span class="fl">优惠</span><span class="fr discount">+￥0.00</span></li> -->
 	<!-- start cart list-->
 	<script id="init-tpl" type="text/html">
@@ -63,7 +66,7 @@
 							<div class="cart-goods-desc pr">
 								<p class="cart-goods-name"><%= initData.goods[i].title %></p>
 								<div class="cart-goods-price clearfix pa">
-									<span class="inline-block fl">￥<%= initData.goods[i].rentPrice/100 %>元/周</span>
+									<span class="inline-block fl"><%= initData.goods[i].rentWeek==1 ? initData.goods[i].rentPrice['1']/100 : (initData.goods[i].rentWeek==2 ? initData.goods[i].rentPrice['2']/100 : (initData.goods[i].rentWeek == 3 ? initData.goods[i].rentPrice['3']/100 : initData.goods[i].rentPrice['4']/100))  %>元/<%= initData.goods[i].rentWeek %>周</span>
 								</div>
 							</div>
 						</a>
@@ -73,9 +76,7 @@
 		</div>
 
 		<div class="lease-time pl12 mt7 bg-white">
-			<div class="rentTime">
-				租赁周数：<%= initData.rentWeeks %>
-			</div>	
+
 			<div class="deliveryTime">
 				配送时间：<%= initData.deliveryDay %>
 			</div>
@@ -86,13 +87,13 @@
 
 		<div class="cost mt7 plr12 bg-white">
 			<ul>
-				<li class="clearfix"><span class="fl">租金</span><span class="fr rent-price">￥<%= initData.rentPrice/100 %></span></li>
-				<li class="clearfix freight"><span class="fl">运费</span><span class="fr pr freight-span">￥<%= initData.fee/100 %><i>订单不满150另收20元运费</i></span></li>
+				<li class="clearfix"><span class="fl">租金</span><span class="fr rent-price"><%= initData.rentPrice/100 %>元</span></li>
+				<li class="clearfix freight"><span class="fl">运费</span><span class="fr pr freight-span"><%= initData.fee/100 %><i>订单不满150另收20元运费</i>元</span></li>
 			</ul>
 		</div>
 		<div class="all-money clearfix plr12 bg-white">
 			<div class="fl agreen"></div>
-			<div class="fr allCount">总计：￥<span><%= initData.totalPrice/100 %></span></div>
+			<div class="fr allCount">总计：<span><%= initData.totalPrice/100 %></span>元</div>
 		</div>
 		<div class="at-once-go bg-white clearfix">
 			<div class="state1">

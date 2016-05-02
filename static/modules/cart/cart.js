@@ -161,7 +161,7 @@ $(function() {
 							if($li.hasClass('active')) {
 								$('.total-money span').html(allPrice);
 							}
-							
+							$('.settlement-btn span').html(wrapCartId.length);
 						}
 						if($cartList.find('li').length == 0) {
 							$('.cart-null').show();
