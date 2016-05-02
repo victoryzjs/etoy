@@ -5,15 +5,31 @@
  * @require ../../lib/zepto.js
  * @require ../../lib/baiduTemplate.js
  * @require ../../lib/fastclick.js
+ * @require ../../lib/jweixin-1.0.0.js
  */
 $(function() {
 	FastClick.attach(document.body);
+	var wxShare = require('../config/wxShareConfig.js');
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	$globalLoading.close();
 	var $prompt = require('../ui/prompt/prompt.js');
 	var bt=baidu.template;
 	var flag = true;
+	//获取分享参数
+	$.ajax({
+		type: 'GET',
+		url: '/weChat/jsApiTicket?url='+location.href,
+		contentType: 'application/json',
+		success: function(data){
+			wxShare.init(data.data);
+		},
+		error: function(xhr, type){
+			alert('Ajax error!')
+		}
+	});
+
+	
 	$.ajax({
 		type: 'POST',
 		url: '/wxApi/order/defaultInfo',
@@ -45,10 +61,6 @@ $(function() {
 		
 		$('.wrap-init-tpl').eq(0).html(bt('init-tpl', listData));
 		countMoney(data);
-		//点击周数动态调整金额
-		$('.rentWeeks').on('change', function() {
-			countMoney(data, $(this).val())
-		});
 		//订单提交
 		$('.submit-order').on('click', function() {
 			var res = getData();
@@ -90,24 +102,20 @@ $(function() {
 	}
 	// handingData(testData);
 	//计算金额
-	function countMoney(data, weeks) {
-		weeks = weeks?weeks:1;
+	function countMoney(data) {	
 		var count = 0;
-		var allCount = 0;
+		var freight = 0;
 		for(var i=0,len=data.data.goods.length; i<len; i++) {
-			count +=data.data.goods[i].good.rentPrice;
-			allCount += data.data.goods[i].good.rentPrice;
+			count +=data.data.goods[i].rentWeek==1 ? data.data.goods[i].good.rentPrice['1']/100 : (data.data.goods[i].rentWeek==2 ? data.data.goods[i].good.rentPrice['2']/100 : (data.data.goods[i].rentWeek == 3 ? data.data.goods[i].good.rentPrice['3']/100 : data.data.goods[i].good.rentPrice['4']/100));
 		}
-		count = count * weeks;
-		allCount = allCount * weeks;
 		if(count < 150) {
 			$('.freight-span span').html(20);
-			allCount +=20;
+			freight = 20;
 		}else {
 			$('.freight-span span').html(0);
 		}
-		$('.rent-price span').html(count/100);
-		$('.allCount span').html(allCount/100);
+		$('.rent-price span').html(count);
+		$('.allCount span').html(count+freight);
 	}
 	//获取信息
 	function getData() {
@@ -118,7 +126,6 @@ $(function() {
 		var district = $('.district').val();
 		var ring = $('.ring').val();
 		var address = $.trim($('.address').val());
-		var rentWeeks = $('.rentWeeks').val();
 		var deliveryDay = $('.deliveryDay').val();
 		var mark = $('.mark').val();
 		if(recipient.length != 0) {
@@ -152,12 +159,6 @@ $(function() {
 			postData.address = address;
 		}else {
 			$prompt.init('请填写详细地址！');
-			return false;
-		}
-		if(rentWeeks.length != 0) {
-			postData.rentWeeks = rentWeeks;
-		}else {
-			$prompt.init('请选择租赁周数');
 			return false;
 		}
 		if(deliveryDay.length != 0) {

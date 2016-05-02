@@ -36,17 +36,10 @@
 	width: 60%;
 }
 
-.goods-detail-desc-price-left p:first-child {
-	line-height: 22px;
-	font-size: 18px;
-	color: #f13d68;
-}
-
-.goods-detail-desc-price-left p:last-child {
-	line-height: 16px;
+.goods-detail-desc-price-left p {
+	line-height: 45px;
 	font-size: 12px;
 	color: #a6a7a7;
-	margin-top: 7px;
 }
 
 .goods-detail-desc-price-right {
@@ -172,4 +165,34 @@
 	font-size: 12px;
 	color: #fff;
 	background-color: #f1633d;
+}
+
+ul.price-list {
+	li {
+		width: 50%;
+		line-height: 48px;
+		box-sizing: border-box;
+		.retina1px(#ebebeb);
+		color: #f1633d;
+		text-align: center;
+		strong {
+			font-size: 20px; 
+		}
+		overflow: hidden;
+	}
+	li:nth-of-type(even) {
+		.retina(transparent, transparent, #ebebeb, #ebebeb, 1px);
+	}
+}
+
+span.price-list-icon {
+	float: right;
+	margin-right: 25px;
+	height: 48px;
+	width: 27px;
+}
+
+span.price-list-icon.active {
+	background: url(../../img/is_choice.png) no-repeat center;
+	background-size: contain;
 }

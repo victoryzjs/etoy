@@ -6,6 +6,7 @@
  * @require ../ui/loading/loading.less
  * @require ../../lib/fastclick.js
  * @require ../../lib/swiper/swiper-3.3.1.min.css
+ * @require ../../lib/jweixin-1.0.0.js
  */
 
 $(function() {
@@ -14,6 +15,8 @@ $(function() {
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $loading = require('../ui/loading/loading.js');
 	var $prompt = require('../ui/prompt/prompt.js');
+	var wxShare = require('../config/wxShareConfig.js');
+	var title = '';
 	var bt=baidu.template;
 	var flag = false;
 	var mySwiper = new Swiper('.swiper-container',{
@@ -22,6 +25,8 @@ $(function() {
 		pagination: '.swiper-pagination'
 	});
 	var search = getQueryStringArgs();
+	var isGoods = true;
+	var rentWeek = 1;
 	$loading.init()
 	//ajax请求数据
 	$.ajax({
@@ -35,6 +40,10 @@ $(function() {
 			flag = true;
 			$globalLoading.close();
 			if(data.code == 200) {
+				title = data.data.title;
+				if(data.data.leftNum == 0) {
+					isGoods = false;
+				}
 				var goodsData = {
 					detailInfo: data.data
 				};
@@ -47,6 +56,15 @@ $(function() {
 
 				$('#wrap-banner').html(bt('banner-tpl', bannerData));
 				$('.goods-guide-cont').html(data.data.content);
+
+				//选择周数
+				var $priceListLi = $('.price-list li');
+				$priceListLi.on('click', function() {
+					$priceListLi.find('span').removeClass('active');
+					$(this).find('span').addClass('active');
+					rentWeek = $(this).attr('data-week');
+					console.log($(this).attr('data-week'));
+				});
 			}else if(data.code==234 ) {
 				location.href = data.directUrl;
 			}
@@ -57,27 +75,34 @@ $(function() {
 			alert('Ajax error!')
 		}
 	});
+
+
 	//加入购物车
 	$('.add-cart').eq(0).on('click', function() {
-		$loading.open();
-		$.ajax({
-			type: 'POST',
-			url: '/wxApi/shoppingCart/add/' + search.id,
-			contentType: 'application/json',
-			success: function(data){
-				$loading.close();
-				if(data.msg) {
-					$prompt.init(data.msg);
+		if(isGoods) {
+			$loading.open();
+			$.ajax({
+				type: 'POST',
+				url: '/wxApi/shoppingCart/add/' + search.id + '?rentWeek=' + rentWeek,
+				contentType: 'application/json',
+				success: function(data){
+					$loading.close();
+					if(data.msg) {
+						$prompt.init(data.msg);
+					}
+					if(data.code == 200) {
+						$prompt.init('添加该商品成功！');
+					}			
+				},
+				error: function(xhr, type){
+					$globalLoading.close();
+					alert('Ajax error!')
 				}
-				if(data.code == 200) {
-					$prompt.init('添加该商品成功！');
-				}			
-			},
-			error: function(xhr, type){
-				$globalLoading.close();
-				alert('Ajax error!')
-			}
-		});
+			});
+		}else if(!isGoods) {
+			$prompt.init('该商品无货！');
+			return false;
+		}
 	});
 
 	//轮播图
@@ -126,5 +151,19 @@ $(function() {
 		}
 		return args;
 	}
+
+	//获取分享参数
+	$.ajax({
+		type: 'GET',
+		url: '/weChat/jsApiTicket?url=' + location.href,
+		contentType: 'application/json',
+		success: function(data){
+			data.data.shareTitle = title;
+			wxShare.init(data.data);
+		},
+		error: function(xhr, type){
+			alert('Ajax error!')
+		}
+	});
 });
 

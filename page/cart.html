@@ -78,7 +78,7 @@
 	<!-- start cart list-->
 	<script id="list-tpl" type="text/html">
 	<% for(var i=0,len=listData.length; i<len; i++){ %>
-		<li class="cart-list-one clearfix plr12">
+		<li class="cart-list-one clearfix plr12" data-left=<%= listData[i].good.leftNum %> >
 				<div class="cart-choice-btn fl"></div>
 				<div class="cart-goods-pic fl">
 					<img src="<%= listData[i].good.thumb %>" alt="">
@@ -87,11 +87,11 @@
 					<p class="cart-goods-name"><%= listData[i].good.title %></p>
 					<p class="cart-goods-name">库存：<%= listData[i].good.leftNum %>件</p>
 					<div class="cart-goods-price clearfix pa">
-						<span class="inline-block fl">￥<%= listData[i].good.rentPrice/100 %>元/周</span>
+						<span class="inline-block fl"><%= listData[i].rentWeek==1 ? listData[i].good.rentPrice['1']/100 : (listData[i].rentWeek==2 ? listData[i].good.rentPrice['2']/100 : (listData[i].rentWeek == 3 ? listData[i].good.rentPrice['3']/100 : listData[i].good.rentPrice['4']/100))  %>元/<%= listData[i].rentWeek %>周</span>
 						<span class="inline-block pa delete-btn">删除</span>
 					</div>
 				</div>
-				<input type="text" hidden value="<%= listData[i].id %>" data-price="<%= listData[i].good.rentPrice/100 %>">
+				<input type="text" hidden value="<%= listData[i].id %>" data-price="<%= listData[i].rentWeek==1 ? listData[i].good.rentPrice['1']/100 : (listData[i].rentWeek==2 ? listData[i].good.rentPrice['2']/100 : (listData[i].rentWeek == 3 ? listData[i].good.rentPrice['3']/100 : listData[i].good.rentPrice['4']/100))  %>" data-id="<%= listData[i].good.id %>">
 			</li>
 		</li>
 	<% } %>

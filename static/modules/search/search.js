@@ -5,11 +5,13 @@
  * @require ../../lib/zepto.js
  * @require ../../lib/baiduTemplate.js
  * @require ../../lib/fastclick.js
+ * @require ../../lib/jweixin-1.0.0.js
  */
 
 
 $(function() {
 	FastClick.attach(document.body);
+	var wxShare = require('../config/wxShareConfig.js');
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $prompt = require('../ui/prompt/prompt.js');
 	var $loading = require('../ui/loading/loading.js');
@@ -19,6 +21,19 @@ $(function() {
 	var $searchResultNull = $('.search-result-null');
 	$globalLoading.close();
 	$loading.init();
+	//获取分享参数
+	$.ajax({
+		type: 'GET',
+		url: '/weChat/jsApiTicket?url='+location.href,
+		contentType: 'application/json',
+		success: function(data){
+			wxShare.init(data.data);
+		},
+		error: function(xhr, type){
+			alert('Ajax error!')
+		}
+	});
+	
 	function $ajax(text) {
 		$.ajax({
 			type: 'POST',

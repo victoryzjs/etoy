@@ -5,6 +5,7 @@
  * @require ../../lib/fastclick.js
  * @require ../../lib/baiduTemplate.js
  * @require ../ui/dropload/dropload.less
+ * @require ../../lib/jweixin-1.0.0.js
  */
 $(function() {
 	FastClick.attach(document.body);
@@ -28,8 +29,22 @@ $(function() {
 	var listData = {'list':[]};
 	var isAsc = true;
 	var argu = '';
+	var wxShare = require('../config/wxShareConfig.js');
 	$globalLoading.close();
 	$loading.init();
+
+	//获取分享参数
+	$.ajax({
+		type: 'GET',
+		url: '/weChat/jsApiTicket?url='+location.href,
+		contentType: 'application/json',
+		success: function(data){
+			wxShare.init(data.data);
+		},
+		error: function(xhr, type){
+			alert('Ajax error!')
+		}
+	});
 
 	function getAllList(condition1, id) {
 		var condition1 = condition1 ? ('&'+condition1) : '';
@@ -122,7 +137,6 @@ $(function() {
 				item = 'sort=rentNum%20DESC&';
 			}
 			item = argu ? item + 'where=' + argu : item;
-			// item = item + 'where=' + argu;
 			listData.list = [];
 			skip = 0;
 			$loading.open();
@@ -139,42 +153,18 @@ $(function() {
 	getData('.ranking');
 	getData('.popularity');
 	getData('.price');
-
-	//筛选数据
-	// var condition = {
-	// 	'age': ['0-6个月（趟着玩）', '6-9个月（学坐爬）', '9-18个月（学走路）', '18-36个月（兴趣发展）', '3岁以上（综合锻炼）'],
-	// 	'brand': ['Anpanman面包超人', 'Bright starts美国', 'Btoys美国', 'Chicco智高', 'Evenflo美国', 'Fisher Price费雪', 'Grow up高思维', 'Haba国德', 'Kiddieland童梦圆', 'Leap frog美国跳蛙', 'Lego乐高', 'Little tike小泰克', 'Playskool孩之宝', 'Pororo韩国', 'Radio flyer美国', 'Rastar星辉', 'Simba德国仙霸', 'Step2美国晋阶', 'Toyroyal日本皇室', 'V-tech伟易达', 'Weplay台湾', 'Gonge丹麦', 'Baghera法国', '其他'],
-	// 	'func': {
-	// 		'fun0': '健身架',
-	// 		'fun1': '摇摇椅',
-	// 		'fun2': '学爬玩具',
-	// 		'fun3': '角色扮演',
-	// 		'fun4': '敲弹击琴',
-	// 		'fun5': '手工拼插',
-	// 		'fun6': '滑梯组合',
-	// 		'fun7': '玩沙嬉水',
-	// 		'fun8': '学习屋/桌',
-	// 		'fun9': '益智玩具',
-	// 		'fun10': '学步车',
-	// 		'fun11': '手推车',
-	// 		'fun12': '电动车',
-	// 		'fun13': '滑行车',
-	// 		'fun14': '脚踏车',
-	// 		'fun15': '感统训练'
-	// 	}
-	// };
+	//声明变量存储筛选条件
 	var condition = {
 		'age': [],
 		'brand': [],
-		'func': []
+		'func': {}
 	};
 	var funcCondition = {};
-	funcCondition = deepClone(condition.func);
-	condition.func = toArr(condition.func);
+	
 	var infoBag = {
 		'brand': [],
 		'age': [],
-		'func': []
+		'func':  []
 	};
 	$wrapScreen.css('height', $WH);
 	$shaixuan.on('click', function() {
@@ -228,7 +218,7 @@ $(function() {
 			for(var i=0,len=infoBag.func.length; i<len; i++){
 				funcHtml += infoBag.func[i] + ',';
 			}
-			$('.select-function span').eq(0).html(funcHtml);
+			$('.select-function span').eq(0).html(funcHtml.substring(0, funcHtml.length - 1));
 		}else {
 			$('.select-function span').eq(0).html('选择一项或多个');
 		}
@@ -411,8 +401,13 @@ $(function() {
 				if(data.code == 200) {
 					if(data.data[0].dictType == '功能') {
 						data.data.forEach(function(e) {
-							condition.func.push(e.dictVal);
+							console.log(e.code);
+							condition.func[e.code] = e.dictVal;
 						});
+						console.log(condition.func);
+						console.log(condition);
+						funcCondition = deepClone(condition.func);
+						condition.func = toArr(condition.func);
 					}else if(data.data[0].dictType == '品牌') {
 						data.data.forEach(function(e) {
 							condition.brand.push(e.dictVal);
