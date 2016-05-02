@@ -5,9 +5,11 @@
  * @require ../../lib/fastclick.js
  * @require ../../lib/alert/zepto.alert.js
  * @require ../../lib/alert/zepto.alert.css
+ * @require ../../lib/jweixin-1.0.0.js
  */
 $(function() {
 	FastClick.attach(document.body);
+	var wxShare = require('../config/wxShareConfig.js');
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $loading = require('../ui/loading/loading.js');
@@ -18,6 +20,19 @@ $(function() {
 	var $choice1 = $('.choice1');
 	var $choice2 = $('.choice2');
 	var $choice3 = $('.choice3');
+	//获取分享参数
+	$.ajax({
+		type: 'GET',
+		url: '/weChat/jsApiTicket?url='+location.href,
+		contentType: 'application/json',
+		success: function(data){
+			wxShare.init(data.data);
+		},
+		error: function(xhr, type){
+			alert('Ajax error!')
+		}
+	});
+	
 	$('.choice1').on('click', function() {
 		$.dialog({
 			content : '确认购买500元储值卡<br>(首次购买需缴纳1000元押金)',

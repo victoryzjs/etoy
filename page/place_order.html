@@ -83,7 +83,7 @@
 							<div class="cart-goods-desc pr">
 								<p class="cart-goods-name"><%= initData.goods[i].good.title %></p>
 								<div class="cart-goods-price clearfix pa">
-									<span class="inline-block fl">￥<%= initData.goods[i].good.rentPrice/100 %>元/周</span>
+									<span class="inline-block fl"><%= initData.goods[i].rentWeek==1 ? initData.goods[i].good.rentPrice['1']/100 : (initData.goods[i].rentWeek==2 ? initData.goods[i].good.rentPrice['2']/100 : (initData.goods[i].rentWeek == 3 ? initData.goods[i].good.rentPrice['3']/100 : initData.goods[i].good.rentPrice['4']/100))  %>元/<%= initData.goods[i].rentWeek %>周</span>
 								</div>
 							</div>
 						</a>
@@ -93,15 +93,6 @@
 		</div>
 
 		<div class="lease-time pl12 mt7 bg-white">
-			<div class="lease-delivery">
-				<select class="rentWeeks">
-					<option value="">请选择租赁周数</option>
-					<option value="1">1周</option>
-					<option value="2">2周</option>
-					<option value="3">3周</option>
-					<option value="4">4周</option>
-				</select> 
-			</div>
 			<div class="lease-week">
 				<select class="deliveryDay">
 					<option value="">请在此选择配送时间</option>

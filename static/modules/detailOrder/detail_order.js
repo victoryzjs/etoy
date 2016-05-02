@@ -6,6 +6,7 @@
  * @require ../../lib/baiduTemplate.js
  * @require ../../lib/fastclick.js
  * @require ../../lib/alert/zepto.alert.js
+ * @require ../../lib/jweixin-1.0.0.js
  */
 $(function() {
 	FastClick.attach(document.body);
@@ -13,8 +14,22 @@ $(function() {
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	$globalLoading.close();
 	var $prompt = require('../ui/prompt/prompt.js');
+	var wxShare = require('../config/wxShareConfig.js');
 	var bt=baidu.template;
 	var flag = false;
+
+	//获取分享参数
+	$.ajax({
+		type: 'GET',
+		url: '/weChat/jsApiTicket?url=' + location.href,
+		contentType: 'application/json',
+		success: function(data){
+			wxShare.init(data.data);
+		},
+		error: function(xhr, type){
+			alert('Ajax error!')
+		}
+	});
 	//ajax请求默认信息
 	$.ajax({
 		type: 'GET',

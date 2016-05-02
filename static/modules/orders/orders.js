@@ -5,10 +5,12 @@
  * @require ../../lib/baiduTemplate.js
  * @require ../../lib/fastclick.js
  * @require ../../lib/alert/zepto.alert.js
+ * @require ../../lib/jweixin-1.0.0.js
  */
 
 $(function() {
 	FastClick.attach(document.body);
+	var wxShare = require('../config/wxShareConfig.js');
 	//全局加载loading
 	var $globalLoading = require('../ui/globalLoading/loading.js');
 	var $loading = require('../ui/loading/loading.js');
@@ -32,6 +34,18 @@ $(function() {
 	}else if($initObj == '#togone') {
 		$ajax(4, $($initObj), 'left-tpl');	
 	}
+	//获取分享参数
+	$.ajax({
+		type: 'GET',
+		url: '/weChat/jsApiTicket?url='+location.href,
+		contentType: 'application/json',
+		success: function(data){
+			wxShare.init(data.data);
+		},
+		error: function(xhr, type){
+			alert('Ajax error!')
+		}
+	});
 
 	function $ajax(arg, obj, tpl) {
 		$.ajax({
@@ -102,7 +116,7 @@ $(function() {
 	}
 	//将时间戳转为日期
 	function getLocalTime(nS) {     
-    	return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,9)
+    	return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,10)
 	} 
 
 	//获取url的hash值

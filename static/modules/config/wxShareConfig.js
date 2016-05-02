@@ -1,14 +1,13 @@
 module.exports.init=function (APPCONF) {
-    console.log(APPCONF.nonceStr);
     if (APPCONF && typeof(APPCONF) == 'object') {
         var appId = APPCONF.appid || '';
         var timestamp = APPCONF.timestamp || (new Date()) / 1000;
         var nonceStr = APPCONF.nonceStr || '';
         var signature = APPCONF.signature.signature || '';
-        var title = APPCONF.shareTitle || '易玩具!!!!!!!!!!!';
+        var title = APPCONF.shareTitle || '易玩具';
         var link = APPCONF.url || window.location.href;
         var imgUrl = APPCONF.shareImgUrl || 'http://www.e-toy.cn/images/share_wx.png';
-        var desc = APPCONF.shareDesc || '易玩具!!!!!!!!!';
+        var desc = APPCONF.shareDesc || 'kiss baby 玩具租赁  — 描述”';
         var success = (APPCONF.shareSuccess && typeof(APPCONF.shareSuccess) == 'function') ? APPCONF.shareSuccess : function() {};
         var cancel = (APPCONF.shareCancel && typeof(APPCONF.shareCancel) == 'function') ? APPCONF.shareCancel : function() {};
 
@@ -36,11 +35,10 @@ module.exports.init=function (APPCONF) {
                 link: link,
                 imgUrl: imgUrl,
                 success: function() {
-                    alert(34242342);
-                    success('timeline');
+                    
                 },
                 cancel: function() {
-                    cancel('timeline');
+                    
                 }
             });
 
@@ -52,11 +50,10 @@ module.exports.init=function (APPCONF) {
                 type: '', // 分享类型,music、video或link，不填默认为link
                 dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                 success: function() {
-                    success('appmessage');
-                    alert('!!!!!!!!!!!!1');
+                    
                 },
                 cancel: function() {
-                    cancel('timeline');
+                    
                 }
             });
         });

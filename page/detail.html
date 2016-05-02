@@ -52,7 +52,6 @@
 		</div>
 		<div class="add-cart fl">加入购物车</div>
 	</section>
-	
 	<!-- end -->
 	<link rel="import" href="../static/common/html/loading.html?__inline">
 
@@ -71,9 +70,14 @@
 
 	<script id="detail-tpl" type="text/html">
 		<h2 class="plr12 ptb12"><%= detailInfo.title %></h2>
+		<ul class="price-list">
+			<li class="fl" data-week=1><strong><%= detailInfo.rentPrice['1']/100 %></strong>元/1周<span class="price-list-icon active"></span></li>
+			<li class="fl" data-week=2><strong><%= detailInfo.rentPrice['2']/100 %></strong>元/2周<span class="price-list-icon"></span></li>
+			<li class="fl" data-week=3><strong><%= detailInfo.rentPrice['3']/100 %></strong>元/3周<span class="price-list-icon"></span></li>
+			<li class="fl" data-week=4><strong><%= detailInfo.rentPrice['4']/100 %></strong>元/4周<span class="price-list-icon"></span></li>
+		</ul>
 		<div class="goods-detail-desc-price clearfix plr12">
 			<div class="goods-detail-desc-price-left fl">
-				<p>￥<%= detailInfo.rentPrice/100 %>/周</p>
 				<p>购买价：￥<%= detailInfo.tradePrice/100 %></p>
 			</div>
 			<div class="goods-detail-desc-price-right fl"><%=  detailInfo.leftNum>0 ? '有货' : '无货' %></div>

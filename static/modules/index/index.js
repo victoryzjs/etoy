@@ -72,11 +72,9 @@ $(function() {
 		url: '/weChat/jsApiTicket?url='+location.href,
 		contentType: 'application/json',
 		success: function(data){
-			console.log(data.data);
 			wxShare.init(data.data);
 		},
 		error: function(xhr, type){
-			$globalLoading.close();
 			alert('Ajax error!')
 		}
 	});

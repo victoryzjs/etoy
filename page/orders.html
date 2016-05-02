@@ -66,8 +66,9 @@
 								</div>
 								<div class="order-one-cont">
 									<p><%= initData[i].goods[j].title %></p>
-									<p class="pr">下单时间：<%= initData[i].createdAt.substr(0,9) %></p>
-									<p>￥<%= initData[i].goods[j].rentPrice/100 %>/周</p>
+									<p class="pr">下单时间：<%= initData[i].createdAt.substr(0,10) %></p>
+									<p><%= initData[i].rentWeek==1 ? initData[i].goods[j].rentPrice['1']/100 : (initData[i].rentWeek==2 ? initData[i].goods[j].rentPrice['2']/100 : (initData[i].rentWeek == 3 ? initData[i].goods[j].rentPrice['3']/100 : initData[i].goods[j].rentPrice['4']/100))  %>/<%= initData[i].goods[j].rentWeek %>周</p>
+
 								</div>
 							</div>
 
