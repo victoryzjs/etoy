@@ -26,7 +26,7 @@ $(function() {
 	//ajax请求数据
 	$.ajax({
 		type: 'GET',
-		url: '/good/' + search.id,
+		url: '/wxApi/good/' + search.id,
 		contentType: 'application/json',
 		success: function(data){
 			if(data.msg) {
