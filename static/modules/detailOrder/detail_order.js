@@ -52,6 +52,9 @@ $(function() {
 			location.href = data.directUrl;
 		}
 		data.data.deliveryDay = userDate(data.data.deliveryDay);
+		data.data.goods.forEach(function(value, index, array) {
+			value.rentBackDay = userDate(value.rentBackDay);
+		});
 		data.data.rentBackDay = userDate(data.data.rentBackDay);
 		var listData = {
 			initData: data.data

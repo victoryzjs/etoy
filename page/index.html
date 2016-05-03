@@ -165,7 +165,7 @@
 				</div>
 				<div class="good-cont-wrap-cont">
 					<p><%=  hotGood[i].title %></p>
-					<p>￥<%= hotGood[i].rentPrice/100 %>/周</p>
+					<p><%= hotGood[i].rentPrice['1']/100 %>&nbsp;~&nbsp;<%= hotGood[i].rentPrice['4']/100 %>元</p>
 				</div>						
 			</a>
 		</li>
@@ -182,7 +182,7 @@
 				</div>
 				<div class="good-cont-wrap-cont">
 					<p><%=  latestGood[i].title %></p>
-					<p>￥<%= latestGood[i].rentPrice/100 %>/周</p>
+					<p><%= latestGood[i].rentPrice['1']/100 %>&nbsp;~&nbsp;<%= latestGood[i].rentPrice['4']/100 %>元</p>
 				</div>						
 			</a>
 		</li>

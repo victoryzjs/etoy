@@ -67,6 +67,7 @@
 								<p class="cart-goods-name"><%= initData.goods[i].title %></p>
 								<div class="cart-goods-price clearfix pa">
 									<span class="inline-block fl"><%= initData.goods[i].rentWeek==1 ? initData.goods[i].rentPrice['1']/100 : (initData.goods[i].rentWeek==2 ? initData.goods[i].rentPrice['2']/100 : (initData.goods[i].rentWeek == 3 ? initData.goods[i].rentPrice['3']/100 : initData.goods[i].rentPrice['4']/100))  %>元/<%= initData.goods[i].rentWeek %>周</span>
+									<span class="fr">回收时间：<%= initData.goods[i].rentBackDay %></span>
 								</div>
 							</div>
 						</a>
@@ -79,9 +80,6 @@
 
 			<div class="deliveryTime">
 				配送时间：<%= initData.deliveryDay %>
-			</div>
-			<div class="getTime">
-				回收时间：<%= initData.rentBackDay %>
 			</div>
 		</div>
 
