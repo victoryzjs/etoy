@@ -53,7 +53,7 @@
 		</div>
 		<div class="goods-list-info mt7 pl12 bg-white">
 			<div class="goods-list-number clearfix">
-				<span class="fl">玩具清单</span>
+				<span class="fl">订单编号：<%= initData.orderNum %></span>
 				<span class="fr">共<%= initData.goods.length %>件</span>
 			</div>
 			<ul>
@@ -65,9 +65,10 @@
 							</div>
 							<div class="cart-goods-desc pr">
 								<p class="cart-goods-name"><%= initData.goods[i].title %></p>
+								<p class="cart-goods-name">回收时间：<%= initData.goods[i].rentBackDay %></p>
 								<div class="cart-goods-price clearfix pa">
 									<span class="inline-block fl"><%= initData.goods[i].rentWeek==1 ? initData.goods[i].rentPrice['1']/100 : (initData.goods[i].rentWeek==2 ? initData.goods[i].rentPrice['2']/100 : (initData.goods[i].rentWeek == 3 ? initData.goods[i].rentPrice['3']/100 : initData.goods[i].rentPrice['4']/100))  %>元/<%= initData.goods[i].rentWeek %>周</span>
-									<span class="fr">回收时间：<%= initData.goods[i].rentBackDay %></span>
+
 								</div>
 							</div>
 						</a>

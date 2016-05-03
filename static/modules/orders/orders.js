@@ -60,6 +60,12 @@ $(function() {
 				if(data.code == 234) {
 					location.href = data.directUrl;
 				}else {
+					data.data.forEach(function(value, index, array) {
+						value.goods.forEach(function(value, index, array) {
+							value.rentBackDay = userDate(value.rentBackDay);
+						});
+					});
+					console.log(data.data);
 					handleData(obj, tpl, data);
 				}
 			},
@@ -115,9 +121,9 @@ $(function() {
 		});
 	}
 	//将时间戳转为日期
-	function getLocalTime(nS) {     
-    	return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,10)
-	} 
+	// function getLocalTime(nS) {     
+ //    	return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,9)
+	// } 
 
 	//获取url的hash值
 	function getHash() {
@@ -183,4 +189,12 @@ $(function() {
 		$('.mask').hide();
 		$('.phone-dialog').hide();
 	});
+	//将时间戳转为日期格式
+	function userDate(uData){
+	  var myDate = new Date(uData);
+	  var year = myDate.getFullYear();
+	  var month = (myDate.getMonth() + 1) > 9 ? (myDate.getMonth() + 1) : ('0'+(myDate.getMonth() + 1)) ;
+	  var day = myDate.getDate()>9 ? myDate.getDate() : ('0'+myDate.getDate());
+	  return year + '-' + month + '-' + day;
+	}
 });

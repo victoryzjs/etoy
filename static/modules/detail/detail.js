@@ -31,7 +31,7 @@ $(function() {
 	//ajax请求数据
 	$.ajax({
 		type: 'GET',
-		url: '/wxApi/good/' + search.id,
+		url: '/good/' + search.id,
 		contentType: 'application/json',
 		success: function(data){
 			if(data.msg) {

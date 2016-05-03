@@ -52,7 +52,7 @@ $(function() {
 		},
 		error: function(xhr, type){
 			$globalLoading.close();
-			alert('Ajax error!')
+			alert('Ajax error!');
 		}
 	});
 	var swiperTimer = setInterval(function() {
@@ -66,7 +66,7 @@ $(function() {
 		}
 
 	}, 100);
-
+	//获取分享参数
 	$.ajax({
 		type: 'GET',
 		url: '/weChat/jsApiTicket?url='+location.href,
