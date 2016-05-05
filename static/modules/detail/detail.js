@@ -28,6 +28,51 @@ $(function() {
 	var isGoods = true;
 	var rentWeek = 1;
 	$loading.init()
+
+	//声明变量存储筛选条件
+	var condition = {
+		'age': {},
+		'brand': {},
+		'func': {}
+	};
+
+
+
+	//获取筛选条件
+	function getCondition(con) {
+		$.ajax({
+			type: 'GET',
+			url: '/datadict/list/' + con,
+			contentType: 'application/json',
+			success: function(data){
+				if(data.code == 200) {
+					if(data.data[0].dictType == '功能') {
+						data.data.forEach(function(e) {
+							condition.func[e.code] = e.dictVal;
+						});
+					}else if(data.data[0].dictType == '品牌') {
+						data.data.forEach(function(e) {
+							condition.brand[e.code] = e.dictVal;
+						});
+							
+					}else if(data.data[0].dictType == '年龄段') {
+						data.data.forEach(function(e) {
+							condition.age[e.code] = e.dictVal;
+						});
+							
+					}
+				}
+			},
+			error: function(xhr, type){
+				alert('Ajax error!')
+			}
+		});		
+	}
+	getCondition('功能');
+	getCondition('年龄段');
+	getCondition('品牌');
+
+
 	//ajax请求数据
 	$.ajax({
 		type: 'GET',
@@ -40,7 +85,33 @@ $(function() {
 			flag = true;
 			$globalLoading.close();
 			if(data.code == 200) {
+
 				title = data.data.title;
+				for(var attr in condition) {
+					if(attr == 'age') {
+						for(var val in condition['age']) {
+							if(val == data.data.suitableAge) {
+								data.data.suitableAge = condition['age'][val]
+							}
+						}
+					}else if(attr == 'brand') {
+						for(var val in condition['brand']) {
+							if(val == data.data.brand) {
+								data.data.brand = condition['brand'][val]
+							}
+						}
+					}else if(attr == 'func') {
+						for(var val in condition['func']) {
+
+						}
+					}
+				}
+				// data.data.suitableAge = condition.age.
+
+
+
+
+
 				if(data.data.leftNum == 0) {
 					isGoods = false;
 				}

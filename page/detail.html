@@ -89,15 +89,15 @@
 			
 		</div>
 		<ul class="good-parameter-cont ">
-			<li class="clearfix plr12">
-				<div class="desc-name fl">
+			<li class="clearfix plr12" style="<%= detailInfo.goodsCode ? '' : 'display:none' %>">
+				<div class="desc-name fl" >
 					商品编码：
 				</div>
 				<div class="desc-value fl">
 					<%= detailInfo.goodsCode ? detailInfo.goodsCode : '' %>
 				</div>					
 			</li>
-			<li class="clearfix plr12">
+			<li class="clearfix plr12" style="<%= detailInfo.title ? '' : 'display:none' %>">
 				<div class="desc-name fl">
 					商品名称：
 				</div>
@@ -105,7 +105,7 @@
 					<%= detailInfo.title ? detailInfo.title : '' %>
 				</div>					
 			</li>
-			<li class="clearfix plr12">
+			<li class="clearfix plr12" style="<%= detailInfo.suitableAge ? '' : 'display:none' %>">
 				<div class="desc-name fl">
 					适合年龄：
 				</div>
@@ -113,7 +113,7 @@
 					<%= detailInfo.suitableAge ? detailInfo.suitableAge : '' %>
 				</div>					
 			</li>
-			<li class="clearfix plr12">
+			<li class="clearfix plr12" style="<%= detailInfo.brand ? '' : 'display:none' %>">
 				<div class="desc-name fl">
 					品牌：
 				</div>
@@ -121,7 +121,7 @@
 					<%= detailInfo.brand ? detailInfo.brand : '' %>
 				</div>					
 			</li>
-			<li class="clearfix plr12">
+			<li class="clearfix plr12" style="<%= detailInfo.funShow ? '' : 'display:none' %>">
 				<div class="desc-name fl">
 					分类：
 				</div>
@@ -129,7 +129,7 @@
 					<%= detailInfo.funShow ? detailInfo.funShow : '' %>
 				</div>					
 			</li>
-			<li class="clearfix plr12">
+			<li class="clearfix plr12" style="<%= detailInfo.material ? '' : 'display:none' %>">
 				<div class="desc-name fl">
 					材质：
 				</div>
@@ -137,7 +137,7 @@
 					<%= detailInfo.material ? detailInfo.material : '' %>
 				</div>					
 			</li>
-			<li class="clearfix plr12">
+			<li class="clearfix plr12" style="<%= detailInfo.goodsNumber ? '' : 'display:none' %>">
 				<div class="desc-name fl">
 					货号：
 				</div>
