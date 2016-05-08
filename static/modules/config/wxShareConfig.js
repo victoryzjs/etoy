@@ -19,7 +19,7 @@ module.exports.init=function (APPCONF) {
         }
 
         wx.config({
-            debug: true,
+            debug: false,
             appId: appId,
             timestamp: timestamp,
             nonceStr: nonceStr,
