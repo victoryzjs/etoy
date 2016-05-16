@@ -47,8 +47,6 @@ $(function() {
 					if(data.data.orderCntInfo['s'+(index+1)]) {
 						$(this).find('i').show();
 						$(this).find('i').html(data.data.orderCntInfo['s'+(index+1)]);
-					}else {
-						$(this).find('i').hide();
 					}
 				});
 

@@ -59,6 +59,7 @@ $(function() {
 		if(flag) {
 			clearInterval(swiperTimer);
 			var mySwiper = new Swiper('.swiper-container',{
+				autoplay: 5000,
 				loop: true,
 				lazyLoading : true,
 				pagination: '.swiper-pagination',
