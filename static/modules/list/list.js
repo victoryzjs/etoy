@@ -30,6 +30,8 @@ $(function() {
 	var isAsc = true;
 	var argu = '';
 	var wxShare = require('../config/wxShareConfig.js');
+	var listRes = 0;
+	var rearchRes = 0;
 	$globalLoading.close();
 	$loading.init();
 
@@ -63,8 +65,10 @@ $(function() {
 				if(data.code == 200) {
 					$('.result-null').hide();
 					$loading.close();
-					if(data.data.length <= 0) {
+					if(data.data.length <= 0 && listRes == 0) {
 						$('.result-null').show();
+						$dropload.stop();
+					}else if (data.data.length <= 0) {
 						$dropload.stop();
 					}else {
 						if(id == '.price') {
@@ -77,7 +81,8 @@ $(function() {
 							skip+=data.data.length;
 							$dropload.start();
 						}	
-						$('#wrap-list-tpl').html(bt('list-tpl', listData));							
+						$('#wrap-list-tpl').html(bt('list-tpl', listData));						
+						listRes++;		
 					}
 				}
 	
@@ -95,8 +100,10 @@ $(function() {
 			success: function(data){
 				$('.result-null').hide();
 				$loading.close();
-				if(data.data.length <= 0) {
+				if(data.data.length <= 0 && rearchRes == 0) {
 					$('.result-null').show();
+					$dropload.stop();
+				}else if (data.data.length <= 0) {
 					$dropload.stop();
 				}else {
 					listData.list = listData.list.concat(data.data);
@@ -106,7 +113,8 @@ $(function() {
 						skip+=data.data.length;
 						$dropload.start();
 					}	
-					$('#wrap-list-tpl').html(bt('list-tpl', listData));						
+					$('#wrap-list-tpl').html(bt('list-tpl', listData));
+					rearchRes++;					
 				}
 		
 			},
@@ -401,11 +409,8 @@ $(function() {
 				if(data.code == 200) {
 					if(data.data[0].dictType == '功能') {
 						data.data.forEach(function(e) {
-							console.log(e.code);
 							condition.func[e.code] = e.dictVal;
 						});
-						console.log(condition.func);
-						console.log(condition);
 						funcCondition = deepClone(condition.func);
 						condition.func = toArr(condition.func);
 					}else if(data.data[0].dictType == '品牌') {
@@ -429,7 +434,4 @@ $(function() {
 	getCondition('功能');
 	getCondition('年龄段');
 	getCondition('品牌');
-	setTimeout(function() {
-		console.log(condition);
-	}, 5000);
 });
