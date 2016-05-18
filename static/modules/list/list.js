@@ -174,6 +174,11 @@ $(function() {
 		'age': [],
 		'func':  []
 	};
+
+	var inforBagTrue = {
+		'brand': {},
+		'age': {}
+	};
 	$wrapScreen.css('height', $WH);
 	$shaixuan.on('click', function() {
 		$wrapScreen.show();
@@ -193,7 +198,14 @@ $(function() {
 
 		$(item).on('click', function() {
 			if($(item).hasClass('select-age')) {
-				$selectAll.html('单选');
+
+				if(infoBag.age.length < condition.age.length) {
+					$selectAll.html('全选');
+				}else {
+					$selectAll.html('取消');
+				}
+				
+
 				$selectConditionList.attr('data-name', 'ul-age').html(insertData(condition['age'], 'age'));
 
 
@@ -219,7 +231,19 @@ $(function() {
 		$wrapScreenList.animate({
 			'left': $WW
 		}, 200);
-		$('.select-age span').eq(0).html(infoBag.age[0]?infoBag.age[0]:'选择一项');
+
+
+		if(infoBag.age.length != 0){
+			var ageHtml = '';
+			for(var i=0,len=infoBag.age.length; i<len; i++){
+				ageHtml += infoBag.age[i] + ',';
+			}
+			$('.select-age span').eq(0).html(ageHtml.substring(0, ageHtml.length - 1));
+		}else {
+			$('.select-age span').eq(0).html('选择一项或多个');
+		}
+
+
 		$('.select-brand span').eq(0).html(infoBag.brand[0]?infoBag.brand[0]:'选择一项');
 		if(infoBag.func.length != 0){
 			var funcHtml = '';
@@ -235,23 +259,44 @@ $(function() {
 	});
 	//全选
 	$selectAll.on('click', function() {
-		if($selectAll.html() == '全选') {
-			$selectConditionList.attr('data-name', 'ul-func').html(insertData(condition['func'], 'func'));
-			$selectConditionList.find('li').each(function(index, item) {
-				$(item).addClass('active');
-			});
-			for(var i=0,len=condition.func.length; i<len; i++) {
-				infoBag['func'][i] = condition.func[i];
+		if($selectConditionList.attr('data-name') == 'ul-func') {
+			if($selectAll.html() == '全选') {
+				$selectConditionList.attr('data-name', 'ul-func').html(insertData(condition['func'], 'func'));
+				$selectConditionList.find('li').each(function(index, item) {
+					$(item).addClass('active');
+				});
+				for(var i=0,len=condition.func.length; i<len; i++) {
+					infoBag['func'][i] = condition.func[i];
+				}
+				$selectAll.html('取消');
+			}else if($selectAll.html() == '取消') {
+				$selectConditionList.attr('data-name', 'ul-func').html(insertData(condition['func'], 'func'));
+				$selectConditionList.find('li').each(function(index, item) {
+					$(item).removeClass('active');
+				});
+				infoBag['func'] = [];
+				$selectAll.html('全选');
 			}
-			$selectAll.html('取消');
-		}else if($selectAll.html() == '取消') {
-			$selectConditionList.attr('data-name', 'ul-func').html(insertData(condition['func'], 'func'));
-			$selectConditionList.find('li').each(function(index, item) {
-				$(item).removeClass('active');
-			});
-			infoBag['func'] = [];
-			$selectAll.html('全选');
+		}else if($selectConditionList.attr('data-name') == 'ul-age') {
+			if($selectAll.html() == '全选') {
+				$selectConditionList.attr('data-name', 'ul-age').html(insertData(condition['age'], 'age'));
+				$selectConditionList.find('li').each(function(index, item) {
+					$(item).addClass('active');
+				});
+				for(var i=0,len=condition.age.length; i<len; i++) {
+					infoBag['age'][i] = condition.age[i];
+				}
+				$selectAll.html('取消');
+			}else if($selectAll.html() == '取消') {
+				$selectConditionList.attr('data-name', 'ul-age').html(insertData(condition['age'], 'age'));
+				$selectConditionList.find('li').each(function(index, item) {
+					$(item).removeClass('active');
+				});
+				infoBag['age'] = [];
+				$selectAll.html('全选');
+			}
 		}
+
 	});
 
 	//单击选中或取消
@@ -261,16 +306,18 @@ $(function() {
 		var $ul = $li.parent();
 
 		if($ul.attr('data-name') == 'ul-age') {
-			if($li.hasClass('active')) {
-				$li.removeClass('active');
-				infoBag['age'] =[];
-
-			}else {
-				$ul.find('li').each(function(index, item) {
-					$(item).removeClass('active');
-				});
-				infoBag['age'] = [$li.html()];
+			if(isHave(infoBag['age'], $li.html())){
+				infoBag['age'].push($li.html());
+			}
+			if(!$li.hasClass('active')) {
 				$li.addClass('active');
+			}else {
+				$li.removeClass('active');
+			}
+			if(infoBag.func.length < condition.func.length) {
+				$selectAll.html('全选');
+			}else {
+				$selectAll.html('取消');
 			}
 
 		}else if($ul.attr('data-name') == 'ul-brand') {
@@ -307,6 +354,8 @@ $(function() {
 
 	//点击confirm确认按钮提交
 	$('.confirm').eq(0).on('click', function() {
+
+		rearchRes = 0;
 		$('#wrap-list-tpl').html(' ');	
 		$wrapScreen.hide();
 		var data = toPost(infoBag, funcCondition);
@@ -365,10 +414,22 @@ $(function() {
 	function toPost(obj1, obj2) {
 		var toBeJson = {};
 		if(obj1.age.length != 0) {
-			toBeJson.suitableAge = obj1.age[0];
+			toBeJson.suitableAge = [];
+			for(var attr in inforBagTrue['age']) {
+				for(var i=0,len=obj1.age.length; i<len; i++) {
+					if(inforBagTrue['age'][attr] == obj1.age[i]) {
+					toBeJson.suitableAge.push(attr);
+				}
+
+				}
+			}
 		}
 		if(obj1.brand.length != 0) {
-			toBeJson.brand = obj1.brand[0];
+			for(var attr in inforBagTrue['brand']) {
+				if(inforBagTrue['brand'][attr] == obj1.brand[0]) {
+					toBeJson.brand = attr;
+				}
+			}
 		}
 		if(obj1.func.length != 0) {
 			for(var i=0,len=obj1.func.length; i<len; i++) {
@@ -382,6 +443,7 @@ $(function() {
 		
 		return toBeJson;
 	}
+
 	//对象深度克隆
 	function deepClone(obj) {
 		var o = obj instanceof Array ? [] : {};
@@ -416,11 +478,14 @@ $(function() {
 					}else if(data.data[0].dictType == '品牌') {
 						data.data.forEach(function(e) {
 							condition.brand.push(e.dictVal);
+							inforBagTrue.brand[e.code] = e.dictVal;
+
 						});
 							
 					}else if(data.data[0].dictType == '年龄段') {
 						data.data.forEach(function(e) {
 							condition.age.push(e.dictVal);
+							inforBagTrue.age[e.code] = e.dictVal;
 						});
 							
 					}
