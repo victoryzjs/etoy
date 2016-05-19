@@ -31,7 +31,7 @@ $(function() {
 	var brnadFlag = false;
 	var funcFlag = false;
 
-	$loading.init()
+	$loading.init();
 
 	//声明变量存储筛选条件
 	var condition = {
@@ -115,10 +115,6 @@ $(function() {
 						}
 						// data.data.suitableAge = condition.age.
 
-
-
-
-
 						if(data.data.leftNum == 0) {
 							isGoods = false;
 						}
@@ -133,8 +129,7 @@ $(function() {
 						$('.goods-detail-switch-cont').eq(0).html(bt('good-parameter-cont-tpl', goodsData));
 
 						$('#wrap-banner').html(bt('banner-tpl', bannerData));
-						$('.goods-guide-cont').html(data.data.content);
-
+					
 						//选择周数
 						var $priceListLi = $('.price-list li');
 						$priceListLi.on('click', function() {

@@ -86,7 +86,7 @@
 
 	<script id="good-parameter-cont-tpl" type="text/html">
 		<div class="goods-guide-cont active clearfix">
-			
+			<iframe id="mainframe" width="100%" src="/wxApi/goodDesc?id=<%= window.location.search.substring(4) %>" onload="this.height=this.contentWindow.document.documentElement.scrollHeight" scrolling="no"></iframe>
 		</div>
 		<ul class="good-parameter-cont ">
 			<li class="clearfix plr12" style="<%= detailInfo.goodsCode ? '' : 'display:none' %>">
